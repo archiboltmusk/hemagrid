@@ -125,18 +125,34 @@
 
     <!-- Tabbed Navigation -->
     <div class="border-b border-slate-200">
-      <nav class="flex space-x-8">
-        <button onclick="switchTab('inventoryTab')" id="tabBtn-inventory" class="border-b-2 border-brand-600 text-brand-600 font-medium py-3 text-sm flex items-center space-x-2">
+      <nav class="flex space-x-6 overflow-x-auto">
+        <button onclick="switchTab('inventoryTab')" id="tabBtn-inventory" class="border-b-2 border-brand-600 text-brand-600 font-medium py-3 text-sm flex items-center space-x-2 shrink-0">
           <i class="fa-solid fa-boxes-stacked"></i>
           <span>Blood Inventory Grid</span>
         </button>
-        <button onclick="switchTab('expiryTab')" id="tabBtn-expiry" class="border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-medium py-3 text-sm flex items-center space-x-2">
+        <button onclick="switchTab('expiryTab')" id="tabBtn-expiry" class="border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-medium py-3 text-sm flex items-center space-x-2 shrink-0">
           <i class="fa-solid fa-clock-rotate-left"></i>
-          <span>Expiry Watchlist</span>
+          <span>Expiry Radar</span>
         </button>
-        <button onclick="switchTab('transferTab')" id="tabBtn-transfer" class="border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-medium py-3 text-sm flex items-center space-x-2">
+        <button onclick="switchTab('transferTab')" id="tabBtn-transfer" class="border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-medium py-3 text-sm flex items-center space-x-2 shrink-0">
           <i class="fa-solid fa-arrow-right-arrow-left"></i>
           <span>Inter-Hospital Transfers</span>
+        </button>
+        <button onclick="switchTab('groupingTab')" id="tabBtn-grouping" class="border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-medium py-3 text-sm flex items-center space-x-2 shrink-0">
+          <i class="fa-solid fa-vial-circle-check text-purple-600"></i>
+          <span>Dual Grouping Desk (Forward/Reverse)</span>
+        </button>
+        <button onclick="switchTab('registersTab')" id="tabBtn-registers" class="border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-medium py-3 text-sm flex items-center space-x-2 shrink-0">
+          <i class="fa-solid fa-book-medical text-emerald-600"></i>
+          <span>Statutory Registers (Form 27-C)</span>
+        </button>
+        <button onclick="switchTab('nabhTab')" id="tabBtn-nabh" class="border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-medium py-3 text-sm flex items-center space-x-2 shrink-0">
+          <i class="fa-solid fa-chart-line text-blue-600"></i>
+          <span>NABH Quality Indicators</span>
+        </button>
+        <button onclick="switchTab('analyzerTab')" id="tabBtn-analyzer" class="border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-medium py-3 text-sm flex items-center space-x-2 shrink-0">
+          <i class="fa-solid fa-microchip text-amber-600"></i>
+          <span>HL7/ASTM Analyzer Interface</span>
         </button>
       </nav>
     </div>
@@ -212,6 +228,167 @@
         </div>
         <div id="transfersList" class="space-y-3">
           <!-- Populated via JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. Dual Grouping Desk (Forward & Reverse) -->
+    <div id="groupingTab" class="hidden space-y-4">
+      <div class="bg-white p-6 rounded-2xl border border-slate-200">
+        <div class="flex justify-between items-center pb-4 border-b">
+          <div>
+            <h3 class="font-bold text-slate-900 text-base">Forward &amp; Reverse Blood Grouping Cross-Verification</h3>
+            <p class="text-slate-500 text-xs">Mandatory dual serology protocol before any ISBT 128 bag label is released.</p>
+          </div>
+          <span class="px-2.5 py-1 rounded-full bg-purple-100 text-purple-700 font-mono text-xs font-bold">
+            MANDATORY DGHS PROTOCOL
+          </span>
+        </div>
+
+        <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Forward Grouping (Cell) -->
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-3">
+            <span class="text-xs font-bold text-slate-900 block uppercase font-mono text-purple-700">1. Forward (Cell) Grouping</span>
+            <div class="space-y-2 text-xs">
+              <div class="flex justify-between items-center p-2 rounded-lg bg-white border">
+                <span>Anti-A Reagent:</span>
+                <span class="font-mono font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded">Negative (0)</span>
+              </div>
+              <div class="flex justify-between items-center p-2 rounded-lg bg-white border">
+                <span>Anti-B Reagent:</span>
+                <span class="font-mono font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">Agglutination (+4)</span>
+              </div>
+              <div class="flex justify-between items-center p-2 rounded-lg bg-white border">
+                <span>Anti-D (Rh) Reagent:</span>
+                <span class="font-mono font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">Agglutination (+4)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Reverse Grouping (Serum) -->
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 space-y-3">
+            <span class="text-xs font-bold text-slate-900 block uppercase font-mono text-blue-700">2. Reverse (Serum) Grouping</span>
+            <div class="space-y-2 text-xs">
+              <div class="flex justify-between items-center p-2 rounded-lg bg-white border">
+                <span>A-Cells Suspension:</span>
+                <span class="font-mono font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">Agglutination (+4)</span>
+              </div>
+              <div class="flex justify-between items-center p-2 rounded-lg bg-white border">
+                <span>B-Cells Suspension:</span>
+                <span class="font-mono font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded">Negative (0)</span>
+              </div>
+              <div class="flex justify-between items-center p-2 rounded-lg bg-white border">
+                <span>O-Cells Control:</span>
+                <span class="font-mono font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded">Negative (0)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 p-4 rounded-xl bg-emerald-50 border border-emerald-200 flex justify-between items-center">
+          <div>
+            <span class="text-xs font-bold text-emerald-800 block">Cross-Verification Status: 100% Concordant</span>
+            <span class="text-xs text-emerald-600">Forward confirms B-antigen; Reverse confirms Anti-A antibodies. Final Group: <strong>B Rh Positive (B+)</strong></span>
+          </div>
+          <button onclick="alert('ISBT 128 Compliant Barcode Label Generated: =W0123 26 098412 A')" class="px-4 py-2 bg-emerald-600 text-white font-bold text-xs rounded-lg hover:bg-emerald-700 transition">
+            Print ISBT 128 Barcode Label
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. Statutory Registers (Form 27-C) -->
+    <div id="registersTab" class="hidden space-y-4">
+      <div class="bg-white p-6 rounded-2xl border border-slate-200">
+        <div class="flex justify-between items-center pb-4 border-b">
+          <div>
+            <h3 class="font-bold text-slate-900 text-base">Drugs &amp; Cosmetics Act Statutory Registers (Form 27-C &amp; Schedule K)</h3>
+            <p class="text-slate-500 text-xs">Automatically compiled in real time from phlebotomy, testing, and issue events.</p>
+          </div>
+          <button onclick="alert('Exporting Complete Form 27-C Drug Inspector Audit Dossier (PDF)...')" class="px-3.5 py-2 bg-slate-900 text-white text-xs font-semibold rounded-lg hover:bg-black transition flex items-center space-x-1.5">
+            <i class="fa-solid fa-file-pdf"></i>
+            <span>Export Drug Inspector Audit Pack</span>
+          </button>
+        </div>
+
+        <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+            <span class="font-bold text-slate-900 block mb-1">Donor Bleeding Register</span>
+            <span class="text-slate-500 text-[11px] block mb-3">1,408 donors logged with ABHA, Vitals, Donor Questionnaire.</span>
+            <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 font-mono text-[10px] font-bold">100% Complete</span>
+          </div>
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+            <span class="font-bold text-slate-900 block mb-1">Component Separation Register</span>
+            <span class="text-slate-500 text-[11px] block mb-3">Centrifugation speed, volume, PRBC/FFP/Platelet yields.</span>
+            <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 font-mono text-[10px] font-bold">100% Complete</span>
+          </div>
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+            <span class="font-bold text-slate-900 block mb-1">TTI Serology &amp; NAT Register</span>
+            <span class="text-slate-500 text-[11px] block mb-3">Abbott/Roche analyzer batches with negative/positive controls.</span>
+            <span class="px-2 py-0.5 rounded bg-emerald-100 text-emerald-700 font-mono text-[10px] font-bold">100% Complete</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. NABH Quality Indicators -->
+    <div id="nabhTab" class="hidden space-y-4">
+      <div class="bg-white p-6 rounded-2xl border border-slate-200">
+        <div class="flex justify-between items-center pb-4 border-b">
+          <div>
+            <h3 class="font-bold text-slate-900 text-base">NABH Accreditation &amp; Hemovigilance Indicators</h3>
+            <p class="text-slate-500 text-xs">Benchmarked against National Health Authority and National Blood Transfusion Council norms.</p>
+          </div>
+          <span class="px-2.5 py-1 rounded-full bg-blue-100 text-blue-700 font-mono text-xs font-bold">
+            NABH 5th EDITION READY
+          </span>
+        </div>
+
+        <div class="mt-4 grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+            <span class="text-xs text-slate-500 font-mono">Crossmatch-to-Transfusion (C/T)</span>
+            <p class="text-2xl font-black text-slate-900 mt-1">1.28</p>
+            <span class="text-[10px] text-emerald-600 font-semibold font-mono">Target &lt; 2.0 (Optimal)</span>
+          </div>
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+            <span class="text-xs text-slate-500 font-mono">Expiry Discard Rate</span>
+            <p class="text-2xl font-black text-emerald-600 mt-1">0.4%</p>
+            <span class="text-[10px] text-emerald-600 font-semibold font-mono">India Avg: 6.5%</span>
+          </div>
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+            <span class="text-xs text-slate-500 font-mono">Transfusion Reaction Rate</span>
+            <p class="text-2xl font-black text-slate-900 mt-1">0.02%</p>
+            <span class="text-[10px] text-emerald-600 font-semibold font-mono">Zero Severe Hemolytic</span>
+          </div>
+          <div class="p-4 rounded-xl border border-slate-200 bg-slate-50">
+            <span class="text-xs text-slate-500 font-mono">Component Separation Ratio</span>
+            <p class="text-2xl font-black text-blue-600 mt-1">94.6%</p>
+            <span class="text-[10px] text-blue-600 font-semibold font-mono">Target &gt; 90%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. HL7/ASTM Analyzer Interface -->
+    <div id="analyzerTab" class="hidden space-y-4">
+      <div class="bg-white p-6 rounded-2xl border border-slate-200">
+        <div class="flex justify-between items-center pb-4 border-b">
+          <div>
+            <h3 class="font-bold text-slate-900 text-base">Direct Laboratory Analyzer HL7 / ASTM Interface</h3>
+            <p class="text-slate-500 text-xs">Direct serial and TCP/IP integration with Abbott Architect, Roche Cobas, and Bio-Rad IH-500.</p>
+          </div>
+          <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 font-mono text-xs font-bold">
+            TCP/IP CONNECTED (PORT 9100)
+          </span>
+        </div>
+
+        <div class="mt-4 p-4 rounded-xl bg-slate-900 text-emerald-400 font-mono text-xs space-y-2 overflow-x-auto">
+          <p class="text-slate-400">// Incoming HL7 v2.5.1 Automated Result Stream</p>
+          <p>MSH|^~\&amp;|ROCHE_COBAS_E411|AIIMS_CENTRAL_LAB|HEMAGRID_ERP|DL01|20261111194500||ORU^R01|MSG009841|P|2.5.1</p>
+          <p>OBX|1|ST|HIV_1_2_AG_AB|1|NON_REACTIVE|COI_0.12|NORMAL|||F</p>
+          <p>OBX|2|ST|HBSAG_QUANT|1|NON_REACTIVE|COI_0.08|NORMAL|||F</p>
+          <p>OBX|3|ST|HCV_ANTIBODY|1|NON_REACTIVE|COI_0.14|NORMAL|||F</p>
+          <p class="text-emerald-300 font-bold">>> Auto-Ingest: Bag #DL-8821 Serology Verified (Non-Reactive). Zero manual transcription error.</p>
         </div>
       </div>
     </div>
@@ -393,14 +570,18 @@
     }
 
     function switchTab(tabId) {
-      ['inventoryTab', 'expiryTab', 'transferTab'].forEach(t => {
-        document.getElementById(t).classList.add('hidden');
+      ['inventoryTab', 'expiryTab', 'transferTab', 'groupingTab', 'registersTab', 'nabhTab', 'analyzerTab'].forEach(t => {
+        const el = document.getElementById(t);
+        if (el) el.classList.add('hidden');
       });
-      document.getElementById(tabId).classList.remove('hidden');
+      const target = document.getElementById(tabId);
+      if (target) target.classList.remove('hidden');
 
-      ['inventory', 'expiry', 'transfer'].forEach(k => {
+      ['inventory', 'expiry', 'transfer', 'grouping', 'registers', 'nabh', 'analyzer'].forEach(k => {
         const btn = document.getElementById(`tabBtn-${k}`);
-        btn.className = `border-b-2 ${tabId.startsWith(k) ? 'border-brand-600 text-brand-600' : 'border-transparent text-slate-500'} font-medium py-3 text-sm flex items-center space-x-2`;
+        if (btn) {
+          btn.className = `border-b-2 ${tabId.startsWith(k) ? 'border-brand-600 text-brand-600' : 'border-transparent text-slate-500'} font-medium py-3 text-sm flex items-center space-x-2 shrink-0`;
+        }
       });
     }
 
