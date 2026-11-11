@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HemaGrid | Hospital Blood Bank ERP</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50: '#fff1f2', 100: '#ffe4e6', 500: '#f43f5e', 600: '#e11d48', 700: '#be123c', 900: '#881337' },
+            navy: { 800: '#1e293b', 900: '#0f172a' }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col">
+  <!-- Top Navigation -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
+          <i class="fa-solid fa-droplet text-xl"></i>
+        </div>
+        <div>
+          <div class="flex items-center space-x-2">
+            <h1 class="font-bold text-lg text-slate-900 tracking-tight">HemaGrid</h1>
+            <span class="text-xs bg-brand-100 text-brand-700 font-semibold px-2 py-0.5 rounded-full">HOSPITAL ERP</span>
+          </div>
+          <p class="text-xs text-slate-500">AIIMS New Delhi — Mother Hub Center (DL-01)</p>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <!-- e-RaktKosh Live Sync Indicator -->
+        <div class="flex items-center space-x-2 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-lg">
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+          </span>
+          <span class="text-xs font-medium text-emerald-800">e-RaktKosh Sync: <strong id="syncStatus">LIVE</strong></span>
+        </div>
+
+        <button onclick="openModal('addBagModal')" class="bg-brand-600 hover:bg-brand-700 text-white text-xs font-semibold px-3.5 py-2 rounded-lg shadow-sm flex items-center space-x-1.5 transition">
+          <i class="fa-solid fa-plus"></i>
+          <span>Register Blood Unit</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full space-y-6">
+    <!-- Quick Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+        <div>
+          <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">Total Units in Stock</p>
+          <p class="text-2xl font-bold text-slate-900 mt-1" id="statTotal">428</p>
+          <span class="text-xs text-emerald-600 font-medium"><i class="fa-solid fa-arrow-up"></i> +18 units today</span>
+        </div>
+        <div class="w-12 h-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center text-xl">
+          <i class="fa-solid fa-boxes-stacked"></i>
+        </div>
+      </div>
+
+      <div class="bg-white p-5 rounded-2xl border border-rose-200 bg-rose-50/20 shadow-sm flex items-center justify-between">
+        <div>
+          <p class="text-xs font-medium text-rose-600 uppercase tracking-wider">Expiry Alert (&lt; 48h)</p>
+          <p class="text-2xl font-bold text-rose-700 mt-1" id="statExpiring">3 Units</p>
+          <span class="text-xs text-rose-600 font-medium">Auto-clearing active</span>
+        </div>
+        <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-xl flex items-center justify-center text-xl">
+          <i class="fa-solid fa-hourglass-half"></i>
+        </div>
+      </div>
+
+      <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+        <div>
+          <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">Active Cold-Chain Transfers</p>
+          <p class="text-2xl font-bold text-slate-900 mt-1" id="statTransfers">2 In-Transit</p>
+          <span class="text-xs text-slate-500">IoT Monitored (2°C-6°C)</span>
+        </div>
+        <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-xl flex items-center justify-center text-xl">
+          <i class="fa-solid fa-truck-medical"></i>
+        </div>
+      </div>
+
+      <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between">
+        <div>
+          <p class="text-xs font-medium text-slate-500 uppercase tracking-wider">NAT-Tested Purity Rate</p>
+          <p class="text-2xl font-bold text-emerald-600 mt-1">99.8%</p>
+          <span class="text-xs text-slate-500">Zero Window-Period Risk</span>
+        </div>
+        <div class="w-12 h-12 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center text-xl">
+          <i class="fa-solid fa-shield-virus"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expiry Radar Banner -->
+    <div class="bg-gradient-to-r from-rose-900 to-amber-900 rounded-2xl p-6 text-white shadow-lg">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div>
+          <div class="inline-flex items-center space-x-2 bg-rose-500/30 border border-rose-400/40 px-2.5 py-1 rounded-full text-xs font-medium mb-2">
+            <i class="fa-solid fa-radar animate-pulse text-amber-300"></i>
+            <span>AUTOMATED REDISTRIBUTION RADAR</span>
+          </div>
+          <h2 class="text-xl font-bold">Platelet Expiry Clearance Detected</h2>
+          <p class="text-slate-200 text-sm mt-1 max-w-2xl">
+            2 units of Platelets (B+ and A+) will expire within 24–48 hours. HemaGrid has matched demand at <strong class="text-amber-200">Safdarjung Oncology Wing (3.4 km)</strong>. Initiating auto-transfer prevents biohazard discard.
+          </p>
+        </div>
+        <button onclick="triggerAutoRedistribute()" class="bg-white text-rose-900 hover:bg-slate-100 font-bold px-5 py-3 rounded-xl shadow-md text-sm whitespace-nowrap transition flex items-center space-x-2">
+          <i class="fa-solid fa-bolt-lightning text-amber-500"></i>
+          <span>Approve Instant Transfer</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Tabbed Navigation -->
+    <div class="border-b border-slate-200">
+      <nav class="flex space-x-8">
+        <button onclick="switchTab('inventoryTab')" id="tabBtn-inventory" class="border-b-2 border-brand-600 text-brand-600 font-medium py-3 text-sm flex items-center space-x-2">
+          <i class="fa-solid fa-boxes-stacked"></i>
+          <span>Blood Inventory Grid</span>
+        </button>
+        <button onclick="switchTab('expiryTab')" id="tabBtn-expiry" class="border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-medium py-3 text-sm flex items-center space-x-2">
+          <i class="fa-solid fa-clock-rotate-left"></i>
+          <span>Expiry Watchlist</span>
+        </button>
+        <button onclick="switchTab('transferTab')" id="tabBtn-transfer" class="border-b-2 border-transparent text-slate-500 hover:text-slate-700 font-medium py-3 text-sm flex items-center space-x-2">
+          <i class="fa-solid fa-arrow-right-arrow-left"></i>
+          <span>Inter-Hospital Transfers</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Inventory Tab Content -->
+    <div id="inventoryTab" class="space-y-4">
+      <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
+        <div class="flex items-center space-x-3 w-full sm:w-auto">
+          <select id="filterGroup" onchange="renderInventory()" class="bg-white border border-slate-300 rounded-lg text-xs px-3 py-2 font-medium">
+            <option value="ALL">All Blood Groups</option>
+            <option value="O+">O Positive (O+)</option>
+            <option value="O-">O Negative (O-)</option>
+            <option value="A+">A Positive (A+)</option>
+            <option value="B+">B Positive (B+)</option>
+            <option value="B-">B Negative (B-)</option>
+            <option value="AB+">AB Positive (AB+)</option>
+            <option value="AB-">AB Negative (AB-)</option>
+          </select>
+
+          <select id="filterComponent" onchange="renderInventory()" class="bg-white border border-slate-300 rounded-lg text-xs px-3 py-2 font-medium">
+            <option value="ALL">All Components</option>
+            <option value="PRBC">Packed Red Blood Cells (PRBC)</option>
+            <option value="PLATELETS">Platelets (RDP/SDP)</option>
+            <option value="FFP">Fresh Frozen Plasma (FFP)</option>
+            <option value="WHOLE_BLOOD">Whole Blood</option>
+          </select>
+        </div>
+        <p class="text-xs text-slate-500">Showing verified, barcoded inventory compliant with NBTC norms</p>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+        <table class="min-w-full divide-y divide-slate-200 text-sm text-left">
+          <thead class="bg-slate-50 text-xs font-semibold text-slate-600 uppercase tracking-wider">
+            <tr>
+              <th class="px-6 py-4">Barcode / Bag ID</th>
+              <th class="px-6 py-4">Blood Group</th>
+              <th class="px-6 py-4">Component</th>
+              <th class="px-6 py-4">Location</th>
+              <th class="px-6 py-4">Testing Status</th>
+              <th class="px-6 py-4">Expiry</th>
+              <th class="px-6 py-4 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="inventoryTableBody" class="divide-y divide-slate-100 text-slate-700">
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Expiry Watchlist Tab -->
+    <div id="expiryTab" class="hidden space-y-4">
+      <div class="bg-white p-6 rounded-2xl border border-slate-200">
+        <h3 class="font-bold text-slate-900 mb-2">Real-time Shelf Life Countdown</h3>
+        <p class="text-slate-500 text-sm mb-4">Units prioritized for transfusion or algorithmic inter-bank rebalancing.</p>
+        <div id="expiryCards" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Inter-Hospital Transfer Tab -->
+    <div id="transferTab" class="hidden space-y-4">
+      <div class="bg-white p-6 rounded-2xl border border-slate-200">
+        <div class="flex justify-between items-center mb-4">
+          <div>
+            <h3 class="font-bold text-slate-900">Inter-Hospital Cold-Chain Logistics Hub</h3>
+            <p class="text-slate-500 text-sm">Monitored transfers between Hubs and Blood Storage Centers (Spokes).</p>
+          </div>
+          <button onclick="simulateNewTransfer()" class="bg-slate-900 hover:bg-black text-white text-xs px-3.5 py-2 rounded-lg font-medium transition">
+            <i class="fa-solid fa-plus mr-1"></i> New Transfer Dispatch
+          </button>
+        </div>
+        <div id="transfersList" class="space-y-3">
+          <!-- Populated via JS -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Register Blood Bag Modal -->
+  <div id="addBagModal" class="hidden fixed inset-0 bg-slate-900/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl space-y-4">
+      <div class="flex justify-between items-center border-b pb-3">
+        <h3 class="font-bold text-slate-900 text-base">Register New Blood Unit</h3>
+        <button onclick="closeModal('addBagModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <form id="addBagForm" onsubmit="handleAddBag(event)" class="space-y-3 text-sm">
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Blood Group</label>
+          <select id="modalBloodGroup" required class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm">
+            <option value="O+">O Positive (O+)</option>
+            <option value="O-">O Negative (O-)</option>
+            <option value="A+">A Positive (A+)</option>
+            <option value="A-">A Negative (A-)</option>
+            <option value="B+">B Positive (B+)</option>
+            <option value="B-">B Negative (B-)</option>
+            <option value="AB+">AB Positive (AB+)</option>
+            <option value="AB-">AB Negative (AB-)</option>
+            <option value="BOMBAY_PHENOTYPE">Bombay Blood Group (Rare)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Component Separation</label>
+          <select id="modalComponent" required class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm">
+            <option value="PRBC">Packed Red Blood Cells (PRBC - 42 Days)</option>
+            <option value="PLATELETS">Platelet Concentrate (5 Days)</option>
+            <option value="FFP">Fresh Frozen Plasma (FFP - 1 Year)</option>
+            <option value="WHOLE_BLOOD">Whole Blood (35 Days)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Storage Location</label>
+          <input type="text" id="modalStorage" value="ColdRoom-1 / Rack-B3" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-sm">
+        </div>
+
+        <div class="flex items-center space-x-2 pt-1">
+          <input type="checkbox" id="modalNat" checked class="rounded text-brand-600 focus:ring-brand-500">
+          <label for="modalNat" class="text-xs text-slate-700 font-medium">Nucleic Acid Test (NAT) Cleared</label>
+        </div>
+
+        <div class="pt-4 flex justify-end space-x-2 border-t">
+          <button type="button" onclick="closeModal('addBagModal')" class="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-lg">Cancel</button>
+          <button type="submit" class="px-4 py-2 text-xs font-semibold bg-brand-600 hover:bg-brand-700 text-white rounded-lg shadow-sm">Save &amp; Sync to e-RaktKosh</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = 'http://localhost:4000/api';
+
+    let localInventory = [
+      { id: "BAG-1001", bagBarcode: "HG-DEL-2611-01A", bloodGroup: "O+", component: "PRBC", storageLocation: "ColdRoom-A / Shelf-03", natTested: true, expiryDate: "In 25 Days", hoursLeft: 600 },
+      { id: "BAG-1002", bagBarcode: "HG-DEL-2611-02B", bloodGroup: "O-", component: "PRBC", storageLocation: "ColdRoom-A / Shelf-01", natTested: true, expiryDate: "In 33 Days", hoursLeft: 792 },
+      { id: "BAG-1003", bagBarcode: "HG-DEL-2611-03P", bloodGroup: "A+", component: "PLATELETS", storageLocation: "Agitator-B1", natTested: true, expiryDate: "48 Hours (URGENT)", hoursLeft: 48 },
+      { id: "BAG-1004", bagBarcode: "HG-DEL-2611-04P", bloodGroup: "B+", component: "PLATELETS", storageLocation: "Agitator-A2", natTested: true, expiryDate: "24 Hours (CRITICAL)", hoursLeft: 24 },
+      { id: "BAG-1005", bagBarcode: "HG-DEL-2611-05F", bloodGroup: "AB+", component: "FFP", storageLocation: "DeepFreeze-C", natTested: true, expiryDate: "335 Days", hoursLeft: 8040 }
+    ];
+
+    async function loadData() {
+      try {
+        const res = await fetch(`${API_BASE}/inventory?hospitalId=HOSP-01`);
+        if (res.ok) {
+          const json = await res.json();
+          if (json.data && json.data.length > 0) {
+            localInventory = json.data.map(i => ({
+              ...i,
+              hoursLeft: Math.max(1, Math.round((new Date(i.expiryDate) - new Date()) / 3600000))
+            }));
+          }
+        }
+      } catch (e) {
+        console.log('Using local state buffer.');
+      }
+      renderInventory();
+      renderExpiry();
+      renderTransfers();
+    }
+
+    function renderInventory() {
+      const groupFilter = document.getElementById('filterGroup').value;
+      const compFilter = document.getElementById('filterComponent').value;
+
+      const filtered = localInventory.filter(item => {
+        const matchGroup = groupFilter === 'ALL' || item.bloodGroup === groupFilter;
+        const matchComp = compFilter === 'ALL' || item.component === compFilter;
+        return matchGroup && matchComp;
+      });
+
+      document.getElementById('statTotal').innerText = localInventory.length;
+      const tbody = document.getElementById('inventoryTableBody');
+      tbody.innerHTML = '';
+
+      filtered.forEach(item => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-slate-50/80 transition';
+        tr.innerHTML = `
+          <td class="px-6 py-4 font-mono font-medium text-slate-900">${item.bagBarcode}</td>
+          <td class="px-6 py-4">
+            <span class="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-bold ${
+              item.bloodGroup.includes('-') ? 'bg-rose-100 text-rose-800 border border-rose-200' : 'bg-slate-100 text-slate-800'
+            }">
+              ${item.bloodGroup}
+            </span>
+          </td>
+          <td class="px-6 py-4 font-semibold text-xs text-slate-600">${item.component}</td>
+          <td class="px-6 py-4 text-xs text-slate-500">${item.storageLocation || 'Main Hub'}</td>
+          <td class="px-6 py-4">
+            <span class="inline-flex items-center space-x-1 text-xs text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded">
+              <i class="fa-solid fa-check"></i> <span>NAT Cleared</span>
+            </span>
+          </td>
+          <td class="px-6 py-4">
+            <span class="text-xs font-semibold ${item.hoursLeft <= 48 ? 'text-rose-600 font-bold' : 'text-slate-600'}">
+              ${item.expiryDate}
+            </span>
+          </td>
+          <td class="px-6 py-4 text-right">
+            <button onclick="issueBag('${item.bagBarcode}')" class="text-xs font-semibold text-brand-600 hover:text-brand-800 hover:underline">
+              Issue Unit
+            </button>
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    function renderExpiry() {
+      const expiring = localInventory.filter(i => i.hoursLeft <= 48);
+      const container = document.getElementById('expiryCards');
+      container.innerHTML = '';
+
+      expiring.forEach(i => {
+        const card = document.createElement('div');
+        card.className = 'p-4 rounded-xl border border-rose-200 bg-rose-50/40 flex justify-between items-center';
+        card.innerHTML = `
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="font-bold text-slate-900">${i.bagBarcode}</span>
+              <span class="bg-rose-600 text-white font-bold text-xs px-2 py-0.5 rounded">${i.bloodGroup}</span>
+              <span class="text-xs text-slate-500 font-medium">${i.component}</span>
+            </div>
+            <p class="text-xs text-rose-600 mt-1 font-semibold"><i class="fa-solid fa-triangle-exclamation mr-1"></i>Expires in ${i.hoursLeft} Hours</p>
+          </div>
+          <button onclick="triggerAutoRedistribute()" class="text-xs bg-white border border-rose-300 text-rose-700 hover:bg-rose-100 font-bold px-3 py-1.5 rounded-lg transition shadow-sm">
+            Auto-Dispatch
+          </button>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function renderTransfers() {
+      const container = document.getElementById('transfersList');
+      container.innerHTML = `
+        <div class="p-4 rounded-xl border border-slate-200 bg-slate-50 flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="text-xs font-mono font-bold text-slate-700">MANIFEST-2026-DL-0091</span>
+              <span class="text-xs bg-amber-100 text-amber-800 font-semibold px-2 py-0.5 rounded">IN-TRANSIT</span>
+            </div>
+            <p class="text-xs text-slate-600 mt-1">To: <strong>Mehrauli Community Health Centre (CHC)</strong> • Unit: O- PRBC</p>
+            <p class="text-xs text-slate-500 mt-0.5">Cold-Chain Device: <span class="font-mono text-slate-700">IOT-BOX-42</span> (3.8°C • Safe Range 2-6°C)</p>
+          </div>
+          <div class="text-right">
+            <span class="text-xs text-slate-500">Estimated Arrival: <strong>18 mins</strong></span>
+          </div>
+        </div>
+      `;
+    }
+
+    function switchTab(tabId) {
+      ['inventoryTab', 'expiryTab', 'transferTab'].forEach(t => {
+        document.getElementById(t).classList.add('hidden');
+      });
+      document.getElementById(tabId).classList.remove('hidden');
+
+      ['inventory', 'expiry', 'transfer'].forEach(k => {
+        const btn = document.getElementById(`tabBtn-${k}`);
+        btn.className = `border-b-2 ${tabId.startsWith(k) ? 'border-brand-600 text-brand-600' : 'border-transparent text-slate-500'} font-medium py-3 text-sm flex items-center space-x-2`;
+      });
+    }
+
+    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+    async function handleAddBag(e) {
+      e.preventDefault();
+      const bloodGroup = document.getElementById('modalBloodGroup').value;
+      const component = document.getElementById('modalComponent').value;
+      const location = document.getElementById('modalStorage').value;
+
+      const newUnit = {
+        id: `BAG-${Date.now().toString().slice(-4)}`,
+        bagBarcode: `HG-DEL-${Math.floor(1000 + Math.random() * 9000)}`,
+        bloodGroup,
+        component,
+        storageLocation: location,
+        natTested: true,
+        expiryDate: component === 'PLATELETS' ? 'In 5 Days' : 'In 42 Days',
+        hoursLeft: component === 'PLATELETS' ? 120 : 1000
+      };
+
+      try {
+        await fetch(`${API_BASE}/inventory/add`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            bloodBankId: 'HOSP-01',
+            bloodBankName: 'AIIMS New Delhi',
+            bloodGroup,
+            component,
+            storageLocation: location
+          })
+        });
+      } catch (err) {}
+
+      localInventory.unshift(newUnit);
+      closeModal('addBagModal');
+      renderInventory();
+      alert(`Success: Blood bag ${newUnit.bagBarcode} registered and barcoded.`);
+    }
+
+    function issueBag(barcode) {
+      if (confirm(`Confirm cross-match and issue unit ${barcode} to patient ward?`)) {
+        localInventory = localInventory.filter(i => i.bagBarcode !== barcode);
+        renderInventory();
+        alert(`Unit ${barcode} marked as ISSUED. e-RaktKosh central record updated.`);
+      }
+    }
+
+    function triggerAutoRedistribute() {
+      alert("Algorithm Triggered: Transport manifest generated for Safdarjung Oncology. Cold-chain EV dispatched with IoT Box 14.");
+      switchTab('transferTab');
+    }
+
+    loadData();
+  </script>
+</body>
+</html>

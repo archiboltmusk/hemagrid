@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HemaGrid | Donor Pass & SOS Emergency Portal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { 50: '#fff1f2', 100: '#ffe4e6', 500: '#f43f5e', 600: '#e11d48', 700: '#be123c', 900: '#881337' }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-100 text-slate-800 antialiased min-h-screen flex flex-col">
+  <!-- Navigation Header -->
+  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <div class="max-w-4xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
+          <i class="fa-solid fa-heart-pulse text-xl"></i>
+        </div>
+        <div>
+          <h1 class="font-bold text-lg text-slate-900 tracking-tight leading-none">HemaGrid</h1>
+          <span class="text-[11px] text-slate-500 font-medium">Voluntary Donor Network of India</span>
+        </div>
+      </div>
+
+      <div class="flex items-center space-x-3">
+        <button onclick="openModal('sosModal')" class="bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs px-3.5 py-2 rounded-xl shadow-md shadow-rose-600/20 flex items-center space-x-1.5 animate-pulse">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <span>Emergency SOS</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-4xl mx-auto px-4 py-6 flex-1 w-full space-y-6">
+    <!-- Digital HemaPass Card -->
+    <div class="bg-gradient-to-br from-slate-900 via-slate-800 to-brand-950 rounded-3xl p-6 md:p-8 text-white shadow-xl relative overflow-hidden">
+      <!-- Background pattern -->
+      <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl">
+        <i class="fa-solid fa-droplet"></i>
+      </div>
+
+      <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div class="space-y-4">
+          <div class="flex items-center space-x-3">
+            <span class="bg-white/10 backdrop-blur-md border border-white/20 text-xs px-3 py-1 rounded-full font-medium">
+              Verified Digital HemaPass
+            </span>
+            <span class="bg-amber-400 text-amber-950 font-bold text-xs px-2.5 py-0.5 rounded-full">
+              SILVER DONOR
+            </span>
+          </div>
+
+          <div>
+            <h2 class="text-2xl font-bold tracking-tight" id="donorName">Arjun Sharma</h2>
+            <p class="text-xs text-slate-300 font-mono mt-0.5">ID: HG-IND-2026-8812 • New Delhi</p>
+          </div>
+
+          <div class="flex items-center space-x-6 text-sm">
+            <div>
+              <p class="text-xs text-slate-400">Total Donations</p>
+              <p class="text-xl font-bold text-white">8 Units</p>
+            </div>
+            <div class="border-l border-white/20 pl-6">
+              <p class="text-xs text-slate-400">Lives Saved</p>
+              <p class="text-xl font-bold text-emerald-400">24 Lives</p>
+            </div>
+            <div class="border-l border-white/20 pl-6">
+              <p class="text-xs text-slate-400">Eligibility Status</p>
+              <p class="text-xs font-bold text-emerald-300 flex items-center mt-1">
+                <i class="fa-solid fa-circle-check mr-1.5"></i> Ready to Donate
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 flex flex-col items-center justify-center text-center w-full md:w-auto">
+          <div class="text-4xl font-extrabold text-rose-400 tracking-wider font-mono">O-</div>
+          <p class="text-[10px] uppercase font-semibold text-slate-300 mt-1">Universal Donor</p>
+          <div class="w-20 h-20 bg-white rounded-lg p-1.5 mt-3 shadow-inner">
+            <!-- Simulated QR -->
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=HG-IND-2026-8812-O-NEG" alt="Donor QR Code" class="w-full h-full object-contain">
+          </div>
+          <span class="text-[9px] text-slate-300 mt-1">Express Hospital Check-in</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3 Core Consumer Pathways -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <!-- 1. Check Eligibility -->
+      <button onclick="openModal('eligibilityModal')" class="bg-white p-5 rounded-2xl border border-slate-200 text-left hover:border-brand-500 hover:shadow-md transition group">
+        <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition">
+          <i class="fa-solid fa-stethoscope"></i>
+        </div>
+        <h3 class="font-bold text-slate-900 text-sm">Am I Eligible to Donate?</h3>
+        <p class="text-xs text-slate-500 mt-1">Quick 30-second pre-screening for Hb, weight, travel &amp; health criteria.</p>
+      </button>
+
+      <!-- 2. Upcoming Drives -->
+      <button onclick="scrollToDrives()" class="bg-white p-5 rounded-2xl border border-slate-200 text-left hover:border-brand-500 hover:shadow-md transition group">
+        <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition">
+          <i class="fa-solid fa-calendar-check"></i>
+        </div>
+        <h3 class="font-bold text-slate-900 text-sm">Book Camp Slot</h3>
+        <p class="text-xs text-slate-500 mt-1">Join scheduled corporate &amp; university donation drives near you.</p>
+      </button>
+
+      <!-- 3. WhatsApp Alerts -->
+      <button onclick="toggleWhatsappAlerts()" class="bg-white p-5 rounded-2xl border border-slate-200 text-left hover:border-brand-500 hover:shadow-md transition group">
+        <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-lg mb-3 group-hover:scale-110 transition">
+          <i class="fa-brands fa-whatsapp text-xl"></i>
+        </div>
+        <h3 class="font-bold text-slate-900 text-sm">Smart WhatsApp Alerts</h3>
+        <p class="text-xs text-slate-500 mt-1">Get pinged ONLY when an emergency within 5 km needs your exact blood type.</p>
+      </button>
+    </div>
+
+    <!-- Active Urgent Emergency Requests -->
+    <div class="bg-white rounded-2xl border border-slate-200 p-6 space-y-4">
+      <div class="flex justify-between items-center">
+        <div>
+          <h3 class="font-bold text-slate-900">Nearby Critical Hospital Requests</h3>
+          <p class="text-xs text-slate-500">Live verified requests matching your area</p>
+        </div>
+        <span class="text-xs bg-rose-50 text-rose-700 font-bold px-2.5 py-1 rounded-full border border-rose-200">
+          <i class="fa-solid fa-satellite-dish mr-1"></i> 1 Active SOS
+        </span>
+      </div>
+
+      <div class="border border-rose-200 bg-rose-50/30 rounded-xl p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div>
+          <div class="flex items-center space-x-2">
+            <span class="bg-rose-600 text-white font-extrabold text-xs px-2.5 py-1 rounded-md">O Negative (O-)</span>
+            <span class="text-xs font-semibold text-slate-700">Mehrauli Community Health Centre (CHC)</span>
+          </div>
+          <p class="text-xs text-slate-600 mt-1.5 font-medium">
+            Emergency: <strong>Postpartum Hemorrhage (Obstetric Emergency)</strong> • 2 Units Needed
+          </p>
+          <p class="text-[11px] text-slate-500 mt-0.5">
+            <i class="fa-solid fa-location-dot text-rose-500 mr-1"></i> 4.2 km from your location
+          </p>
+        </div>
+
+        <button onclick="volunteerForSOS('SOS-701')" class="bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs px-4 py-2.5 rounded-xl shadow-sm whitespace-nowrap transition">
+          I Can Donate Now
+        </button>
+      </div>
+    </div>
+
+    <!-- Upcoming Donation Camps -->
+    <div id="crivesSection" class="bg-white rounded-2xl border border-slate-200 p-6 space-y-4">
+      <h3 class="font-bold text-slate-900">Upcoming Voluntary Camps &amp; Drives</h3>
+      <div class="space-y-3" id="campsList">
+        <!-- Populated via JS -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Emergency SOS Modal -->
+  <div id="sosModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full p-6 shadow-2xl space-y-4">
+      <div class="flex justify-between items-center border-b pb-3">
+        <div class="flex items-center space-x-2 text-rose-600 font-bold text-base">
+          <i class="fa-solid fa-circle-exclamation text-lg"></i>
+          <span>Raise Verified Emergency SOS</span>
+        </div>
+        <button onclick="closeModal('sosModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <p class="text-xs text-slate-500">
+        HemaGrid will instantly search nearby connected hospital blood banks and ping eligible verified donors within 10 km.
+      </p>
+
+      <form onsubmit="handleSosSubmit(event)" class="space-y-3 text-sm">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Patient Name</label>
+            <input type="text" id="sosPatientName" required placeholder="e.g. Ramesh Gupta" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-xs">
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Hospital Name</label>
+            <input type="text" id="sosHospitalName" required placeholder="e.g. Safdarjung Hospital" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-xs">
+          </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-3">
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Blood Group</label>
+            <select id="sosBloodGroup" required class="w-full border border-slate-300 rounded-lg px-3 py-2 text-xs font-bold">
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+              <option value="BOMBAY">Bombay Phenotype</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Component</label>
+            <select id="sosComponent" required class="w-full border border-slate-300 rounded-lg px-3 py-2 text-xs">
+              <option value="PRBC">PRBC (Red Cells)</option>
+              <option value="PLATELETS">Platelets</option>
+              <option value="FFP">FFP (Plasma)</option>
+              <option value="WHOLE_BLOOD">Whole Blood</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 mb-1">Units Needed</label>
+            <input type="number" id="sosUnits" value="1" min="1" max="6" class="w-full border border-slate-300 rounded-lg px-3 py-2 text-xs">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-slate-700 mb-1">Clinical Diagnosis / Emergency Type</label>
+          <input type="text" id="sosDiagnosis" placeholder="e.g. Dengue Platelet Drop / Emergency Trauma / Cesarean" required class="w-full border border-slate-300 rounded-lg px-3 py-2 text-xs">
+        </div>
+
+        <div class="pt-3 border-t flex justify-end space-x-2">
+          <button type="button" onclick="closeModal('sosModal')" class="px-4 py-2 text-xs font-semibold text-slate-600 hover:bg-slate-100 rounded-lg">Cancel</button>
+          <button type="submit" class="px-5 py-2 text-xs font-bold bg-rose-600 hover:bg-rose-700 text-white rounded-lg shadow-md shadow-rose-600/30">
+            Activate SOS Beacon
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Eligibility Checker Modal -->
+  <div id="eligibilityModal" class="hidden fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl space-y-4">
+      <div class="flex justify-between items-center border-b pb-3">
+        <h3 class="font-bold text-slate-900 text-base">Donor Eligibility Pre-Screener</h3>
+        <button onclick="closeModal('eligibilityModal')" class="text-slate-400 hover:text-slate-600"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="space-y-3 text-xs">
+        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
+          <span>Are you between 18 and 65 years old?</span>
+          <input type="checkbox" id="checkAge" checked class="h-4 w-4 text-brand-600 rounded">
+        </div>
+        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
+          <span>Is your weight 45 kg or above?</span>
+          <input type="checkbox" id="checkWeight" checked class="h-4 w-4 text-brand-600 rounded">
+        </div>
+        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
+          <span>Has it been 90+ days since your last donation?</span>
+          <input type="checkbox" id="checkDays" checked class="h-4 w-4 text-brand-600 rounded">
+        </div>
+        <div class="flex items-center justify-between p-3 bg-slate-50 rounded-xl">
+          <span>Free from tattoo or major surgery in last 6 months?</span>
+          <input type="checkbox" id="checkTattoo" checked class="h-4 w-4 text-brand-600 rounded">
+        </div>
+      </div>
+
+      <button onclick="checkEligibilityResult()" class="w-full bg-slate-900 hover:bg-black text-white text-xs font-bold py-3 rounded-xl transition">
+        Validate My Eligibility
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const API_BASE = 'http://localhost:4000/api';
+
+    const camps = [
+      {
+        id: "CAMP-301",
+        title: "IIT Delhi Annual Youth Blood Drive",
+        organizer: "IIT Delhi NSS & Red Cross",
+        venue: "Student Activity Centre, Hauz Khas",
+        date: "Saturday, 14 Nov • 09:00 AM - 05:00 PM",
+        slotsLeft: 66
+      },
+      {
+        id: "CAMP-302",
+        title: "CyberCity Corporate Voluntary Drive",
+        organizer: "DLF CyberCity & Rotary Club",
+        venue: "Building 10 Amphitheatre, DLF Phase 2",
+        date: "Tuesday, 17 Nov • 10:00 AM - 06:00 PM",
+        slotsLeft: 80
+      }
+    ];
+
+    function renderCamps() {
+      const container = document.getElementById('campsList');
+      container.innerHTML = '';
+      camps.forEach(camp => {
+        const div = document.createElement('div');
+        div.className = 'border border-slate-200 rounded-xl p-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3';
+        div.innerHTML = `
+          <div>
+            <h4 class="font-bold text-sm text-slate-900">${camp.title}</h4>
+            <p class="text-xs text-slate-500 mt-0.5"><i class="fa-solid fa-location-dot text-slate-400 mr-1"></i>${camp.venue}</p>
+            <p class="text-xs text-brand-600 font-medium mt-1"><i class="fa-regular fa-clock mr-1"></i>${camp.date}</p>
+          </div>
+          <button onclick="bookSlot('${camp.id}')" class="bg-slate-900 hover:bg-black text-white text-xs font-semibold px-4 py-2 rounded-lg transition whitespace-nowrap">
+            Reserve 15-Min Slot
+          </button>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function openModal(id) { document.getElementById(id).classList.remove('hidden'); }
+    function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+    function bookSlot(campId) {
+      alert("Slot Reserved! A calendar invite & WhatsApp token has been sent to your registered phone number.");
+    }
+
+    function toggleWhatsappAlerts() {
+      alert("WhatsApp Smart Alerts Enabled. You will receive zero marketing notifications, and will only be alerted for critical compatible shortages within 5 km.");
+    }
+
+    function volunteerForSOS(id) {
+      alert("Thank you! Mehrauli CHC Blood Bank has been notified. An express digital pass has been linked to your HemaPass.");
+    }
+
+    function checkEligibilityResult() {
+      const a = document.getElementById('checkAge').checked;
+      const w = document.getElementById('checkWeight').checked;
+      const d = document.getElementById('checkDays').checked;
+      const t = document.getElementById('checkTattoo').checked;
+
+      if (a && w && d && t) {
+        alert("Success: You meet all NBTC voluntary donation criteria! Your HemaPass is active.");
+      } else {
+        alert("Temporary Deferral: Based on criteria, you may be temporarily deferred. Remember that deferrals are normal and safeguard both you and the recipient!");
+      }
+      closeModal('eligibilityModal');
+    }
+
+    async function handleSosSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('sosPatientName').value;
+      const group = document.getElementById('sosBloodGroup').value;
+      const comp = document.getElementById('sosComponent').value;
+      const units = document.getElementById('sosUnits').value;
+      const diag = document.getElementById('sosDiagnosis').value;
+
+      try {
+        await fetch(`${API_BASE}/sos/request`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            patientName: name,
+            bloodGroup: group,
+            component: comp,
+            unitsRequested: units,
+            diagnosis: diag,
+            urgency: 'STAT_IMMEDIATE'
+          })
+        });
+      } catch (err) {}
+
+      closeModal('sosModal');
+      alert(`Emergency SOS Activated for ${name} (${group} ${comp}). Nearby network alerted!`);
+    }
+
+    renderCamps();
+  </script>
+</body>
+</html>

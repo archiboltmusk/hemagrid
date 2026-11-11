@@ -1,0 +1,13 @@
+{
+  "name": "@hemagrid/hospital-app",
+  "version": "1.0.0",
+  "description": "HemaGrid Hospital Blood Bank ERP & Inter-Bank Clearinghouse",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

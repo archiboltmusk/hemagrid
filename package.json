@@ -1,0 +1,28 @@
+{
+  "name": "hemagrid-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "HemaGrid: Next-Gen National Blood Supply Chain, Hospital ERP, Partner Logistics & Consumer Network",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:api": "npm run dev --workspace=apps/api-server",
+    "dev:hospital": "npm run dev --workspace=apps/hospital-app",
+    "dev:consumer": "npm run dev --workspace=apps/consumer-app",
+    "dev:partner": "npm run dev --workspace=apps/partner-app",
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm test --workspaces --if-present"
+  },
+  "keywords": [
+    "blood-bank",
+    "healthcare",
+    "logistics",
+    "cold-chain",
+    "emergency-response",
+    "india"
+  ],
+  "author": "HemaGrid Team",
+  "license": "Apache-2.0"
+}
