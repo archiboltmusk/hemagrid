@@ -2,6 +2,7 @@
 
 <div align="center">
 
+[![GitHub Pages](https://img.shields.io/badge/Demo-Live_GitHub_Pages-rose.svg)](https://archiboltmusk.github.io/hemagrid/)
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Node.js](https://img.shields.io/badge/Node.js-18%2B-brightgreen.svg)](https://nodejs.org/)
 [![e-RaktKosh](https://img.shields.io/badge/Compliance-e--RaktKosh_v3.1-emerald.svg)](https://eraktkosh.mohfw.gov.in/)
@@ -10,7 +11,7 @@
 
 **An open-source, full-stack digital blood mesh, hospital ERP, cold-chain IoT tracker, and verified donor network built to solve India's blood crisis.**
 
-[Architecture](ARCHITECTURE.md) • [Hospital ERP](#1-hospital-blood-bank-erp-port-4001) • [Consumer Portal](#2-consumer--donor-portal-port-4002) • [Logistics & Partners](#3-logistics--cold-chain-iot-portal-port-4003) • [API Engine](#4-central-api--matching-engine-port-4000)
+[Live Website](https://archiboltmusk.github.io/hemagrid/) • [Architecture](ARCHITECTURE.md) • [Hospital ERP](#1-hospital-blood-bank-erp-port-4001) • [Consumer Portal](#2-consumer--donor-portal-port-4002) • [Logistics & Partners](#3-logistics--cold-chain-iot-portal-port-4003) • [API Engine](#4-central-api--matching-engine-port-4000)
 
 </div>
 
