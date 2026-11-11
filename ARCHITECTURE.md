@@ -1,91 +1,87 @@
-# HemaGrid Architecture Specification
+# HemaGrid: Sovereign Technical Specification & National Architecture
 
-## 1. System Overview
+An open-source, full-stack digital blood mesh, cold-chain IoT tracking engine, hospital ERP, and voluntary donor network designed for the **Ministry of Health and Family Welfare (MoHFW)**, **National Blood Transfusion Council (NBTC)**, and **State Health Missions**.
 
-HemaGrid is an end-to-end, full-stack digital blood banking, real-time inventory balancing, and cold-chain logistics platform tailored specifically to solve India's systemic blood supply fragmentation.
+---
+
+## 1. The 6 Structural Ground Realities (And How HemaGrid Solves Each)
+
+India's national blood collection numbers look sufficient on paper (~13M units collected annually against ~14.5M units benchmarked by WHO). However, ground realities are fractured by poor distribution, systemic inefficiencies, and deep-seated logistical bottlenecks:
+
+### 1. The Burden of the "Replacement Donor" System
+* **Ground Reality:** Hospitals compel distressed relatives of trauma, labor, or emergency surgery patients to arrange replacement donors before blood is released. Many family members are disqualified due to high blood pressure, diabetes, or age, fueling commercial touts and fraudulent donor identity.
+* **HemaGrid Solution:** **HemaShield Social Contract & 365-Day Corporate/College Rolling Calendars**. When a citizen donates voluntarily once, their entire family receives guaranteed priority blood access with zero replacement donor demands.
+
+### 2. "Blood Deserts" and Geographic Inequality
+* **Ground Reality:** Over 70% of rural and semi-urban populations live 30–60 minutes away from licensed blood centers. Peripheral Community Health Centres (CHCs) lack licensed blood storage units.
+* **HemaGrid Solution:** **Hub-and-Spoke Consolidation & Certified Drone/EV Corridors**. Central Mother Hubs supply smaller Blood Storage Centers (Spokes) using IoT-monitored smart cold boxes and autonomous medical drones (< 20-minute transit).
+
+### 3. Lack of Real-Time, Unified Inventory & Inter-Bank Mobility
+* **Ground Reality:** Data entry on central portals is manual and delayed. A blood bank showing "3 units" online is often empty in reality. Hospitals in one zone discard surplus units while hospitals 5 km away turn away dying patients.
+* **HemaGrid Solution:** **Barcode-Level Auto-Sync & The Inter-Bank Clearinghouse**. Inventory updates automatically at the scanner level. The **Expiry Radar** transfers units nearing expiration (platelets < 48h, PRBC < 7d) to nearby facilities with active demand.
+
+### 4. Overuse of Whole Blood vs. Component Separation
+* **Ground Reality:** Non-tertiary centers collect and dispense whole blood, wasting platelets and plasma. One whole blood donation could save up to 3 lives if split into PRBC, Platelets, and FFP.
+* **HemaGrid Solution:** **Mandatory Component Tracking & Domestic Plasma Pooling**. HemaGrid tracks individual blood fractions from the phlebotomy chair and routes unutilized plasma to domestic manufacturing plants for Human Albumin and Factor VIII.
+
+### 5. High Wastage and Short Shelf-Life
+* **Ground Reality:** Platelets expire within 5 days. Holiday donation camps on August 15 collect thousands of bags that overwhelm storage and expire unused 35 days later, followed by months of shortage.
+* **HemaGrid Solution:** **Dynamic Demand Balancing & Algorithmic Quota Management**. Mass collection drives are smoothed into monthly cohorts (30–50 units/week), preventing holiday gluts and mid-year famines.
+
+### 6. The Eligible Donor Paradox
+* **Ground Reality:** Myths of weakness or pain, high female anemia deferral rates (hemoglobin < 12.5 g/dL), and scarce Rh-negative (< 5%) and Bombay phenotypes leave emergency reserves vulnerable.
+* **HemaGrid Solution:** **Nurturing Anemia Deferral Loops & The National Rare Phenotype Registry**. Deferred donors receive nutritional iron guidance and automatic 30-day re-testing invitations. Rare blood phenotypes are geofenced and matched privately via WhatsApp.
+
+---
+
+## 2. System Architecture
 
 ```
-                                  ┌───────────────────────────────┐
-                                  │   e-RaktKosh National Grid    │
-                                  │  (Govt. of India Compliance)  │
-                                  └───────────────▲───────────────┘
-                                                  │ (Automated Sync API)
-┌─────────────────────────┐       ┌───────────────▼───────────────┐       ┌─────────────────────────┐
-│      Hospital App       │       │       Central API Server      │       │      Consumer App       │
-│  (Port 4001: Clinical)  │◄─────►│   (Port 4000: Match Engine)   │◄─────►│    (Port 4002: Donor)   │
-│ • Real-time Stock Grid  │       │ • Expiry Radar Matching       │       │ • Digital HemaPass      │
-│ • Expiry Alert Radar    │       │ • Geofenced SOS Beacon        │       │ • Emergency SOS Wizard  │
-│ • Vein-to-Vein Barcoding│       │ • Inter-Bank Clearinghouse    │       │ • Pre-Screening Checker │
-│ • Issue & Cross-Match   │       │ • IoT Telemetry Ingestion     │       │ • Drive Slot Booking    │
-└─────────────────────────┘       └───────────────▲───────────────┘       └─────────────────────────┘
-                                                  │
-                                  ┌───────────────▼───────────────┐
-                                  │      Partner & Logistics      │
-                                  │     (Port 4003: Cold Chain)   │
-                                  │ • IoT Sensor Temperature Log  │
-                                  │ • GPS Route & Drone Tracking  │
-                                  │ • Camp Drive Pacing & Roster  │
-                                  └───────────────────────────────┘
+                                  ┌─────────────────────────────────────────┐
+                                  │   e-RaktKosh National Gateway (MoHFW)   │
+                                  │   Ayushman Bharat (ABDM / ABHA ID)      │
+                                  └────────────────────▲────────────────────┘
+                                                       │ (Live API Sync)
+┌───────────────────────────────┐       ┌──────────────▼───────────────┐       ┌───────────────────────────────┐
+│       HemaGrid Clinical       │       │    Central Clearinghouse     │       │       HemaPass Citizen        │
+│    (Hospital Blood Bank ERP)  │◄─────►│   (API & Matching Engine)    │◄─────►│    (Donor & Patient Portal)   │
+│ • Vein-to-Vein Barcoding      │       │ • Expiry Radar Algorithm     │       │ • Digital HemaPass with QR    │
+│ • Mandatory 5 TTI Serology    │       │ • Geofenced SOS Beacon       │       │ • HemaShield Family Policy    │
+│ • Bedside Double-Scan Tool    │       │ • Auto-Replenishment Trigger │       │ • WhatsApp Zero-App Bot       │
+│ • Automatic Quarantine Lock   │       │ • Rare Phenotype Registry    │       │ • 30-Sec Eligibility Checker  │
+└───────────────────────────────┘       └──────────────▲───────────────┘       └───────────────────────────────┘
+                                                       │
+                                        ┌──────────────▼───────────────┐
+                                        │      HemaGrid ColdMesh       │
+                                        │    (Logistics & Telemetry)   │
+                                        │ • Sensirion STS35 IoT Sensors│
+                                        │ • Continuous 2°C-6°C Logging │
+                                        │ • Autonomous Drone Corridors │
+                                        │ • Electronic Handover Manifest│
+                                        └──────────────────────────────┘
 ```
 
 ---
 
-## 2. Core Modules & Port Allocations
+## 3. The 4 Applications in the Monorepo
 
-| Component | Port | Primary Stakeholders | Core Responsibilities |
+| Service | Port | Primary User | Key Capabilities |
 | :--- | :--- | :--- | :--- |
-| **API & Match Engine** | `4000` | System / All Apps | Central inventory state, cross-hospital exchange, SOS dispatch, IoT ingestion. |
-| **Hospital ERP App** | `4001` | Blood Bank Officers, Lab Techs, Clinicians | Vein-to-vein bag barcoding, NAT/ELISA test recording, stock grid, expiry radar. |
-| **Consumer App** | `4002` | Voluntary Donors, Patient Attendants | Verified Digital HemaPass, emergency SOS beacon, camp slot reservation, eligibility. |
-| **Partner App** | `4003` | Cold-Chain Couriers, Drone Operators, Camp Leads | Real-time thermal sensor logs (2°C–6°C), transfer manifests, camp operations. |
+| **API & Match Engine** | `4000` | System / Gateway | Redis live state, PostGIS spatial queries, automated replenishment, TTI safety locks, statutory price validation. |
+| **Hospital ERP** | `4001` | Blood Bank Officers, Lab Techs | Component inventory grid, vein-to-vein barcoding, bedside double-scan validation, auto-expiry dispatch. |
+| **Consumer Portal** | `4002` | Donors, Anxious Families | Digital HemaPass with QR, emergency SOS beacon, Thalassemia recurring circle, 15-min VIP camp booking. |
+| **Logistics Console** | `4003` | Courier Drivers, Drone Fleet | Live IoT temperature logs, route coordinates, automated spoiled-blood lockout, transfer manifests. |
 
 ---
 
-## 3. Algorithmic Workflows
+## 4. Statutory & Regulatory Standards (India)
 
-### 3.1 The Expiry-Radar & Automated Redistribution Algorithm
-* **Platelet Lifespan:** 5 days (120 hours).
-* **PRBC Lifespan:** 35–42 days.
-* **Trigger Condition:** When a blood bank has Platelet units with $\le 48$ hours of shelf life remaining and local burn rate $< 0.5\text{ units/day}$, the system initiates the **Inter-Bank Clearinghouse Protocol**.
-* **Target Matching:** The algorithm searches for connected tertiary hospitals, oncology daycares, or trauma units within a 15 km radius with active demand.
-* **Execution:** Generates an electronic transfer manifest (`MANIFEST-YYYY-XX-####`) and assigns a calibrated smart IoT cold box.
-
-### 3.2 The Zero-Spam Geofenced SOS Protocol
-Unlike public social media requests that expose donor numbers and trigger thousands of irrelevant calls:
-1. Hospital or patient attendant raises an emergency request (e.g. 2 units of O-negative PRBC for postpartum hemorrhage).
-2. The engine first queries **all nearby blood storage centers** for existing tested inventory.
-3. If no physical units exist in the radius, the engine queries the **Verified Donor Registry** with spatial filters:
-   $$\text{Filter: } \text{BloodGroup} = \text{TargetGroup} \land \text{Distance} \le 7\text{ km} \land \text{LastDonated} \ge 90\text{ days}$$
-4. The system pings **only 5 to 10 verified donors via WhatsApp Cloud API / HemaGrid Push**.
-5. The moment 2 donors confirm the slot, the alert immediately closes for all other users.
-
-### 3.3 Cold-Chain Telemetry Quality Assurance
-* **Sensors:** Cellular / BLE IoT temperature probes inside insulated transport boxes.
-* **Thresholds:**
-  * PRBC: $2.0^\circ\text{C}$ to $6.0^\circ\text{C}$
-  * Platelets: $20.0^\circ\text{C}$ to $24.0^\circ\text{C}$ (with continuous mechanical agitation)
-  * FFP: $\le -30^\circ\text{C}$
-* **Breach Protocol:** If temperature deviates for $> 15$ continuous minutes, the receiving hospital's terminal flags the bag for mandatory quarantine and reassessment.
-
----
-
-## 4. Regulatory & Clinical Compliance (India)
-
-* **Drugs & Cosmetics Act, 1940 & Drugs and Cosmetics Rules, 1945 (Part XII-B & Schedule F):**
-  * Strict adherence to collection, testing, processing, storage, and distribution norms.
-  * Prohibition of remunerated (paid) blood donation.
-* **National Blood Transfusion Council (NBTC) Guidelines:**
-  * Mandatory screening for Transfusion-Transmissible Infections (TTI): HIV 1 & 2, Hepatitis B (HBsAg), Hepatitis C (HCV), Syphilis (VDRL), and Malaria.
-  * Nucleic Acid Testing (NAT) integration for window-period pathogen reduction.
+* **Drugs & Cosmetics Act, 1940 & Rules, 1945 (Part XII-B & Schedule F):**
+  * Prohibition of paid/commercial blood donation.
+  * Mandatory screening for 5 TTIs: HIV-1 & 2, Hepatitis B (HBsAg), Hepatitis C (HCV), Syphilis (VDRL), Malaria.
+  * Thermal parameters: PRBC ($2^\circ\text{C}$ to $6^\circ\text{C}$), Platelets ($20^\circ\text{C}$ to $24^\circ\text{C}$ with continuous agitation), FFP ($\le -30^\circ\text{C}$).
+* **National Blood Transfusion Council (NBTC):**
+  * Rate capping adherence: PRBC (₹1,450 Govt / ₹1,550 Private), Platelets (₹400), FFP (₹400).
 * **Digital Personal Data Protection (DPDP) Act, 2023:**
-  * End-to-end encryption of donor personal phone numbers and medical history.
-  * Explicit opt-in consent for emergency alerts.
-
----
-
-## 5. Technology Stack
-
-* **Monorepo:** npm workspaces with unified script runners.
-* **Backend:** Node.js, Express, REST APIs, JSON data layer with simulated e-RaktKosh gateway.
-* **Frontends:** Vanilla JS with Tailwind CSS, FontAwesome 6, and responsive modular components.
-* **Contract Definitions:** TypeScript shared models (`@hemagrid/shared-types`).
+  * Strict phone number masking (`+91 98*** **210`) in public directories to prevent tout exploitation.
+  * ABHA 14-digit ID native integration.
