@@ -184,12 +184,143 @@ app.get('/api/niti/state-rankings', (req, res) => {
 app.post('/api/whatsapp/simulate-reply', (req, res) => {
   const { incomingMessage, donorName = 'Rahul' } = req.body;
   let replyText = '';
-  if (incomingMessage.toLowerCase().includes('yes') || incomingMessage.toLowerCase().includes('confirm')) {
+  const msg = (incomingMessage || '').toLowerCase();
+  if (msg.includes('yes') || msg.includes('confirm')) {
     replyText = `Thank you, ${donorName}! Your 15-minute VIP slot is reserved tomorrow at 10:00 AM at AIIMS Blood Bank Gate 3. Express QR Pass generated. Your HemaShield family protection will be renewed for 12 months!`;
+  } else if (msg.includes('need') || msg.includes('blood') || msg.includes('urgent')) {
+    replyText = `Emergency Beacon Active: Found 14 units at AIIMS Blood Bank (2.4 km) & 9 units at Safdarjung (3.1 km). Reply 'HOLD' with your patient name to lock 2 units for 90 minutes, or call 104 now.`;
   } else {
-    replyText = `Hi ${donorName}, AIIMS has an emergency low buffer of O-. Reply 'YES' to confirm your 10:00 AM 15-min slot tomorrow.`;
+    replyText = `Hi ${donorName}, AIIMS has an emergency low buffer of O-. Reply 'YES' to confirm your 10:00 AM 15-min slot tomorrow, or reply 'NEED [BLOODGROUP]' to find units.`;
   }
   res.json({ success: true, sender: 'HemaGrid Central Bot (+91-11-2616-HEMA)', replyText });
+});
+
+// 7. 90-Minute Digital Hold
+app.post('/api/reserve/hold', (req, res) => {
+  const { hospitalId = 'HOSP-01', bloodGroup = 'O-', component = 'PRBC', units = 1, patientName = 'Emergency Patient', requisitionNo = 'REQ-8821' } = req.body;
+  const reservationId = `HOLD-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
+  const expiresAt = new Date(Date.now() + 90 * 60 * 1000).toISOString();
+  
+  res.json({
+    success: true,
+    reservationId,
+    hospitalId,
+    bloodGroup,
+    component,
+    unitsReserved: units,
+    patientName,
+    requisitionNo,
+    status: 'ACTIVE_HELD',
+    expiresAt,
+    holdDurationMinutes: 90,
+    counterInstructions: `Present reservation ID ${reservationId} at hospital blood bank emergency counter. Units are digitally locked and cannot be reallocated during this window.`
+  });
+});
+
+// 8. Emergency Cold-Chain Courier Dispatch
+app.post('/api/courier/dispatch', (req, res) => {
+  const { pickupHospitalId = 'HOSP-01', destinationHospital = 'Apollo Indraprastha', ward = 'ICU-3', units = 2, bloodGroup = 'O-' } = req.body;
+  const dispatchId = `DISPATCH-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
+  
+  res.json({
+    success: true,
+    dispatchId,
+    courierPartner: 'HemaGrid Cold-Box Rapid Fleet',
+    riderName: 'Vikram Singh',
+    riderPhone: '+91-98112-44321',
+    currentTempCelsius: 3.6,
+    safeTempRange: '2.0°C - 6.0°C',
+    coldChainStatus: 'STABLE_COMPLIANT',
+    estimatedArrivalMinutes: 24,
+    liveTrackingUrl: `https://hemagrid.live/track/${dispatchId}`,
+    message: 'Cold-chain certified thermal carrier dispatched. Live temperature sensor active.'
+  });
+});
+
+// 9. AI Blood Requisition Slip OCR Reader
+app.post('/api/ocr/requisition', (req, res) => {
+  const { imageUrl, sampleType = 'Obstetric Emergency' } = req.body;
+  
+  // Simulated high-fidelity OCR model output
+  const extractedData = {
+    patientName: 'Sunita Sharma',
+    ageGender: '34 / Female',
+    hospital: 'Safdarjung Hospital',
+    wardBed: 'Maternity High Dependency Unit (HDU), Bed 12',
+    bloodGroup: 'B Positive (B+)',
+    componentRequired: 'PRBC (Packed Red Blood Cells) + RDP (Random Donor Platelets)',
+    unitsRequested: '2 Units PRBC, 4 Units Platelets',
+    clinicalIndication: 'Severe Postpartum Hemorrhage (PPH)',
+    preTransfusionHb: '6.2 g/dL',
+    doctorName: 'Dr. Neha Verma, MD (Obs & Gynae)',
+    doctorRegNo: 'DMC-44912',
+    crossmatchSampleStatus: 'EDTA Vial Received by Lab',
+    recommendedAction: 'Immediate release of 2 Units O+ or B+ uncrossmatched/crossmatched under emergency code'
+  };
+  
+  res.json({
+    success: true,
+    confidenceScore: 0.984,
+    extractedData,
+    suggestedMatches: [
+      { bloodBank: 'Safdarjung Blood Bank', distanceKm: 0.1, availableUnits: 9, readyInMinutes: 15 },
+      { bloodBank: 'AIIMS Central Blood Bank', distanceKm: 0.8, availableUnits: 14, readyInMinutes: 20 }
+    ]
+  });
+});
+
+// 10. Statutory NBTC Price Ceiling Calculator
+app.get('/api/price-ceiling', (req, res) => {
+  const { component = 'PRBC', testType = 'NAT', facility = 'GOVT', category = 'GENERAL' } = req.query;
+  
+  if (category === 'THALASSEMIA' || category === 'AYUSHMAN' || category === 'BPL') {
+    return res.json({
+      success: true,
+      component,
+      statutoryPriceInr: 0,
+      legalStatus: '100% FREE AS PER GOVT OF INDIA (MoHFW) DIRECTIVE',
+      gazetteCitation: 'National Blood Transfusion Council Guidelines 2022, Sec 4.1',
+      warning: 'Any fee charged to Thalassemia or Ayushman cardholders is an illegal punishable offense under Indian law.'
+    });
+  }
+
+  let price = 1450;
+  if (component === 'PRBC' && facility === 'PRIVATE') price = 1550;
+  if (component === 'PLATELETS') price = 400;
+  if (component === 'FFP') price = 400;
+  if (component === 'SDAP') price = 11000;
+  if (testType === 'NAT' && component === 'PRBC') price += 1000;
+
+  res.json({
+    success: true,
+    component,
+    facility,
+    testType,
+    category,
+    statutoryPriceInr: price,
+    legalStatus: 'CAPPED BY NATIONAL BLOOD TRANSFUSION COUNCIL',
+    overchargeReportingHelpline: '1800-11-2026',
+    gazetteCitation: 'Drug Controller General of India (DCGI) Order F.No. 12-01/14-DC'
+  });
+});
+
+// 11. Donor Impact & Life Saved Loop
+app.post('/api/donor/life-saved', (req, res) => {
+  const { donorId = 'D-10928', unitBarcode = 'DL-8821' } = req.body;
+  
+  res.json({
+    success: true,
+    donorId,
+    unitBarcode,
+    transfusionStatus: 'SUCCESSFULLY_TRANSFUSED',
+    transfusionTimestamp: new Date(Date.now() - 4 * 3600000).toISOString(),
+    recipientInfo: {
+      demographic: '28-year-old mother during delivery',
+      hospital: 'Safdarjung Hospital Obstetric OT',
+      outcome: 'Hemoglobin stabilized from 6.1 to 10.4 g/dL. Mother and newborn safe.'
+    },
+    messageToDonor: 'Your blood saved a young mother and her baby today. You are a true silent hero.'
+  });
 });
 
 // Inventory, Telemetry, and Root

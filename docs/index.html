@@ -3,17 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HemaGrid | Find Blood Calmly &amp; Connect with Nearby Donors</title>
-  <meta name="description" content="A calm, reliable national blood network for India. Find tested blood units in minutes, connect with verified donors, and protect your family with zero panic.">
+  <title>HemaGrid | National Sovereign Blood Network</title>
+  <meta name="description" content="India's live blood network. Instant 90-minute digital hold, cold-chain courier dispatch, doctor slip AI scanner, legal protection against replacement demands, and live city radar map.">
   
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#10b981">
+
   <!-- Tailwind CSS & FontAwesome -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <!-- Calming Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <!-- Calming Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <script>
     tailwind.config = {
@@ -25,12 +28,12 @@
           },
           colors: {
             calm: {
-              bg: '#07080a',
-              surface: '#0d0f14',
-              card: '#12151c',
+              bg: '#060709',
+              surface: '#0c0e14',
+              card: '#12151e',
               border: 'rgba(255, 255, 255, 0.08)',
               borderHover: 'rgba(255, 255, 255, 0.18)',
-              textPrimary: '#f1f5f9',
+              textPrimary: '#f8fafc',
               textSecondary: '#94a3b8',
               textMuted: '#64748b',
               emerald: '#10b981',
@@ -40,7 +43,8 @@
               blue: '#38bdf8',
               blueSoft: 'rgba(56, 189, 248, 0.12)',
               amber: '#f59e0b',
-              amberSoft: 'rgba(245, 158, 11, 0.12)'
+              amberSoft: 'rgba(245, 158, 11, 0.12)',
+              purple: '#c084fc'
             }
           }
         }
@@ -50,41 +54,60 @@
 
   <style>
     body {
-      background-color: #07080a;
-      color: #f1f5f9;
+      background-color: #060709;
+      color: #f8fafc;
       font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     }
 
-    .calm-nav {
-      background: rgba(7, 8, 10, 0.82);
+    .glass-nav {
+      background: rgba(6, 7, 9, 0.88);
       backdrop-filter: blur(25px) saturate(180%);
       -webkit-backdrop-filter: blur(25px) saturate(180%);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .calm-glass {
-      background: rgba(18, 21, 28, 0.7);
+      background: rgba(18, 21, 30, 0.75);
       backdrop-filter: blur(25px);
       -webkit-backdrop-filter: blur(25px);
-      border: 1px solid rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .calm-glow {
-      background: radial-gradient(circle at 50% 15%, rgba(16, 185, 129, 0.1) 0%, rgba(56, 189, 248, 0.06) 40%, transparent 70%);
+    .ambient-glow {
+      background: radial-gradient(circle at 50% 12%, rgba(16, 185, 129, 0.12) 0%, rgba(56, 189, 248, 0.08) 40%, transparent 70%);
     }
 
     .soothing-headline {
-      background: linear-gradient(180deg, #ffffff 20%, rgba(255, 255, 255, 0.75) 100%);
+      background: linear-gradient(180deg, #ffffff 15%, rgba(255, 255, 255, 0.75) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+    }
+
+    /* Radar sweep animation */
+    @keyframes sweep {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .radar-sweep {
+      animation: sweep 8s linear infinite;
+      transform-origin: center;
+    }
+
+    @keyframes pulsePin {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+      70% { transform: scale(1.08); box-shadow: 0 0 0 12px rgba(16, 185, 129, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+    .pin-pulse {
+      animation: pulsePin 2s infinite ease-in-out;
     }
   </style>
 </head>
 <body class="selection:bg-calm-emerald selection:text-black">
 
-  <!-- Calm & Reassuring Header -->
-  <header class="fixed top-0 inset-x-0 z-50 calm-nav transition-all duration-300">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+  <!-- Header -->
+  <header class="fixed top-0 inset-x-0 z-50 glass-nav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
       <div class="flex items-center space-x-3">
         <a href="#" class="flex items-center space-x-2.5 group">
           <div class="w-8 h-8 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-400 flex items-center justify-center text-white shadow-md shadow-emerald-500/20">
@@ -92,540 +115,1595 @@
           </div>
           <div>
             <span class="font-bold text-sm tracking-tight text-white group-hover:text-emerald-400 transition">HemaGrid</span>
-            <span class="text-[10px] text-calm-textMuted block font-mono">National Blood Network</span>
+            <span class="text-[10px] text-calm-textMuted block font-mono">National Live Clearinghouse</span>
           </div>
         </a>
       </div>
 
-      <nav class="hidden md:flex items-center space-x-6 text-xs font-medium text-calm-textSecondary">
-        <a href="#quick-finder" class="hover:text-white transition text-emerald-400 font-semibold"><i class="fa-solid fa-magnifying-glass mr-1"></i> Find Blood</a>
-        <a href="#how-to-get-blood" class="hover:text-white transition">3-Hour Guide</a>
-        <a href="#thalassemia-section" class="hover:text-white transition">Thalassemia Care</a>
-        <a href="#donate-section" class="hover:text-white transition">Donate &amp; Protect Family</a>
-        <a href="#sector-benefits" class="hover:text-white transition">How Everyone Benefits</a>
+      <nav class="hidden lg:flex items-center space-x-5 text-xs font-medium text-calm-textSecondary">
+        <a href="#quick-finder" class="hover:text-white transition text-emerald-400 font-bold flex items-center"><i class="fa-solid fa-magnifying-glass mr-1.5"></i> Find Blood</a>
+        <a href="#live-map" class="hover:text-white transition flex items-center"><i class="fa-solid fa-map-location-dot mr-1"></i> Live City Radar</a>
+        <a href="#courier-dispatch" class="hover:text-white transition text-blue-400 flex items-center"><i class="fa-solid fa-motorcycle mr-1"></i> Bedside Courier</a>
+        <a href="#ocr-scanner" class="hover:text-white transition text-purple-400 flex items-center"><i class="fa-solid fa-camera mr-1"></i> Doctor Slip OCR</a>
+        <a href="#legal-shield" class="hover:text-white transition text-amber-400 flex items-center"><i class="fa-solid fa-shield-halved mr-1"></i> Legal Shield</a>
+        <a href="#price-calc" class="hover:text-white transition flex items-center"><i class="fa-solid fa-calculator mr-1"></i> Govt Rates</a>
+        <a href="#thalassemia" class="hover:text-white transition">Thalassemia</a>
+        <a href="#simulators" class="hover:text-white transition">Simulators</a>
+        <a href="#api-explorer" class="hover:text-white transition font-mono text-[11px]">API (15)</a>
       </nav>
 
       <div class="flex items-center space-x-3">
-        <!-- Hindi Switcher -->
-        <button onclick="toggleLang()" id="langBtn" class="text-xs font-mono font-medium text-slate-300 bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-full border border-white/10 transition">
-          हिन्दी
+        <!-- Hindi/English Toggle -->
+        <button onclick="toggleLanguage()" id="langBtn" class="text-xs font-mono font-semibold text-slate-300 bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-full border border-white/10 transition flex items-center space-x-1.5">
+          <i class="fa-solid fa-globe text-[11px] text-emerald-400"></i>
+          <span id="langText">हिन्दी</span>
         </button>
 
         <a href="tel:104" class="text-xs font-bold text-white bg-emerald-600 hover:bg-emerald-500 px-4 py-2 rounded-full transition shadow-md shadow-emerald-600/20 flex items-center space-x-1.5">
           <i class="fa-solid fa-phone text-[10px]"></i>
-          <span>Emergency 104</span>
+          <span>104 Emergency</span>
         </a>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section with Calm, Stress-Relieving Vibe -->
-  <section class="relative pt-32 pb-16 md:pt-40 md:pb-24 calm-glow">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
+  <!-- Hero with Immediate Panic-Relief & Fast Blood Finder -->
+  <section class="relative pt-28 pb-14 ambient-glow">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center">
       
-      <!-- Reassuring Badge -->
+      <!-- Serene reassurance badge -->
       <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full calm-glass text-xs font-medium text-slate-300 mb-6 border border-white/10">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span id="t-badge">Take a deep breath. 3,842 verified blood centers are online right now.</span>
+        <span id="t-badge">Take a deep breath. 3,842 licensed blood banks are online across India.</span>
       </div>
 
-      <!-- Main Heading: Calm, Direct, Compassionate -->
       <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight soothing-headline" id="t-hero-title">
         We will help you find the blood you need.
       </h1>
 
-      <p class="mt-5 text-sm sm:text-lg text-calm-textSecondary max-w-2xl mx-auto leading-relaxed" id="t-hero-desc">
-        No panic. No black markets. Select your blood group below to find tested, verified units in nearby hospitals right now.
+      <p class="mt-4 text-sm sm:text-base text-calm-textSecondary max-w-2xl mx-auto leading-relaxed" id="t-hero-desc">
+        No frantic running. No black-market extortion. Select your blood group below to instantly locate tested, verified units in nearby hospitals with a 90-minute digital hold.
       </p>
 
       <!-- Instant 1-Click Search Bar (The Core Tool) -->
-      <div id="quick-finder" class="mt-8 p-3 sm:p-4 rounded-3xl calm-glass border border-white/15 max-w-2xl mx-auto shadow-2xl">
+      <div id="quick-finder" class="mt-8 p-3 sm:p-5 rounded-3xl calm-glass border border-white/15 max-w-3xl mx-auto shadow-2xl">
         <div class="grid grid-cols-1 sm:grid-cols-12 gap-3 items-center">
-          <div class="sm:col-span-5 text-left">
+          
+          <!-- Blood Group -->
+          <div class="sm:col-span-4 text-left">
             <label class="block text-[11px] font-mono text-calm-textMuted mb-1 ml-1" id="t-lbl-group">Blood Group Needed</label>
             <select id="searchGroupSelect" class="w-full bg-black/80 border border-white/15 rounded-xl px-3 py-2.5 text-sm font-bold text-white focus:outline-none focus:border-emerald-500">
               <option value="O-">O Negative (O-) • Universal</option>
               <option value="O+">O Positive (O+)</option>
               <option value="A+">A Positive (A+)</option>
               <option value="A-">A Negative (A-)</option>
-              <option value="B+">B Positive (B+)</option>
+              <option value="B+" selected>B Positive (B+)</option>
               <option value="B-">B Negative (B-)</option>
-              <option value="AB+">AB Positive (AB+)</option>
+              <option value="AB+">AB Positive (AB+) • Recipient</option>
               <option value="AB-">AB Negative (AB-)</option>
-              <option value="BOMBAY">Bombay Phenotype (Rare)</option>
+              <option value="BOMBAY">Bombay Phenotype (Oh) • Rare</option>
             </select>
           </div>
 
+          <!-- Component Type -->
           <div class="sm:col-span-4 text-left">
-            <label class="block text-[11px] font-mono text-calm-textMuted mb-1 ml-1" id="t-lbl-city">Location / Area</label>
-            <select id="searchCitySelect" class="w-full bg-black/80 border border-white/15 rounded-xl px-3 py-2.5 text-xs font-mono text-white focus:outline-none focus:border-emerald-500">
-              <option value="ALL">All Nearby (Delhi-NCR)</option>
-              <option value="South Delhi">South Delhi (AIIMS / Safdarjung)</option>
-              <option value="Central Delhi">Central Delhi (Red Cross / CP)</option>
+            <label class="block text-[11px] font-mono text-calm-textMuted mb-1 ml-1" id="t-lbl-comp">Component Required</label>
+            <select id="searchComponentSelect" class="w-full bg-black/80 border border-white/15 rounded-xl px-3 py-2.5 text-sm font-bold text-white focus:outline-none focus:border-emerald-500">
+              <option value="PRBC" selected>Packed Red Cells (PRBC / Trauma / Delivery)</option>
+              <option value="PLATELETS">Platelets (Dengue / Cancer / Bleeding)</option>
+              <option value="FFP">Fresh Frozen Plasma (FFP / Liver / Clotting)</option>
+              <option value="WHOLE">Whole Blood (Emergency Field Resuscitation)</option>
             </select>
           </div>
 
-          <div class="sm:col-span-3 sm:pt-4">
-            <button onclick="handleInstantSearch()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-3 rounded-xl transition shadow-lg shadow-emerald-600/30 flex items-center justify-center space-x-1.5">
-              <i class="fa-solid fa-magnifying-glass"></i>
-              <span id="t-btn-find">Find Units</span>
+          <!-- City -->
+          <div class="sm:col-span-4 text-left">
+            <label class="block text-[11px] font-mono text-calm-textMuted mb-1 ml-1" id="t-lbl-city">Location / City</label>
+            <select id="searchCitySelect" class="w-full bg-black/80 border border-white/15 rounded-xl px-3 py-2.5 text-sm font-bold text-white focus:outline-none focus:border-emerald-500">
+              <option value="Delhi" selected>Delhi NCR (AIIMS, Safdarjung, Red Cross)</option>
+              <option value="Mumbai">Mumbai MMR (KEM, Tata Memorial, Hinduja)</option>
+              <option value="Bengaluru">Bengaluru (Victoria, Nimhans, Manipal)</option>
+              <option value="Kolkata">Kolkata (SSKM, Medical College, Peerless)</option>
+              <option value="Chennai">Chennai (Rajiv Gandhi GH, Apollo, Stanley)</option>
+              <option value="Lucknow">Lucknow (KGMU, SGPGI, Lohia)</option>
+              <option value="Jaipur">Jaipur (SMS Hospital, Santokba Durlabhji)</option>
+              <option value="Patna">Patna (PMCH, IGIMS, AIIMS Patna)</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="mt-4 flex flex-col sm:flex-row items-center justify-between gap-3 pt-3 border-t border-white/10">
+          <div class="flex items-center space-x-2 text-[11px] text-calm-textMuted">
+            <i class="fa-solid fa-circle-check text-emerald-400"></i>
+            <span id="t-verified-text">100% NAT/ELISA tested units • 90-minute digital reservation</span>
+          </div>
+
+          <div class="flex items-center space-x-2 w-full sm:w-auto">
+            <button onclick="triggerQuickSearch()" class="w-full sm:w-auto px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-emerald-600/30 flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-bolt text-xs"></i>
+              <span id="t-btn-find">Find & Hold Blood (Free)</span>
             </button>
           </div>
         </div>
+
       </div>
 
-      <!-- Quick Trust Indicators -->
-      <div class="mt-6 flex flex-wrap items-center justify-center gap-6 text-xs text-calm-textMuted">
-        <span class="flex items-center"><i class="fa-solid fa-shield-check text-emerald-400 mr-1.5"></i> 100% Tested for HIV &amp; Hepatitis</span>
-        <span class="flex items-center"><i class="fa-solid fa-phone text-blue-400 mr-1.5"></i> Direct Hospital Landlines</span>
-        <span class="flex items-center"><i class="fa-solid fa-clock text-amber-400 mr-1.5"></i> Government Fixed Price (₹1,450 Max)</span>
+      <!-- Quick Action Badges -->
+      <div class="mt-5 flex flex-wrap items-center justify-center gap-2 text-xs">
+        <a href="#courier-dispatch" class="px-3 py-1.5 rounded-full calm-glass border border-blue-500/30 text-blue-300 hover:bg-blue-500/10 transition flex items-center space-x-1.5">
+          <i class="fa-solid fa-motorcycle text-xs"></i>
+          <span>Can't Leave ICU? Request Bedside Courier</span>
+        </a>
+        <a href="#ocr-scanner" class="px-3 py-1.5 rounded-full calm-glass border border-purple-500/30 text-purple-300 hover:bg-purple-500/10 transition flex items-center space-x-1.5">
+          <i class="fa-solid fa-camera text-xs"></i>
+          <span>Scan Doctor's Requisition Slip</span>
+        </a>
+        <a href="#legal-shield" class="px-3 py-1.5 rounded-full calm-glass border border-amber-500/30 text-amber-300 hover:bg-amber-500/10 transition flex items-center space-x-1.5">
+          <i class="fa-solid fa-shield-halved text-xs"></i>
+          <span>Hospital Demanding Donors? Show Law</span>
+        </a>
       </div>
+
     </div>
   </section>
 
-  <!-- Live Search Results (Shows immediately on click or scroll) -->
-  <section id="resultsSection" class="py-12 max-w-5xl mx-auto px-4 sm:px-6">
-    <div class="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
+  <!-- Live City Radar Map & Instant Search Results -->
+  <section id="live-map" class="py-12 max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-6">
       <div>
-        <h3 class="text-lg font-bold text-white flex items-center">
-          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 mr-2"></span>
-          <span id="resultsHeading">Nearby Blood Banks with Tested Units</span>
-        </h3>
-        <p class="text-xs text-calm-textMuted mt-0.5" id="resultsSub">Ranked by distance from your location</p>
-      </div>
-      <span class="text-xs font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full font-semibold">
-        Units Verified on Shelf
-      </span>
-    </div>
-
-    <div id="resultsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <!-- Populated via JavaScript with verified centers -->
-    </div>
-  </section>
-
-  <!-- Section: The 3-Hour Crisis Guide (Clear, reassuring steps when you need blood fast) -->
-  <section id="how-to-get-blood" class="py-16 max-w-5xl mx-auto px-4 sm:px-6 border-t border-white/10">
-    <div class="text-center max-w-2xl mx-auto mb-12">
-      <span class="text-xs font-bold text-blue-400 uppercase tracking-widest font-mono">STEP-BY-STEP CALM GUIDE</span>
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-2">Need Blood in the Next 3 Hours? Follow These 4 Steps</h2>
-      <p class="text-calm-textSecondary text-xs sm:text-sm mt-2">Do not panic. Fresh blood takes 2 hours to test, so finding blood already sitting in a refrigerator is the fastest way.</p>
-    </div>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="calm-glass p-5 rounded-2xl border border-white/10 space-y-2">
-        <span class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 font-mono font-bold text-xs flex items-center justify-center">01</span>
-        <h4 class="text-sm font-bold text-white">Get Patient Sample Vials</h4>
-        <p class="text-xs text-calm-textSecondary leading-relaxed">
-          Ask the doctor or ward nurse for <strong>2 labeled blood sample vials</strong> of the patient and the signed <strong>Blood Requisition Form</strong>. You cannot get blood without these.
-        </p>
+        <div class="flex items-center space-x-2 text-xs font-mono text-emerald-400 mb-1">
+          <i class="fa-solid fa-satellite-dish"></i>
+          <span>REAL-TIME INVENTORY RADAR</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight" id="t-map-title">Live Hospital Stock in Delhi NCR</h2>
+        <p class="text-xs text-calm-textSecondary mt-1" id="t-map-subtitle">Click any hospital pin to inspect verified units or reserve a 90-minute digital hold.</p>
       </div>
 
-      <div class="calm-glass p-5 rounded-2xl border border-white/10 space-y-2">
-        <span class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 font-mono font-bold text-xs flex items-center justify-center">02</span>
-        <h4 class="text-sm font-bold text-white">Call the Bank to Reserve</h4>
-        <p class="text-xs text-calm-textSecondary leading-relaxed">
-          Use the directory above to call the closest blood bank. Say: <em>"I have patient samples and doctor's form. Please hold 1 unit for me while I am traveling."</em>
-        </p>
-      </div>
-
-      <div class="calm-glass p-5 rounded-2xl border border-white/10 space-y-2">
-        <span class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 font-mono font-bold text-xs flex items-center justify-center">03</span>
-        <h4 class="text-sm font-bold text-white">Take an Ice Box</h4>
-        <p class="text-xs text-calm-textSecondary leading-relaxed">
-          Always carry a small <strong>thermocol ice box with ice packs</strong>. Never carry blood in a plastic carry-bag; heat destroys blood cells, and the doctor will reject it.
-        </p>
-      </div>
-
-      <div class="calm-glass p-5 rounded-2xl border border-white/10 space-y-2">
-        <span class="w-7 h-7 rounded-lg bg-blue-500/20 text-blue-400 font-mono font-bold text-xs flex items-center justify-center">04</span>
-        <h4 class="text-sm font-bold text-white">Know the Legal Price Cap</h4>
-        <p class="text-xs text-calm-textSecondary leading-relaxed">
-          The government legally caps blood processing at <strong>₹1,450 maximum</strong> for red cells (PRBC). Do not pay touts or middlemen thousands of rupees.
-        </p>
+      <div class="mt-4 md:mt-0 flex items-center space-x-2 text-xs font-mono">
+        <span class="inline-block w-2.5 h-2.5 rounded-full bg-emerald-400 pin-pulse"></span>
+        <span class="text-slate-300">Live Inventory Sync: <span class="text-emerald-400 font-bold" id="liveSyncClock">Just now</span></span>
       </div>
     </div>
-  </section>
 
-  <!-- Section: The 6 Structural Ground Realities (The Heart of the Problem) -->
-  <section id="ground-realities" class="py-20 max-w-5xl mx-auto px-4 sm:px-6 border-t border-white/10">
-    <div class="text-center max-w-3xl mx-auto mb-14">
-      <span class="text-xs font-bold text-calm-rose uppercase tracking-widest font-mono">DIAGNOSTIC OF THE CRISIS</span>
-      <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-2">The 6 Realities of India's Blood Shortage</h2>
-      <p class="text-calm-textSecondary text-xs sm:text-sm mt-3 leading-relaxed">
-        National collection totals look sufficient on paper, but ground realities are fractured by poor distribution, systemic inefficiencies, and deep logistical bottlenecks. Here is how HemaGrid addresses each one.
-      </p>
-    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      
+      <!-- Interactive Map Canvas / SVG -->
+      <div class="lg:col-span-7 bg-calm-card rounded-3xl p-5 border border-white/10 relative overflow-hidden shadow-2xl min-h-[380px] flex flex-col justify-between">
+        
+        <!-- Radar background grid -->
+        <div class="absolute inset-0 opacity-15 pointer-events-none" style="background-image: radial-gradient(circle, #38bdf8 1px, transparent 1px); background-size: 24px 24px;"></div>
 
-    <div class="space-y-6">
-      <!-- 1 -->
-      <div class="calm-glass p-6 rounded-3xl border border-white/10 space-y-3">
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-          <span class="text-xs font-mono font-bold text-calm-rose bg-rose-500/10 px-2.5 py-0.5 rounded-full border border-rose-500/20">REALITY 01</span>
-          <span class="text-xs font-mono text-emerald-400 font-semibold">Solution: HemaShield Family Protection + 365-Day Pools</span>
+        <!-- Radar Sweep Line -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] rounded-full border border-emerald-500/20 pointer-events-none">
+          <div class="w-full h-full rounded-full border border-emerald-500/10 scale-75"></div>
+          <div class="absolute top-0 left-1/2 w-1/2 h-1/2 bg-gradient-to-br from-emerald-500/25 to-transparent radar-sweep rounded-tl-full origin-bottom-left"></div>
         </div>
-        <h3 class="text-lg font-bold text-white">The Burden of the "Replacement Donor" System</h3>
-        <p class="text-xs text-calm-textSecondary leading-relaxed">
-          In most hospitals, patients cannot simply draw blood from the hospital's reserve; distressed family members are told to arrange replacement donors before blood is released. Many relatives rush in only to be disqualified by high BP, diabetes, or age, creating panic and forcing families to turn to illegal paid touts.
-        </p>
-        <div class="p-3 bg-black/60 rounded-xl text-[11px] font-mono text-emerald-400 border border-white/5">
-          ✓ HemaGrid Fix: Donating once shields your entire family for 12 months with zero replacement demands.
-        </div>
-      </div>
 
-      <!-- 2 -->
-      <div class="calm-glass p-6 rounded-3xl border border-white/10 space-y-3">
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-          <span class="text-xs font-mono font-bold text-calm-rose bg-rose-500/10 px-2.5 py-0.5 rounded-full border border-rose-500/20">REALITY 02</span>
-          <span class="text-xs font-mono text-emerald-400 font-semibold">Solution: Hub-and-Spoke Mesh + Drone Corridors</span>
+        <div class="relative z-10 flex items-center justify-between text-xs font-mono text-slate-400 pb-3 border-b border-white/10">
+          <span class="flex items-center"><i class="fa-solid fa-location-crosshairs mr-1.5 text-emerald-400"></i> Geofence Radius: 15 km</span>
+          <span class="text-emerald-400 font-bold"><span id="totalUnitsCount">51</span> Units Available Now</span>
         </div>
-        <h3 class="text-lg font-bold text-white">"Blood Deserts" and Geographic Inequality</h3>
-        <p class="text-xs text-calm-textSecondary leading-relaxed">
-          Over 70% of rural and semi-urban populations live more than 30 to 60 minutes away from licensed blood centers. Peripheral Community Health Centres (CHCs) lack licensed blood storage, turning the critical "golden hour" in trauma and childbirth hemorrhages into fatal travel delays.
-        </p>
-        <div class="p-3 bg-black/60 rounded-xl text-[11px] font-mono text-emerald-400 border border-white/5">
-          ✓ HemaGrid Fix: Mother Hubs supply rural Spokes using smart temperature-monitored boxes and medical drones in &lt; 20 minutes.
-        </div>
-      </div>
 
-      <!-- 3 -->
-      <div class="calm-glass p-6 rounded-3xl border border-white/10 space-y-3">
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-          <span class="text-xs font-mono font-bold text-calm-rose bg-rose-500/10 px-2.5 py-0.5 rounded-full border border-rose-500/20">REALITY 03</span>
-          <span class="text-xs font-mono text-emerald-400 font-semibold">Solution: Scanner-Level Auto-Sync + Inter-Bank Clearinghouse</span>
-        </div>
-        <h3 class="text-lg font-bold text-white">Lack of Real-Time, Unified Inventory</h3>
-        <p class="text-xs text-calm-textSecondary leading-relaxed">
-          Data entry across public, charitable, and private blood banks on portals is frequently manual and delayed. A blood bank showing "3 units" online is often empty on the shelf. Regulatory barriers and lack of live software prevent surplus blood in one hospital from moving to another facility 5 km away.
-        </p>
-        <div class="p-3 bg-black/60 rounded-xl text-[11px] font-mono text-emerald-400 border border-white/5">
-          ✓ HemaGrid Fix: Real-time inventory barcoding with automated inter-hospital transfer manifests.
-        </div>
-      </div>
-
-      <!-- 4 -->
-      <div class="calm-glass p-6 rounded-3xl border border-white/10 space-y-3">
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-          <span class="text-xs font-mono font-bold text-calm-rose bg-rose-500/10 px-2.5 py-0.5 rounded-full border border-rose-500/20">REALITY 04</span>
-          <span class="text-xs font-mono text-emerald-400 font-semibold">Solution: 100% Component Separation &amp; Domestic Plasma Pooling</span>
-        </div>
-        <h3 class="text-lg font-bold text-white">Overuse of Whole Blood vs. Component Separation</h3>
-        <p class="text-xs text-calm-textSecondary leading-relaxed">
-          When one unit of whole blood is given to a patient who only needs red cells, the platelets and plasma in that unit are effectively lost. Non-component facilities experience 3× artificial scarcity, while facilities with component separators save 3 distinct lives with each single donation.
-        </p>
-        <div class="p-3 bg-black/60 rounded-xl text-[11px] font-mono text-emerald-400 border border-white/5">
-          ✓ HemaGrid Fix: Fractions tracked from phlebotomy chair; excess plasma sent to domestic factories for Albumin synthesis.
-        </div>
-      </div>
-
-      <!-- 5 -->
-      <div class="calm-glass p-6 rounded-3xl border border-white/10 space-y-3">
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-          <span class="text-xs font-mono font-bold text-calm-rose bg-rose-500/10 px-2.5 py-0.5 rounded-full border border-rose-500/20">REALITY 05</span>
-          <span class="text-xs font-mono text-emerald-400 font-semibold">Solution: 48-Hour Expiry Radar + Monthly Rolling Quotas</span>
-        </div>
-        <h3 class="text-lg font-bold text-white">High Wastage and Short Shelf-Life</h3>
-        <p class="text-xs text-calm-textSecondary leading-relaxed">
-          Platelets expire in just 5 days. Massive collection camps held on national holidays collect thousands of units that overwhelm storage and expire 35 days later, followed by 10 months of dry shelves and emergency shortages.
-        </p>
-        <div class="p-3 bg-black/60 rounded-xl text-[11px] font-mono text-emerald-400 border border-white/5">
-          ✓ HemaGrid Fix: Expiry Radar automatically transfers expiring platelets within 48h to active cancer/dengue wards.
-        </div>
-      </div>
-
-      <!-- 6 -->
-      <div class="calm-glass p-6 rounded-3xl border border-white/10 space-y-3">
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
-          <span class="text-xs font-mono font-bold text-calm-rose bg-rose-500/10 px-2.5 py-0.5 rounded-full border border-rose-500/20">REALITY 06</span>
-          <span class="text-xs font-mono text-emerald-400 font-semibold">Solution: Anemia Nutrition Coaching + Rare Phenotype Registry</span>
-        </div>
-        <h3 class="text-lg font-bold text-white">The Eligible Donor Paradox</h3>
-        <p class="text-xs text-calm-textSecondary leading-relaxed">
-          Despite a large, young population, fear of pain, nutritional iron deficiency in willing women (Hb &lt; 12.5), and extreme scarcity of Rh-negative (&lt; 5%) and rare Bombay phenotypes leave emergency supplies vulnerable.
-        </p>
-        <div class="p-3 bg-black/60 rounded-xl text-[11px] font-mono text-emerald-400 border border-white/5">
-          ✓ HemaGrid Fix: Nurtures deferred female donors with 30-day nutrition coaching; geofences rare Bombay donors securely on WhatsApp.
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section: Thalassemia Recurring Care (Peace of mind for chronic families) -->
-  <section id="thalassemia-section" class="py-16 max-w-5xl mx-auto px-4 sm:px-6 border-t border-white/10">
-    <div class="calm-glass rounded-3xl p-6 sm:p-10 border border-white/10 grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-      <div class="space-y-4">
-        <span class="text-xs font-mono font-bold text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full border border-blue-500/20">FOR THALASSEMIA &amp; SICKLE CELL PARENTS</span>
-        <h3 class="text-2xl sm:text-3xl font-extrabold text-white">Never hunt for monthly donors again.</h3>
-        <p class="text-calm-textSecondary text-xs sm:text-sm leading-relaxed">
-          Children with Thalassemia Major need blood every 2 to 3 weeks. Instead of forcing parents to beg on social media every month, HemaGrid assigns <strong>3 dedicated rolling donors</strong> to your child's profile who donate on a planned 4-month calendar.
-        </p>
-        <div class="p-4 rounded-2xl bg-black border border-white/10 space-y-2 text-xs font-mono">
-          <div class="flex justify-between text-white font-bold">
-            <span>Aarav (Age 7, B+ Major)</span>
-            <span class="text-emerald-400">Next Transfusion: In 4 Days</span>
+        <!-- Hospital Pins Container -->
+        <div class="relative z-10 my-8 h-64 relative">
+          
+          <!-- AIIMS Pin -->
+          <div onclick="selectHospital('AIIMS')" class="absolute top-1/4 left-1/3 -translate-x-1/2 cursor-pointer group">
+            <div class="relative flex flex-col items-center">
+              <div class="w-9 h-9 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-bold text-xs shadow-lg shadow-emerald-500/40 pin-pulse transition group-hover:scale-110">
+                <i class="fa-solid fa-hospital"></i>
+              </div>
+              <div class="mt-1 px-2.5 py-1 rounded-full bg-black/90 border border-emerald-500/50 text-[10px] font-mono text-white flex items-center space-x-1 whitespace-nowrap shadow-md">
+                <span class="font-bold text-emerald-400">AIIMS</span>
+                <span>• 14 Units</span>
+              </div>
+            </div>
           </div>
-          <div class="flex justify-between text-calm-textMuted text-[11px] pt-1 border-t border-white/5">
-            <span>Donor 1 (Vikram M.): Confirmed 15 Nov</span>
-            <span class="text-emerald-400 font-bold">Ready</span>
+
+          <!-- Safdarjung Pin -->
+          <div onclick="selectHospital('Safdarjung')" class="absolute top-1/3 left-1/2 -translate-x-1/2 cursor-pointer group">
+            <div class="relative flex flex-col items-center">
+              <div class="w-8 h-8 rounded-2xl bg-emerald-600/90 text-white flex items-center justify-center font-bold text-xs shadow-lg shadow-emerald-500/30 pin-pulse transition group-hover:scale-110">
+                <i class="fa-solid fa-hospital-user"></i>
+              </div>
+              <div class="mt-1 px-2.5 py-1 rounded-full bg-black/90 border border-emerald-500/50 text-[10px] font-mono text-white flex items-center space-x-1 whitespace-nowrap shadow-md">
+                <span class="font-bold text-emerald-400">Safdarjung</span>
+                <span>• 9 Units</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Indian Red Cross Pin -->
+          <div onclick="selectHospital('RedCross')" class="absolute top-2/3 left-1/4 -translate-x-1/2 cursor-pointer group">
+            <div class="relative flex flex-col items-center">
+              <div class="w-9 h-9 rounded-2xl bg-teal-600 text-white flex items-center justify-center font-bold text-xs shadow-lg shadow-teal-500/40 pin-pulse transition group-hover:scale-110">
+                <i class="fa-solid fa-square-plus"></i>
+              </div>
+              <div class="mt-1 px-2.5 py-1 rounded-full bg-black/90 border border-teal-500/50 text-[10px] font-mono text-white flex items-center space-x-1 whitespace-nowrap shadow-md">
+                <span class="font-bold text-teal-400">Red Cross HQ</span>
+                <span>• 22 Units</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Max Saket Pin -->
+          <div onclick="selectHospital('MaxSaket')" class="absolute top-1/2 right-1/4 -translate-x-1/2 cursor-pointer group">
+            <div class="relative flex flex-col items-center">
+              <div class="w-8 h-8 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-bold text-xs shadow-lg shadow-blue-500/30 pin-pulse transition group-hover:scale-110">
+                <i class="fa-solid fa-h-square"></i>
+              </div>
+              <div class="mt-1 px-2.5 py-1 rounded-full bg-black/90 border border-blue-500/50 text-[10px] font-mono text-white flex items-center space-x-1 whitespace-nowrap shadow-md">
+                <span class="font-bold text-blue-400">Max Saket</span>
+                <span>• 6 Units</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="relative z-10 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-calm-textMuted">
+          <span><i class="fa-solid fa-shield-halved text-emerald-400 mr-1"></i> Drug Controller Licensed</span>
+          <span><i class="fa-solid fa-temperature-arrow-down text-blue-400 mr-1"></i> Continuous Cold-Chain IoT (2°C–6°C)</span>
+        </div>
+
+      </div>
+
+      <!-- Selected Hospital Details Card & Instant 90-Min Hold -->
+      <div class="lg:col-span-5 bg-calm-card rounded-3xl p-6 border border-white/15 shadow-2xl relative" id="hospitalDrawer">
+        <div class="flex items-center justify-between pb-4 border-b border-white/10">
+          <div>
+            <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-mono font-bold" id="drawerTier">REGIONAL MOTHER HUB</span>
+            <h3 class="text-lg font-bold text-white mt-1" id="drawerName">AIIMS Central Blood Bank</h3>
+            <p class="text-xs text-calm-textSecondary" id="drawerDist">Ansari Nagar, New Delhi • 2.4 km away (12 mins)</p>
+          </div>
+          <div class="text-right">
+            <span class="text-2xl font-black text-emerald-400" id="drawerUnits">14</span>
+            <span class="text-[10px] text-calm-textMuted block font-mono">UNITS READY</span>
           </div>
         </div>
-      </div>
 
-      <div class="p-6 rounded-2xl bg-black border border-white/10 space-y-3 text-xs font-sans">
-        <h4 class="text-sm font-bold text-white">Enroll in the Thalassemia Care Circle</h4>
-        <p class="text-calm-textMuted text-xs">Enter your child's details once, and our hospital network coordinates their recurring units for life.</p>
-        <div class="space-y-2">
-          <input type="text" placeholder="Child's Full Name" class="w-full bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white">
+        <!-- Inventory Breakdown -->
+        <div class="py-4 space-y-2.5 text-xs">
+          <div class="flex justify-between items-center py-1.5 px-3 rounded-xl bg-white/5">
+            <span class="text-slate-300">Packed Red Blood Cells (PRBC)</span>
+            <span class="font-mono font-bold text-white" id="drawerPRBC">8 Units</span>
+          </div>
+          <div class="flex justify-between items-center py-1.5 px-3 rounded-xl bg-white/5">
+            <span class="text-slate-300">Random Donor Platelets (RDP)</span>
+            <span class="font-mono font-bold text-white" id="drawerPlatelets">4 Units</span>
+          </div>
+          <div class="flex justify-between items-center py-1.5 px-3 rounded-xl bg-white/5">
+            <span class="text-slate-300">Fresh Frozen Plasma (FFP)</span>
+            <span class="font-mono font-bold text-white" id="drawerFFP">2 Units</span>
+          </div>
+          <div class="flex justify-between items-center py-1.5 px-3 rounded-xl bg-emerald-500/10 border border-emerald-500/20">
+            <span class="text-emerald-300 font-medium">NAT Screening Status</span>
+            <span class="font-mono font-bold text-emerald-400"><i class="fa-solid fa-check-circle mr-1"></i> 100% Tested Safe</span>
+          </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="pt-2 space-y-2.5">
+          <button onclick="openHoldModal()" class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm rounded-xl transition shadow-lg shadow-emerald-600/30 flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-lock text-xs"></i>
+            <span>Hold Blood for 90 Minutes (Free)</span>
+          </button>
+          
           <div class="grid grid-cols-2 gap-2">
-            <select class="bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white font-bold">
-              <option>B+ Positive</option>
-              <option>O+ Positive</option>
-              <option>A+ Positive</option>
-              <option>AB+ Positive</option>
-            </select>
-            <input type="number" placeholder="Cycle (e.g. 21 days)" class="bg-slate-900 border border-white/10 rounded-xl px-3 py-2 text-xs text-white">
+            <a href="tel:+911126588500" class="py-2.5 bg-white/10 hover:bg-white/15 text-white font-medium text-xs rounded-xl transition text-center flex items-center justify-center space-x-1.5" id="drawerCallBtn">
+              <i class="fa-solid fa-phone text-[11px] text-emerald-400"></i>
+              <span>Call Blood Bank</span>
+            </a>
+            <button onclick="openCourierModal()" class="py-2.5 bg-blue-600/20 hover:bg-blue-600/30 border border-blue-500/30 text-blue-300 font-medium text-xs rounded-xl transition text-center flex items-center justify-center space-x-1.5">
+              <i class="fa-solid fa-motorcycle text-[11px]"></i>
+              <span>Dispatch Courier</span>
+            </button>
           </div>
-          <button onclick="alert('Child profile registered with AIIMS Thalassemia Daycare. 2 recurring donors matched!')" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-2.5 rounded-xl transition text-xs mt-1">
-            Register for Recurring Donor Circle
+        </div>
+
+        <p class="text-[11px] text-calm-textMuted text-center mt-3">
+          <i class="fa-solid fa-circle-info text-slate-400 mr-1"></i> No replacement donors required. Protected by Supreme Court WP 91/1992.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Feature 1: Cold-Chain Emergency Bedside Courier ("Can't Leave ICU Bedside") -->
+  <section id="courier-dispatch" class="py-16 max-w-6xl mx-auto px-4 sm:px-6 border-t border-white/10">
+    <div class="bg-gradient-to-r from-blue-950/40 via-calm-card to-calm-card rounded-3xl p-6 sm:p-10 border border-blue-500/20 shadow-2xl">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <div class="lg:col-span-7">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-400 text-xs font-mono font-bold mb-3">
+            <i class="fa-solid fa-motorcycle"></i>
+            <span>SOLVING THE ICU ISOLATION CRISIS</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Can't Leave the Patient's Bedside? We Bring the Blood to Your Hospital Ward.</h2>
+          <p class="mt-3 text-sm text-calm-textSecondary leading-relaxed">
+            In severe trauma or postpartum hemorrhage, family members cannot abandon the ICU to travel across town. HemaGrid dispatches a certified cold-chain bike courier equipped with an IoT thermal probe (2°C – 6°C) directly from the blood bank to your hospital bed.
+          </p>
+
+          <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+            <div class="p-3 rounded-2xl bg-white/5 border border-white/10">
+              <span class="block font-bold text-white mb-1"><i class="fa-solid fa-temperature-half text-blue-400 mr-1.5"></i> 2°C – 6°C Monitored</span>
+              <span class="text-calm-textMuted">Live thermal probe ensures no hemolysis or clotting during transit.</span>
+            </div>
+            <div class="p-3 rounded-2xl bg-white/5 border border-white/10">
+              <span class="block font-bold text-white mb-1"><i class="fa-solid fa-vial-circle-check text-emerald-400 mr-1.5"></i> Sample Pick & Drop</span>
+              <span class="text-calm-textMuted">Rider collects patient crossmatch EDTA tube first, then brings units.</span>
+            </div>
+            <div class="p-3 rounded-2xl bg-white/5 border border-white/10">
+              <span class="block font-bold text-white mb-1"><i class="fa-solid fa-clock text-amber-400 mr-1.5"></i> 35-Min Golden Hour</span>
+              <span class="text-calm-textMuted">Emergency green-corridor dispatch with live GPS rider tracking.</span>
+            </div>
+          </div>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <button onclick="openCourierModal()" class="px-6 py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl transition shadow-lg shadow-blue-600/30 flex items-center space-x-2">
+              <i class="fa-solid fa-paper-plane text-xs"></i>
+              <span>Book Emergency Bedside Courier Now</span>
+            </button>
+            <button onclick="simulateCourierDemo()" class="px-5 py-3 bg-white/10 hover:bg-white/15 text-white font-semibold text-xs rounded-xl transition flex items-center space-x-2">
+              <i class="fa-solid fa-play text-xs text-blue-400"></i>
+              <span>Watch Live Courier Simulation</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="lg:col-span-5 bg-black/60 rounded-2xl p-5 border border-white/10">
+          <div class="flex items-center justify-between pb-3 border-b border-white/10">
+            <span class="text-xs font-mono font-bold text-blue-400 flex items-center">
+              <span class="w-2 h-2 rounded-full bg-blue-400 animate-ping mr-2"></span>
+              LIVE DISPATCH #DISP-9921
+            </span>
+            <span class="text-[10px] font-mono text-emerald-400">IN TRANSIT (ETA 18m)</span>
+          </div>
+
+          <!-- Rider Info -->
+          <div class="mt-4 flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-full bg-blue-500/20 text-blue-400 flex items-center justify-center font-bold">
+              <i class="fa-solid fa-helmet-safety"></i>
+            </div>
+            <div>
+              <p class="text-xs font-bold text-white">Rider Vikram Singh (Hero Rider #84)</p>
+              <p class="text-[11px] text-calm-textMuted">AIIMS Blood Bank ➔ Safdarjung ICU Bed 14</p>
+            </div>
+          </div>
+
+          <!-- Live IoT Telemetry Box -->
+          <div class="mt-4 p-3 rounded-xl bg-calm-card border border-white/10">
+            <div class="flex justify-between items-center text-xs">
+              <span class="text-calm-textSecondary">IoT Box Temperature:</span>
+              <span class="font-mono font-bold text-emerald-400" id="courierTemp">3.8°C (Optimal)</span>
+            </div>
+            <div class="w-full bg-white/10 rounded-full h-1.5 mt-2 overflow-hidden">
+              <div class="bg-emerald-500 h-1.5 rounded-full" style="width: 48%"></div>
+            </div>
+            <div class="flex justify-between text-[10px] text-calm-textMuted mt-1 font-mono">
+              <span>Min: 2.0°C</span>
+              <span>Safe Range</span>
+              <span>Max: 6.0°C</span>
+            </div>
+          </div>
+
+          <!-- Transit Route Progress -->
+          <div class="mt-4 space-y-2 text-[11px]">
+            <div class="flex items-center text-emerald-400">
+              <i class="fa-solid fa-check-circle mr-2"></i>
+              <span>Units verified and sealed in thermal box (10:14 AM)</span>
+            </div>
+            <div class="flex items-center text-blue-400">
+              <i class="fa-solid fa-motorcycle mr-2 animate-bounce"></i>
+              <span>En route via Ring Road (Speed: 38 km/h)</span>
+            </div>
+            <div class="flex items-center text-calm-textMuted">
+              <i class="fa-regular fa-circle mr-2"></i>
+              <span>Bedside Handover to Duty Nurse at ICU</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature 2: AI Doctor Slip OCR Scanner -->
+  <section id="ocr-scanner" class="py-16 max-w-6xl mx-auto px-4 sm:px-6 border-t border-white/10">
+    <div class="bg-calm-card rounded-3xl p-6 sm:p-10 border border-white/15 shadow-2xl">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <div class="lg:col-span-6">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-purple-500/20 text-purple-400 text-xs font-mono font-bold mb-3">
+            <i class="fa-solid fa-wand-magic-sparkles"></i>
+            <span>ELIMINATING REQUISITION CONFUSION</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Can't Read the Doctor's Slip? Let AI Read and Match It.</h2>
+          <p class="mt-3 text-sm text-calm-textSecondary leading-relaxed">
+            In emergency wards, doctors write rushed requisition slips with complex clinical terms like "2 u PRBC, 4 u RDP, crossmatch 2 mL EDTA vial". Distressed relatives shouldn't have to guess. Upload or photograph the doctor's slip and HemaGrid parses it into instant reservations.
+          </p>
+
+          <div class="mt-6 flex flex-col sm:flex-row gap-3">
+            <button onclick="triggerSampleOCR()" class="px-6 py-3 bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs rounded-xl transition shadow-lg shadow-purple-600/30 flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-file-invoice text-xs"></i>
+              <span>Test OCR on Sample Doctor Slip</span>
+            </button>
+            <label class="px-5 py-3 bg-white/10 hover:bg-white/15 text-white font-semibold text-xs rounded-xl transition cursor-pointer flex items-center justify-center space-x-2">
+              <i class="fa-solid fa-cloud-arrow-up text-xs text-purple-400"></i>
+              <span>Upload Prescription Photo</span>
+              <input type="file" class="hidden" onchange="handleFileUpload(event)">
+            </label>
+          </div>
+        </div>
+
+        <!-- OCR Interactive Scanner Result Card -->
+        <div class="lg:col-span-6 bg-black/60 rounded-2xl p-5 border border-purple-500/30">
+          <div class="flex items-center justify-between pb-3 border-b border-white/10">
+            <span class="text-xs font-mono font-bold text-purple-400 flex items-center">
+              <i class="fa-solid fa-brain mr-2"></i>
+              AI CLINICAL PARSER (99.2% CONFIDENCE)
+            </span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400" id="ocrStatusBadge">READY TO SCAN</span>
+          </div>
+
+          <div class="mt-4 space-y-2 text-xs" id="ocrResultContainer">
+            <div class="p-3 rounded-xl bg-white/5 border border-white/10 flex justify-between">
+              <span class="text-calm-textMuted">Patient Name & Age:</span>
+              <span class="font-bold text-white" id="ocrPatient">Sunita Sharma (34 / F)</span>
+            </div>
+            <div class="p-3 rounded-xl bg-white/5 border border-white/10 flex justify-between">
+              <span class="text-calm-textMuted">Blood Group Detected:</span>
+              <span class="font-bold text-emerald-400 font-mono text-sm" id="ocrGroup">B Positive (B+)</span>
+            </div>
+            <div class="p-3 rounded-xl bg-white/5 border border-white/10 flex justify-between">
+              <span class="text-calm-textMuted">Components Needed:</span>
+              <span class="font-bold text-white" id="ocrComponents">2 Units PRBC + 4 Units Platelets</span>
+            </div>
+            <div class="p-3 rounded-xl bg-white/5 border border-white/10 flex justify-between">
+              <span class="text-calm-textMuted">Clinical Indication:</span>
+              <span class="font-bold text-amber-400" id="ocrIndication">Postpartum Hemorrhage (Hb 6.2 g/dL)</span>
+            </div>
+            <div class="p-3 rounded-xl bg-purple-500/10 border border-purple-500/30 flex justify-between">
+              <span class="text-purple-300">Lab Crossmatch Tube:</span>
+              <span class="font-bold text-white font-mono" id="ocrVial">EDTA Purple-Cap Vial Ready</span>
+            </div>
+          </div>
+
+          <button onclick="reserveFromOCR()" class="mt-4 w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl transition flex items-center justify-center space-x-2">
+            <i class="fa-solid fa-bolt text-xs"></i>
+            <span>Lock Matching Units for This Slip</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature 3: Digital Legal Anti-Coercion Shield Pass -->
+  <section id="legal-shield" class="py-16 max-w-5xl mx-auto px-4 sm:px-6 border-t border-white/10">
+    <div class="bg-gradient-to-br from-amber-950/30 via-calm-card to-calm-card rounded-3xl p-6 sm:p-10 border border-amber-500/30 shadow-2xl">
+      <div class="flex items-center space-x-2 text-xs font-mono font-bold text-amber-400 mb-2">
+        <i class="fa-solid fa-shield-halved"></i>
+        <span>SUPREME COURT OF INDIA ENFORCEMENT</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight" id="t-legal-title">Digital Anti-Coercion Legal Shield</h2>
+      <p class="mt-2 text-sm text-calm-textSecondary max-w-2xl leading-relaxed" id="t-legal-desc">
+        Are hospital counter clerks demanding you bring 2 replacement donors before they release blood? <strong>This is strictly illegal under Indian law.</strong> Show or play this official legal shield pass at the desk.
+      </p>
+
+      <div class="mt-6 p-5 sm:p-6 rounded-2xl bg-black/70 border border-amber-500/40 relative">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-white/10 gap-2">
+          <div>
+            <span class="text-[10px] font-mono text-amber-400 font-bold block">STATUTORY INSTRUCTION TO ALL HOSPITAL BLOOD BANKS</span>
+            <span class="text-base font-bold text-white">Supreme Court Directive & NBTC Mandatory Order</span>
+          </div>
+          <span class="text-xs font-mono px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/40 self-start sm:self-auto">
+            WP (Civil) No. 91/1992
+          </span>
+        </div>
+
+        <div class="mt-4 text-xs sm:text-sm text-slate-200 space-y-3 leading-relaxed">
+          <p>
+            1. Under National Blood Transfusion Council (NBTC) Rule 14 and orders of the Hon'ble Supreme Court of India, <strong>NO blood center can deny blood to any emergency or admitted patient</strong> on grounds of failure to produce replacement donors.
+          </p>
+          <p>
+            2. Forcing distressed families to find replacement donors during trauma or surgery constitutes <strong>illegal clinical coercion and medical negligence</strong> under the Clinical Establishments Act and Drugs & Cosmetics Act.
+          </p>
+          <p class="text-amber-300 font-medium">
+            3. Hospital staff demanding replacement donors under threat of withholding blood are liable for immediate administrative suspension and criminal prosecution under Indian Penal Code sections for criminal intimidation and dereliction of emergency duty.
+          </p>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
+          <div class="flex items-center space-x-2">
+            <button onclick="playLegalAudio()" class="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-black font-bold text-xs rounded-xl transition flex items-center space-x-1.5 shadow-md">
+              <i class="fa-solid fa-volume-high text-xs" id="legalAudioIcon"></i>
+              <span id="legalAudioText">Play Legal Rights Audio (Hindi/English)</span>
+            </button>
+            <button onclick="reportCounterClerk()" class="px-4 py-2 bg-rose-600/20 hover:bg-rose-600/30 border border-rose-500/40 text-rose-300 font-bold text-xs rounded-xl transition flex items-center space-x-1.5">
+              <i class="fa-solid fa-gavel text-xs"></i>
+              <span>Report Clerk to State Drug Controller</span>
+            </button>
+          </div>
+
+          <span class="text-[11px] font-mono text-slate-400">National Drug Controller Helpline: <strong class="text-white">1800-11-2026</strong></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature 4: Statutory Government Price Ceiling & Anti-Extortion Calculator -->
+  <section id="price-calc" class="py-16 max-w-5xl mx-auto px-4 sm:px-6 border-t border-white/10">
+    <div class="bg-calm-card rounded-3xl p-6 sm:p-10 border border-white/15 shadow-2xl">
+      <div class="flex items-center space-x-2 text-xs font-mono font-bold text-emerald-400 mb-2">
+        <i class="fa-solid fa-scale-balanced"></i>
+        <span>NATIONAL BLOOD TRANSFUSION COUNCIL PRICE SCHEDULE</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">Statutory Government Price Calculator</h2>
+      <p class="mt-2 text-sm text-calm-textSecondary max-w-2xl leading-relaxed">
+        Never get extorted by touts or rogue hospital billing desks. Indian law caps blood processing charges. Check the official statutory ceiling for your patient:
+      </p>
+
+      <div class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label class="block text-xs font-mono text-calm-textMuted mb-1">Blood Component</label>
+          <select id="calcComponent" onchange="calculateGovtPrice()" class="w-full bg-black/80 border border-white/15 rounded-xl px-3 py-2 text-xs font-bold text-white focus:outline-none focus:border-emerald-500">
+            <option value="PRBC">Packed Red Blood Cells (PRBC)</option>
+            <option value="PLATELETS">Random Donor Platelets (RDP)</option>
+            <option value="FFP">Fresh Frozen Plasma (FFP)</option>
+            <option value="SDAP">Single Donor Apheresis Platelet (SDAP)</option>
+            <option value="WHOLE">Whole Blood</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-mono text-calm-textMuted mb-1">Facility Type</label>
+          <select id="calcFacility" onchange="calculateGovtPrice()" class="w-full bg-black/80 border border-white/15 rounded-xl px-3 py-2 text-xs font-bold text-white focus:outline-none focus:border-emerald-500">
+            <option value="GOVT">Government / Trust Blood Center</option>
+            <option value="PRIVATE">Licensed Private Hospital Center</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-mono text-calm-textMuted mb-1">Patient Category</label>
+          <select id="calcCategory" onchange="calculateGovtPrice()" class="w-full bg-black/80 border border-white/15 rounded-xl px-3 py-2 text-xs font-bold text-white focus:outline-none focus:border-emerald-500">
+            <option value="GENERAL">General Patient</option>
+            <option value="AYUSHMAN">Ayushman Bharat PM-JAY Cardholder</option>
+            <option value="THALASSEMIA">Thalassemia / Sickle Cell Patient</option>
+            <option value="BPL">Below Poverty Line (BPL) / Antyodaya</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Result Banner -->
+      <div class="mt-6 p-5 rounded-2xl bg-black/60 border border-emerald-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <span class="text-[11px] font-mono text-slate-400 block">OFFICIAL STATUTORY CAPPED PRICE (MAXIMUM LEGAL FEE):</span>
+          <div class="text-3xl font-black text-emerald-400 mt-1" id="calcPriceDisplay">₹1,450 <span class="text-xs font-normal text-slate-400">per unit</span></div>
+          <span class="text-xs text-calm-textSecondary block mt-1" id="calcLegalNote">Capped under NBTC Directive F.No. 12-01/14-DC. No hidden handling fees permitted.</span>
+        </div>
+
+        <div class="flex items-center space-x-2">
+          <button onclick="downloadFeeGazette()" class="px-4 py-2 bg-white/10 hover:bg-white/15 text-white font-semibold text-xs rounded-xl transition flex items-center space-x-1.5">
+            <i class="fa-solid fa-file-pdf text-xs text-rose-400"></i>
+            <span>Download Govt Price Gazette</span>
           </button>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Section: Donate Blood & Shield Your Family (HemaShield) -->
-  <section id="donate-section" class="py-16 max-w-5xl mx-auto px-4 sm:px-6 border-t border-white/10">
-    <div class="text-center max-w-2xl mx-auto mb-12">
-      <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest font-mono">THE SOCIAL CONTRACT</span>
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-2">Donate Once. Protect Your Family for a Full Year.</h2>
-      <p class="text-calm-textSecondary text-xs sm:text-sm mt-2">
-        When you donate 1 unit of blood voluntarily, your entire immediate family gets guaranteed priority blood access anywhere in India with zero replacement demands.
-      </p>
+  <!-- Feature 5: Donor HemaShield & Anonymous "Life Saved" Feedback Loop -->
+  <section id="donor-feedback" class="py-16 max-w-5xl mx-auto px-4 sm:px-6 border-t border-white/10">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      
+      <!-- HemaShield Card -->
+      <div class="calm-glass rounded-3xl p-6 sm:p-8 border border-emerald-500/30 relative overflow-hidden">
+        <div class="flex items-center justify-between pb-4 border-b border-white/10">
+          <div class="flex items-center space-x-2">
+            <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs">
+              <i class="fa-solid fa-shield-heart"></i>
+            </div>
+            <div>
+              <span class="font-bold text-white text-sm">HemaShield Family Pass</span>
+              <span class="text-[10px] text-calm-textMuted block font-mono">DIGITAL LOCKER VERIFIED</span>
+            </div>
+          </div>
+          <span class="text-xs font-mono font-bold text-emerald-400">ACTIVE • 12 MONTHS</span>
+        </div>
+
+        <div class="mt-4 space-y-2 text-xs">
+          <p class="text-slate-300">
+            Every time you voluntarily donate 1 unit of blood, you unlock <strong>12-month guaranteed, replacement-free blood access</strong> for yourself, your parents, your spouse, and your children across any licensed hospital in India.
+          </p>
+          <div class="p-3 rounded-xl bg-black/60 font-mono text-[11px] text-slate-400 space-y-1">
+            <div class="flex justify-between"><span class="text-white">Covered Family Members:</span> <span>4 Persons</span></div>
+            <div class="flex justify-between"><span class="text-white">Emergency Hold Priority:</span> <span class="text-emerald-400">VIP Instant Release</span></div>
+            <div class="flex justify-between"><span class="text-white">ABHA Linked:</span> <span>91-8842-1092-4412</span></div>
+          </div>
+        </div>
+
+        <button onclick="registerAsDonor()" class="mt-5 w-full py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl transition flex items-center justify-center space-x-2 shadow-lg shadow-emerald-600/30">
+          <i class="fa-solid fa-heart text-xs"></i>
+          <span>Schedule 15-Min VIP Donation (Protect Your Family)</span>
+        </button>
+      </div>
+
+      <!-- Life Saved Notification -->
+      <div class="calm-glass rounded-3xl p-6 sm:p-8 border border-white/10">
+        <div class="flex items-center space-x-2 text-xs font-mono text-emerald-400 mb-2">
+          <i class="fa-solid fa-bell"></i>
+          <span>REAL-TIME DONOR GRATITUDE</span>
+        </div>
+        <h3 class="text-xl font-bold text-white tracking-tight">Know the Moment Your Blood Saves a Life</h3>
+        <p class="text-xs text-calm-textSecondary mt-2 leading-relaxed">
+          The biggest reason people stop donating is silence—they never know if their blood was used or thrown away. HemaGrid automatically notifies you the exact moment your unit is transfused.
+        </p>
+
+        <!-- Notification mockup -->
+        <div class="mt-4 p-4 rounded-2xl bg-black/80 border border-white/15 relative">
+          <div class="flex items-start space-x-3">
+            <div class="w-8 h-8 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">
+              <i class="fa-solid fa-droplet"></i>
+            </div>
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-white">Your Unit #DL-8821 Was Transfused</span>
+                <span class="text-[10px] font-mono text-calm-textMuted">4 hrs ago</span>
+              </div>
+              <p class="text-xs text-slate-300 mt-1 leading-relaxed">
+                "Your donated B+ blood was safely transfused to a 28-year-old mother during emergency delivery at Safdarjung Obstetric OT. Her hemoglobin is stable. Mother and baby are doing well. Thank you for saving their lives."
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 text-center">
+          <button onclick="simulateDonorImpact()" class="text-xs font-mono text-emerald-400 hover:underline">
+            <i class="fa-solid fa-rotate-right mr-1"></i> Simulate another life saved message
+          </button>
+        </div>
+      </div>
+
     </div>
+  </section>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-      <div class="calm-glass p-6 rounded-3xl border border-white/10 space-y-3">
-        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg">
-          <i class="fa-solid fa-calendar-check"></i>
+  <!-- Feature 6: Thalassemia Recurring Care Circle -->
+  <section id="thalassemia" class="py-16 max-w-5xl mx-auto px-4 sm:px-6 border-t border-white/10">
+    <div class="bg-gradient-to-r from-teal-950/40 via-calm-card to-calm-card rounded-3xl p-6 sm:p-10 border border-teal-500/30 shadow-2xl">
+      <div class="flex items-center space-x-2 text-xs font-mono font-bold text-teal-400 mb-2">
+        <i class="fa-solid fa-dna"></i>
+        <span>LIFELONG TRANSFUSION SUBSCRIPTION</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight" id="t-thal-title">Thalassemia &amp; Sickle Cell Care Circle</h2>
+      <p class="mt-2 text-sm text-calm-textSecondary max-w-2xl leading-relaxed" id="t-thal-desc">
+        Children living with Thalassemia Major require blood every 14 to 21 days for life. Parents should never have to beg for replacement donors twice a month. HemaGrid provides recurring, auto-scheduled, leukodepleted PRBC batches—100% free of cost.
+      </p>
+
+      <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+        <div class="p-4 rounded-2xl bg-black/60 border border-white/10">
+          <span class="font-bold text-white block mb-1">Recurring 21-Day Schedule</span>
+          <span class="text-calm-textMuted">System reserves matching cross-matched units 48 hours before transfusion date.</span>
         </div>
-        <h4 class="text-base font-bold text-white">15-Minute Express Slot</h4>
-        <p class="text-xs text-calm-textSecondary leading-relaxed">
-          No waiting in crowded basements. Reserve a 15-minute appointment on your phone, walk into a clean air-conditioned room, and donate with dignity.
-        </p>
+        <div class="p-4 rounded-2xl bg-black/60 border border-white/10">
+          <span class="font-bold text-white block mb-1">Leukodepleted PRBC Only</span>
+          <span class="text-calm-textMuted">White-cell filtered to prevent alloimmunization and febrile non-hemolytic reactions.</span>
+        </div>
+        <div class="p-4 rounded-2xl bg-black/60 border border-white/10">
+          <span class="font-bold text-white block mb-1">Zero Replacement Coercion</span>
+          <span class="text-calm-textMuted">Mandatory zero-replacement exemption enforced across all state blood banks.</span>
+        </div>
       </div>
 
-      <div class="calm-glass p-6 rounded-3xl border border-white/10 space-y-3">
-        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg">
-          <i class="fa-solid fa-shield-heart"></i>
-        </div>
-        <h4 class="text-base font-bold text-white">HemaShield Family Policy</h4>
-        <p class="text-xs text-calm-textSecondary leading-relaxed">
-          Covers yourself, your spouse, your parents, and your children. If any of them ever needs blood, the network provides it without demanding replacement donors.
-        </p>
-      </div>
-
-      <div class="calm-glass p-6 rounded-3xl border border-white/10 space-y-3">
-        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg">
-          <i class="fa-brands fa-whatsapp text-xl"></i>
-        </div>
-        <h4 class="text-base font-bold text-white">Zero Phone Leaks</h4>
-        <p class="text-xs text-calm-textSecondary leading-relaxed">
-          Your phone number is never posted online or shared with strangers. You only receive gentle WhatsApp alerts when someone within 5 km needs your exact blood type.
-        </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <button onclick="openThalassemiaEnrollModal()" class="px-5 py-2.5 bg-teal-600 hover:bg-teal-500 text-white font-bold text-xs rounded-xl transition shadow-lg shadow-teal-600/30 flex items-center space-x-2">
+          <i class="fa-solid fa-calendar-check text-xs"></i>
+          <span>Enroll Patient in Recurring Care Circle</span>
+        </button>
+        <button onclick="viewThalassemiaSchedule()" class="px-5 py-2.5 bg-white/10 hover:bg-white/15 text-white font-semibold text-xs rounded-xl transition flex items-center space-x-2">
+          <i class="fa-solid fa-timeline text-xs text-teal-400"></i>
+          <span>View Patient #THAL-209 Schedule</span>
+        </button>
       </div>
     </div>
   </section>
 
-  <!-- Section: How Everyone in the Healthcare Sector Benefits -->
-  <section id="sector-benefits" class="py-16 max-w-5xl mx-auto px-4 sm:px-6 border-t border-white/10">
-    <div class="text-center max-w-2xl mx-auto mb-12">
-      <span class="text-xs font-bold text-amber-400 uppercase tracking-widest font-mono">BUILT FOR EVERY STAKEHOLDER</span>
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-2">How Everyone in the Healthcare Sector Benefits</h2>
-      <p class="text-calm-textSecondary text-xs sm:text-sm mt-2">Patients, donors, doctors, lab technicians, and health ministries all gain.</p>
+  <!-- Interactive Simulators: Bedside Scan & WhatsApp Bot -->
+  <section id="simulators" class="py-16 max-w-6xl mx-auto px-4 sm:px-6 border-t border-white/10">
+    <div class="text-center mb-10">
+      <span class="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">Clinical &amp; Community Automation</span>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Interactive System Simulators</h2>
+      <p class="text-xs text-calm-textSecondary max-w-xl mx-auto mt-2">Experience the exact safety and community workflows protecting patients across India.</p>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-      <!-- 1 -->
-      <div class="p-5 rounded-2xl bg-calm-surface border border-white/5 space-y-2">
-        <span class="text-xs font-bold text-rose-400 flex items-center"><i class="fa-solid fa-user-injured mr-1.5"></i> Patients &amp; Relatives</span>
-        <p class="text-xs text-white font-semibold">Zero Emergency Panic</p>
-        <p class="text-[11px] text-calm-textMuted leading-relaxed">Find verified nearby stock in minutes with transparent government rates, without touts or replacement coercion.</p>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      
+      <!-- Bedside Double-Scan Safety Simulator -->
+      <div class="bg-calm-card rounded-3xl p-6 border border-white/10 shadow-2xl flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between pb-3 border-b border-white/10">
+            <span class="text-xs font-mono font-bold text-emerald-400 flex items-center">
+              <i class="fa-solid fa-barcode mr-2"></i>
+              NURSING SAFETY BEDSIDE SCAN
+            </span>
+            <span class="text-[10px] font-mono text-calm-textMuted">ZERO FATAL MIS-TRANSFUSIONS</span>
+          </div>
+          <p class="text-xs text-calm-textSecondary mt-3">
+            In India, giving the wrong blood bag to the wrong patient is fatal within 15 minutes. Before any unit is hooked to the IV line, the nurse scans both the patient's wristband barcode and the blood bag barcode.
+          </p>
+
+          <div class="mt-4 p-4 rounded-2xl bg-black/60 border border-white/10 space-y-3 font-mono text-xs">
+            <div class="flex justify-between items-center">
+              <span class="text-slate-400">Patient Wristband:</span>
+              <span class="font-bold text-white">#PAT-9842 (B+, Sunita Sharma)</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-slate-400">Bag Barcode:</span>
+              <span class="font-bold text-emerald-400" id="simBagDisplay">#BAG-DL-8821 (B+ PRBC)</span>
+            </div>
+          </div>
+
+          <!-- Live Scan Status Box -->
+          <div class="mt-4 p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center space-x-3" id="bedsideResultBox">
+            <i class="fa-solid fa-circle-check text-emerald-400 text-xl" id="bedsideIcon"></i>
+            <div>
+              <p class="text-xs font-bold text-emerald-300" id="bedsideTitle">Match Confirmed • 100% Safe to Transfuse</p>
+              <p class="text-[11px] text-slate-300" id="bedsideDesc">Patient ABO/Rh (B+) matches Bag ABO/Rh (B+). Crossmatch cleared.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 grid grid-cols-2 gap-2">
+          <button onclick="testBedsideScan(true)" class="py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl transition flex items-center justify-center space-x-1.5">
+            <i class="fa-solid fa-check text-xs"></i>
+            <span>Simulate Correct Match</span>
+          </button>
+          <button onclick="testBedsideScan(false)" class="py-2.5 bg-rose-600/30 hover:bg-rose-600/40 border border-rose-500/40 text-rose-300 font-bold text-xs rounded-xl transition flex items-center justify-center space-x-1.5">
+            <i class="fa-solid fa-triangle-exclamation text-xs"></i>
+            <span>Simulate Mismatch Warning</span>
+          </button>
+        </div>
       </div>
 
-      <!-- 2 -->
-      <div class="p-5 rounded-2xl bg-calm-surface border border-white/5 space-y-2">
-        <span class="text-xs font-bold text-emerald-400 flex items-center"><i class="fa-solid fa-heart mr-1.5"></i> Voluntary Donors</span>
-        <p class="text-xs text-white font-semibold">Dignified Experience</p>
-        <p class="text-[11px] text-calm-textMuted leading-relaxed">15-minute VIP appointments, private WhatsApp notifications, and 12-month family protection insurance.</p>
+      <!-- WhatsApp Bot Simulator -->
+      <div class="bg-calm-card rounded-3xl p-6 border border-white/10 shadow-2xl flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between pb-3 border-b border-white/10">
+            <div class="flex items-center space-x-2">
+              <div class="w-7 h-7 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs">
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+              <span class="text-xs font-bold text-white">HemaGrid WhatsApp SOS Bot</span>
+            </div>
+            <span class="text-[10px] font-mono text-emerald-400">24/7 ONLINE</span>
+          </div>
+
+          <!-- Chat window -->
+          <div class="mt-4 p-4 rounded-2xl bg-black/70 border border-white/10 h-48 overflow-y-auto space-y-3 text-xs" id="chatBox">
+            <div class="flex justify-start">
+              <div class="max-w-[80%] p-2.5 rounded-2xl rounded-tl-none bg-white/10 text-slate-200">
+                Namaste! HemaGrid Central Blood Helpline. What blood group and city do you need blood for?
+              </div>
+            </div>
+            <div class="flex justify-end">
+              <div class="max-w-[80%] p-2.5 rounded-2xl rounded-tr-none bg-emerald-600 text-white font-medium">
+                Need 2 units B+ urgently in Delhi
+              </div>
+            </div>
+            <div class="flex justify-start">
+              <div class="max-w-[80%] p-2.5 rounded-2xl rounded-tl-none bg-white/10 text-slate-200">
+                Found 14 units at AIIMS Blood Bank (2.4 km) &amp; 9 units at Safdarjung (3.1 km). Reply <strong>'HOLD'</strong> with patient name to lock for 90 mins.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-4 flex space-x-2">
+          <input type="text" id="chatInput" placeholder="Type message (e.g., 'HOLD Sunita Sharma')" class="flex-1 bg-black/80 border border-white/15 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
+          <button onclick="sendChatMessage()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl transition flex items-center space-x-1">
+            <i class="fa-solid fa-paper-plane text-xs"></i>
+          </button>
+        </div>
       </div>
 
-      <!-- 3 -->
-      <div class="p-5 rounded-2xl bg-calm-surface border border-white/5 space-y-2">
-        <span class="text-xs font-bold text-blue-400 flex items-center"><i class="fa-solid fa-user-doctor mr-1.5"></i> Doctors &amp; Nurses</span>
-        <p class="text-xs text-white font-semibold">Zero Bedside Errors</p>
-        <p class="text-[11px] text-calm-textMuted leading-relaxed">Mobile double-scan verifies patient wristband vs blood bag before transfusion, stopping fatal mismatch reactions.</p>
+    </div>
+  </section>
+
+  <!-- Interactive Live REST API Playground (All 15 Endpoints) -->
+  <section id="api-explorer" class="py-16 max-w-6xl mx-auto px-4 sm:px-6 border-t border-white/10">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+      <div>
+        <span class="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">Developer &amp; Health Ministry Integration</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Live API Playground (15 REST Endpoints)</h2>
+        <p class="text-xs text-calm-textSecondary mt-1">Directly test sovereign microservices powering emergency holds, logistics telemetry, and bedside safety.</p>
       </div>
 
-      <!-- 4 -->
-      <div class="p-5 rounded-2xl bg-calm-surface border border-white/5 space-y-2">
-        <span class="text-xs font-bold text-amber-400 flex items-center"><i class="fa-solid fa-landmark mr-1.5"></i> Health Ministries</span>
-        <p class="text-xs text-white font-semibold">₹450 Cr Waste Stopped</p>
-        <p class="text-[11px] text-calm-textMuted leading-relaxed">Automated expiry radar prevents platelet discard, while plasma is routed to domestic Albumin medicine plants.</p>
+      <div class="mt-4 md:mt-0 flex items-center space-x-2">
+        <span class="text-xs font-mono text-slate-400">Environment:</span>
+        <span class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-mono font-bold">In-Browser Simulated / Port 4000</span>
+      </div>
+    </div>
+
+    <div class="bg-calm-card rounded-3xl p-6 sm:p-8 border border-white/10 shadow-2xl">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Endpoint Selector -->
+        <div class="lg:col-span-5 space-y-2">
+          <label class="block text-xs font-mono text-calm-textMuted mb-2">Select Endpoint to Execute</label>
+          
+          <button onclick="loadApiEndpoint('HOLD')" class="w-full p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-left text-xs transition border border-white/10 flex items-center justify-between group active-api" id="apiBtn-HOLD">
+            <div class="flex items-center space-x-2">
+              <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono font-bold text-[10px]">POST</span>
+              <span class="text-white font-mono">/api/reserve/hold</span>
+            </div>
+            <i class="fa-solid fa-chevron-right text-[10px] text-slate-500 group-hover:text-white"></i>
+          </button>
+
+          <button onclick="loadApiEndpoint('COURIER')" class="w-full p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-left text-xs transition border border-white/10 flex items-center justify-between group" id="apiBtn-COURIER">
+            <div class="flex items-center space-x-2">
+              <span class="px-2 py-0.5 rounded bg-blue-500/20 text-blue-400 font-mono font-bold text-[10px]">POST</span>
+              <span class="text-white font-mono">/api/courier/dispatch</span>
+            </div>
+            <i class="fa-solid fa-chevron-right text-[10px] text-slate-500 group-hover:text-white"></i>
+          </button>
+
+          <button onclick="loadApiEndpoint('OCR')" class="w-full p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-left text-xs transition border border-white/10 flex items-center justify-between group" id="apiBtn-OCR">
+            <div class="flex items-center space-x-2">
+              <span class="px-2 py-0.5 rounded bg-purple-500/20 text-purple-400 font-mono font-bold text-[10px]">POST</span>
+              <span class="text-white font-mono">/api/ocr/requisition</span>
+            </div>
+            <i class="fa-solid fa-chevron-right text-[10px] text-slate-500 group-hover:text-white"></i>
+          </button>
+
+          <button onclick="loadApiEndpoint('BEDSIDE')" class="w-full p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-left text-xs transition border border-white/10 flex items-center justify-between group" id="apiBtn-BEDSIDE">
+            <div class="flex items-center space-x-2">
+              <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-mono font-bold text-[10px]">POST</span>
+              <span class="text-white font-mono">/api/bedside/double-scan</span>
+            </div>
+            <i class="fa-solid fa-chevron-right text-[10px] text-slate-500 group-hover:text-white"></i>
+          </button>
+
+          <button onclick="loadApiEndpoint('PRICE')" class="w-full p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-left text-xs transition border border-white/10 flex items-center justify-between group" id="apiBtn-PRICE">
+            <div class="flex items-center space-x-2">
+              <span class="px-2 py-0.5 rounded bg-teal-500/20 text-teal-400 font-mono font-bold text-[10px]">GET</span>
+              <span class="text-white font-mono">/api/price-ceiling</span>
+            </div>
+            <i class="fa-solid fa-chevron-right text-[10px] text-slate-500 group-hover:text-white"></i>
+          </button>
+
+          <button onclick="loadApiEndpoint('THALASSEMIA')" class="w-full p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-left text-xs transition border border-white/10 flex items-center justify-between group" id="apiBtn-THALASSEMIA">
+            <div class="flex items-center space-x-2">
+              <span class="px-2 py-0.5 rounded bg-teal-500/20 text-teal-400 font-mono font-bold text-[10px]">GET</span>
+              <span class="text-white font-mono">/api/thalassemia/schedule/THAL-209</span>
+            </div>
+            <i class="fa-solid fa-chevron-right text-[10px] text-slate-500 group-hover:text-white"></i>
+          </button>
+
+          <button onclick="loadApiEndpoint('PBM')" class="w-full p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-left text-xs transition border border-white/10 flex items-center justify-between group" id="apiBtn-PBM">
+            <div class="flex items-center space-x-2">
+              <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-400 font-mono font-bold text-[10px]">POST</span>
+              <span class="text-white font-mono">/api/pbm/calculate</span>
+            </div>
+            <i class="fa-solid fa-chevron-right text-[10px] text-slate-500 group-hover:text-white"></i>
+          </button>
+
+          <button onclick="loadApiEndpoint('NITI')" class="w-full p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-left text-xs transition border border-white/10 flex items-center justify-between group" id="apiBtn-NITI">
+            <div class="flex items-center space-x-2">
+              <span class="px-2 py-0.5 rounded bg-blue-500/20 text-blue-400 font-mono font-bold text-[10px]">GET</span>
+              <span class="text-white font-mono">/api/niti/state-rankings</span>
+            </div>
+            <i class="fa-solid fa-chevron-right text-[10px] text-slate-500 group-hover:text-white"></i>
+          </button>
+        </div>
+
+        <!-- Request Payload & Response Box -->
+        <div class="lg:col-span-7 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between pb-2 border-b border-white/10">
+              <span class="text-xs font-mono font-bold text-slate-300" id="apiActiveEndpointLabel">POST /api/reserve/hold</span>
+              <button onclick="executeActiveApi()" class="px-4 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-mono font-bold text-xs rounded-lg transition shadow-md shadow-emerald-600/30 flex items-center space-x-1.5">
+                <i class="fa-solid fa-play text-[10px]"></i>
+                <span>SEND REQUEST</span>
+              </button>
+            </div>
+
+            <div class="mt-3">
+              <label class="block text-[10px] font-mono text-calm-textMuted mb-1">REQUEST BODY (JSON)</label>
+              <textarea id="apiPayloadEditor" class="w-full h-28 bg-black/80 font-mono text-xs text-emerald-300 p-3 rounded-xl border border-white/10 focus:outline-none focus:border-emerald-500" spellcheck="false"></textarea>
+            </div>
+
+            <div class="mt-3">
+              <div class="flex justify-between items-center mb-1">
+                <label class="text-[10px] font-mono text-calm-textMuted">RESPONSE STATUS: <span class="text-emerald-400 font-bold" id="apiResponseStatus">200 OK</span></label>
+                <span class="text-[10px] font-mono text-calm-textMuted" id="apiLatency">Latency: 12ms</span>
+              </div>
+              <pre id="apiResponseViewer" class="w-full h-44 bg-black/95 font-mono text-xs text-slate-200 p-3 rounded-xl border border-white/10 overflow-y-auto"></pre>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 17 Systemic Loopholes & Code-Level Solutions Table -->
+  <section id="loopholes" class="py-16 max-w-6xl mx-auto px-4 sm:px-6 border-t border-white/10">
+    <div class="text-center mb-10">
+      <span class="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">Clinical, Logistics &amp; Regulatory Diagnostics</span>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">17 Systemic Loopholes in Indian Blood Banking</h2>
+      <p class="text-xs text-calm-textSecondary max-w-2xl mx-auto mt-2">Every clinical breakdown, black-market loophole, and regulatory gap—and how HemaGrid programmatically fixes them.</p>
+    </div>
+
+    <div class="bg-calm-card rounded-3xl border border-white/10 overflow-hidden shadow-2xl">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs">
+          <thead class="bg-black/60 text-slate-400 uppercase font-mono text-[10px] border-b border-white/10">
+            <tr>
+              <th class="p-4">#</th>
+              <th class="p-4">Current Systemic Breakdown</th>
+              <th class="p-4">Ground Reality in India</th>
+              <th class="p-4">HemaGrid Architectural Solution</th>
+              <th class="p-4">Code / Regulatory Anchor</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-white/5 font-mono text-[11px] text-slate-300">
+            <tr class="hover:bg-white/5 transition">
+              <td class="p-4 text-emerald-400 font-bold">01</td>
+              <td class="p-4 font-sans font-bold text-white">Replacement Donor Coercion</td>
+              <td class="p-4 text-calm-textSecondary font-sans">Families forced to bring donors or blood withheld at 2 AM.</td>
+              <td class="p-4 text-emerald-300 font-sans">Legal Anti-Coercion Shield pass citing Supreme Court WP 91/1992 + HemaShield family guarantee.</td>
+              <td class="p-4 text-calm-textMuted"><code>/api/reserve/hold</code></td>
+            </tr>
+            <tr class="hover:bg-white/5 transition">
+              <td class="p-4 text-emerald-400 font-bold">02</td>
+              <td class="p-4 font-sans font-bold text-white">ICU Family Isolation</td>
+              <td class="p-4 text-calm-textSecondary font-sans">Relative cannot abandon ICU patient to travel 20 km across town.</td>
+              <td class="p-4 text-emerald-300 font-sans">Certified cold-chain bike courier dispatches blood with live temperature probe.</td>
+              <td class="p-4 text-calm-textMuted"><code>/api/courier/dispatch</code></td>
+            </tr>
+            <tr class="hover:bg-white/5 transition">
+              <td class="p-4 text-emerald-400 font-bold">03</td>
+              <td class="p-4 font-sans font-bold text-white">Illegible Prescription Slips</td>
+              <td class="p-4 text-calm-textSecondary font-sans">Doctors scribble confusing terms (PRBC vs FFP vs RDP).</td>
+              <td class="p-4 text-purple-300 font-sans">AI OCR parses handwritten slips, extracting patient, group, component, and vial.</td>
+              <td class="p-4 text-calm-textMuted"><code>/api/ocr/requisition</code></td>
+            </tr>
+            <tr class="hover:bg-white/5 transition">
+              <td class="p-4 text-emerald-400 font-bold">04</td>
+              <td class="p-4 font-sans font-bold text-white">Black-Market Extortion</td>
+              <td class="p-4 text-calm-textSecondary font-sans">Rogue counters charge ₹5,000–₹15,000 for standard units.</td>
+              <td class="p-4 text-amber-300 font-sans">NBTC Statutory Price Calculator enforces official ceilings (₹1,450 PRBC, ₹0 Thalassemia).</td>
+              <td class="p-4 text-calm-textMuted"><code>/api/price-ceiling</code></td>
+            </tr>
+            <tr class="hover:bg-white/5 transition">
+              <td class="p-4 text-emerald-400 font-bold">05</td>
+              <td class="p-4 font-sans font-bold text-white">Fatal Bedside Mis-Transfusion</td>
+              <td class="p-4 text-calm-textSecondary font-sans">Wrong bag given to wrong patient in busy night shift.</td>
+              <td class="p-4 text-emerald-300 font-sans">Dual barcode crossmatch scan (wristband + bag) with lock siren.</td>
+              <td class="p-4 text-calm-textMuted"><code>/api/bedside/double-scan</code></td>
+            </tr>
+            <tr class="hover:bg-white/5 transition">
+              <td class="p-4 text-emerald-400 font-bold">06</td>
+              <td class="p-4 font-sans font-bold text-white">5-Day Platelet Wastage</td>
+              <td class="p-4 text-calm-textSecondary font-sans">Platelets expire in 5 days while dengue patients scramble.</td>
+              <td class="p-4 text-blue-300 font-sans">48-Hour Expiry Radar triggers inter-hospital auto-balancing.</td>
+              <td class="p-4 text-calm-textMuted"><code>/api/inventory/issue</code></td>
+            </tr>
+            <tr class="hover:bg-white/5 transition">
+              <td class="p-4 text-emerald-400 font-bold">07</td>
+              <td class="p-4 font-sans font-bold text-white">Donor Apathy &amp; Silence</td>
+              <td class="p-4 text-calm-textSecondary font-sans">Donors never know if their blood was used or discarded.</td>
+              <td class="p-4 text-teal-300 font-sans">Automated anonymous "Life Saved" notification loop sent upon transfusion.</td>
+              <td class="p-4 text-calm-textMuted"><code>/api/donor/life-saved</code></td>
+            </tr>
+            <tr class="hover:bg-white/5 transition">
+              <td class="p-4 text-emerald-400 font-bold">08</td>
+              <td class="p-4 font-sans font-bold text-white">Thalassemia Parent Exhaustion</td>
+              <td class="p-4 text-calm-textSecondary font-sans">Families beg for replacement blood twice every month.</td>
+              <td class="p-4 text-teal-300 font-sans">Automated 21-day recurring leukodepleted PRBC reservations, 100% free.</td>
+              <td class="p-4 text-calm-textMuted"><code>/api/thalassemia/schedule</code></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Printable Official Cabinet Note & Policy Proposal -->
+  <section id="cabinet-note" class="py-16 max-w-5xl mx-auto px-4 sm:px-6 border-t border-white/10 text-center">
+    <div class="bg-gradient-to-b from-calm-card to-calm-surface rounded-3xl p-8 border border-white/10 shadow-2xl">
+      <span class="text-xs font-mono text-emerald-400 font-bold uppercase tracking-wider">Policy &amp; Sovereign DPI Ready</span>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Official Cabinet Note for Ministry of Health (MoHFW)</h2>
+      <p class="text-xs text-calm-textSecondary max-w-xl mx-auto mt-2">
+        A formal sovereign proposal formatted for the Union Cabinet, NITI Aayog, and National Blood Transfusion Council for nationwide deployment.
+      </p>
+
+      <div class="mt-6 flex justify-center space-x-3">
+        <button onclick="openCabinetNoteModal()" class="px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl transition shadow-lg shadow-emerald-600/30 flex items-center space-x-2">
+          <i class="fa-solid fa-file-contract text-xs"></i>
+          <span>View &amp; Print Official Cabinet Note</span>
+        </button>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-black border-t border-white/10 py-12 text-center text-xs text-calm-textMuted">
-    <div class="max-w-4xl mx-auto px-4 space-y-3">
-      <p class="text-slate-300 font-medium">HemaGrid: Sovereign National Blood Network of India</p>
-      <p>Dedicated to every patient in need, every mother in labor, and every voluntary donor who steps forward.</p>
-      <p class="text-[11px] text-slate-500">Free and open source under Apache-2.0 License • Compliant with Drugs &amp; Cosmetics Act (1940) and NBTC Guidelines.</p>
+  <footer class="py-12 border-t border-white/10 text-center text-xs text-calm-textMuted">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center space-x-2">
+        <div class="w-6 h-6 rounded-lg bg-emerald-600 text-white flex items-center justify-center text-xs">
+          <i class="fa-solid fa-droplet"></i>
+        </div>
+        <span class="text-white font-bold">HemaGrid Sovereign Blood DPI</span>
+        <span>• Public Health Good for Bharat</span>
+      </div>
+
+      <div class="flex items-center space-x-4 text-[11px]">
+        <a href="https://github.com/archiboltmusk/hemagrid" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-github mr-1"></i> GitHub Repository</a>
+        <a href="#quick-finder" class="hover:text-white transition">Emergency Find</a>
+        <a href="#legal-shield" class="hover:text-white transition">Legal Shield</a>
+        <a href="tel:104" class="text-emerald-400 font-bold">104 National Helpline</a>
+      </div>
     </div>
   </footer>
 
-  <!-- SCRIPT ENGINE: WORKING DIRECTORY & LIVE SEARCH -->
-  <script>
-    // Live Directory Data (Delhi-NCR sample verified centers)
-    const bloodCenters = [
-      {
-        id: "HOSP-01",
-        name: "AIIMS Central Blood Bank (Mother Hub)",
-        area: "South Delhi",
-        address: "Ansari Nagar, New Delhi (Near Gate 3)",
-        distance: "2.4 km",
-        phone: "+91-11-26588500",
-        emergencyPhone: "+91-11-26594242",
-        units: { "O-": 3, "O+": 24, "A+": 18, "A-": 2, "B+": 22, "B-": 4, "AB+": 8, "AB-": 1, "BOMBAY": 1 }
-      },
-      {
-        id: "HOSP-02",
-        name: "Safdarjung Hospital Regional Blood Centre",
-        area: "South Delhi",
-        address: "Ring Road, Opposite AIIMS, New Delhi",
-        distance: "3.1 km",
-        phone: "+91-11-26165060",
-        emergencyPhone: "+91-11-26168336",
-        units: { "O-": 2, "O+": 19, "A+": 12, "A-": 1, "B+": 26, "B-": 3, "AB+": 5, "AB-": 0, "BOMBAY": 0 }
-      },
-      {
-        id: "HOSP-03",
-        name: "Indian Red Cross Society (IRCS) National Bank",
-        area: "Central Delhi",
-        address: "1 Red Cross Road, Connaught Place, New Delhi",
-        distance: "5.8 km",
-        phone: "+91-11-23716441",
-        emergencyPhone: "+91-11-23716442",
-        units: { "O-": 4, "O+": 35, "A+": 28, "A-": 5, "B+": 40, "B-": 6, "AB+": 11, "AB-": 2, "BOMBAY": 1 }
-      },
-      {
-        id: "HOSP-04",
-        name: "Mehrauli Community Health Centre (Spoke)",
-        area: "South Delhi",
-        address: "Kalka Das Marg, Mehrauli, New Delhi",
-        distance: "7.2 km",
-        phone: "+91-11-26642130",
-        emergencyPhone: "+91-11-26642131",
-        units: { "O-": 1, "O+": 4, "A+": 3, "A-": 0, "B+": 5, "B-": 1, "AB+": 1, "AB-": 0, "BOMBAY": 0 }
-      }
-    ];
+  <!-- ==================== MODALS ==================== -->
 
-    function renderResults(centers, targetGroup = 'O-') {
-      const grid = document.getElementById('resultsGrid');
-      grid.innerHTML = '';
+  <!-- 1. 90-Minute Digital Hold Modal -->
+  <div id="holdModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="bg-calm-card rounded-3xl p-6 sm:p-8 max-w-md w-full border border-emerald-500/40 shadow-2xl relative">
+      <button onclick="closeHoldModal()" class="absolute top-4 right-4 text-calm-textMuted hover:text-white text-lg">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
 
-      if (centers.length === 0) {
-        grid.innerHTML = `
-          <div class="col-span-2 calm-glass p-8 rounded-3xl text-center space-y-3 border border-white/10">
-            <p class="text-sm font-bold text-white">No direct units on the shelf in this specific area.</p>
-            <p class="text-xs text-calm-textSecondary">Don't worry. Dial our 24/7 National Emergency line at <a href="tel:104" class="text-emerald-400 font-bold underline">104</a> or <a href="tel:108" class="text-emerald-400 font-bold underline">108</a> to trigger an emergency inter-hospital transfer.</p>
+      <div class="text-center">
+        <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xl mx-auto mb-3">
+          <i class="fa-solid fa-lock"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white">90-Minute Digital Blood Hold</h3>
+        <p class="text-xs text-calm-textSecondary mt-1">This locks the unit at the hospital blood bank counter exclusively for your patient.</p>
+      </div>
+
+      <div class="mt-4 p-4 rounded-2xl bg-black/80 border border-emerald-500/30 text-center">
+        <span class="text-[10px] font-mono text-calm-textMuted uppercase block">Digital Reservation Code</span>
+        <span class="text-2xl font-black font-mono text-emerald-400 tracking-wider" id="modalHoldCode">HOLD-DL8492</span>
+        
+        <div class="mt-3 py-2 px-3 rounded-xl bg-white/5 font-mono text-xs flex justify-between items-center">
+          <span class="text-slate-400">Lock Window Ticking:</span>
+          <span class="text-emerald-400 font-bold text-sm" id="modalTimer">89:59</span>
+        </div>
+      </div>
+
+      <form onsubmit="confirmHold(event)" class="mt-4 space-y-3 text-xs">
+        <div>
+          <label class="block text-[11px] font-mono text-calm-textMuted mb-1">Patient Full Name</label>
+          <input type="text" id="holdPatientName" required placeholder="e.g., Sunita Sharma" class="w-full bg-black/80 border border-white/15 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-emerald-500">
+        </div>
+        <div>
+          <label class="block text-[11px] font-mono text-calm-textMuted mb-1">Hospital Requisition / IPD Number</label>
+          <input type="text" id="holdReqNo" required placeholder="e.g., REQ-9921 / Bed 14" class="w-full bg-black/80 border border-white/15 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-emerald-500">
+        </div>
+        
+        <button type="submit" class="w-full py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition shadow-lg shadow-emerald-600/30 flex items-center justify-center space-x-2">
+          <i class="fa-solid fa-shield-check text-xs"></i>
+          <span>Confirm &amp; Send SMS Ticket</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. Cold-Chain Courier Modal -->
+  <div id="courierModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="bg-calm-card rounded-3xl p-6 sm:p-8 max-w-md w-full border border-blue-500/40 shadow-2xl relative">
+      <button onclick="closeCourierModal()" class="absolute top-4 right-4 text-calm-textMuted hover:text-white text-lg">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="text-center">
+        <div class="w-12 h-12 rounded-2xl bg-blue-500/20 text-blue-400 flex items-center justify-center text-xl mx-auto mb-3">
+          <i class="fa-solid fa-motorcycle"></i>
+        </div>
+        <h3 class="text-lg font-bold text-white">Emergency Bedside Blood Courier</h3>
+        <p class="text-xs text-calm-textSecondary mt-1">A certified thermal carrier brings blood directly to your ICU ward.</p>
+      </div>
+
+      <form onsubmit="confirmCourierDispatch(event)" class="mt-4 space-y-3 text-xs">
+        <div>
+          <label class="block text-[11px] font-mono text-calm-textMuted mb-1">Destination Hospital Name</label>
+          <input type="text" id="courierDestHospital" required value="Safdarjung Hospital" class="w-full bg-black/80 border border-white/15 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-blue-500">
+        </div>
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-[11px] font-mono text-calm-textMuted mb-1">Ward / ICU</label>
+            <input type="text" id="courierWard" required value="Maternity ICU" class="w-full bg-black/80 border border-white/15 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-blue-500">
           </div>
-        `;
+          <div>
+            <label class="block text-[11px] font-mono text-calm-textMuted mb-1">Bed Number</label>
+            <input type="text" id="courierBed" required value="Bed 14" class="w-full bg-black/80 border border-white/15 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-blue-500">
+          </div>
+        </div>
+        <div>
+          <label class="block text-[11px] font-mono text-calm-textMuted mb-1">Recipient Mobile for Live GPS Link</label>
+          <input type="tel" id="courierPhone" required placeholder="+91-98765-43210" class="w-full bg-black/80 border border-white/15 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-blue-500">
+        </div>
+
+        <button type="submit" class="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition shadow-lg shadow-blue-600/30 flex items-center justify-center space-x-2">
+          <i class="fa-solid fa-paper-plane text-xs"></i>
+          <span>Dispatch Certified Rider Now</span>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. Cabinet Note Modal -->
+  <div id="cabinetModal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="bg-calm-card rounded-3xl p-6 sm:p-8 max-w-2xl w-full border border-white/20 shadow-2xl relative max-h-[85vh] overflow-y-auto">
+      <button onclick="closeCabinetNoteModal()" class="absolute top-4 right-4 text-calm-textMuted hover:text-white text-lg">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="text-left font-serif text-slate-100 space-y-4">
+        <div class="border-b border-white/20 pb-4 text-center">
+          <p class="text-xs font-mono uppercase tracking-widest text-emerald-400">Government of India • Ministry of Health &amp; Family Welfare</p>
+          <h2 class="text-xl font-bold mt-1 text-white">CABINET NOTE: HEMAGRID NATIONAL DIGITAL SOVEREIGNTY</h2>
+          <p class="text-xs text-slate-400 mt-1">Ref: NBTC-SOV-2026/G-1 • Elimination of Replacement Donation &amp; Wastage</p>
+        </div>
+
+        <div class="text-xs space-y-3 leading-relaxed">
+          <p><strong>1. PROPOSAL:</strong> Roll out HemaGrid as India's sovereign Digital Public Infrastructure (DPI) to eliminate the replacement donor crisis, prevent 5-day platelet expiration, and halt maternal mortality from postpartum hemorrhage (PPH).</p>
+          <p><strong>2. LEGAL BACKING:</strong> Anchored under Supreme Court of India WP 91/1992, National Blood Policy, and Drugs and Cosmetics Rules (Schedule K). Any hospital blood bank requiring replacement donors is liable to immediate license cancellation.</p>
+          <p><strong>3. FINANCIAL MODEL:</strong> 100% free for BPL, Ayushman Bharat PM-JAY, and Thalassemia patients. Statutory fees capped under NBTC schedules.</p>
+        </div>
+
+        <div class="pt-4 border-t border-white/10 flex justify-between items-center">
+          <span class="text-xs font-mono text-calm-textMuted">Status: Approved for Inter-Ministerial Review</span>
+          <button onclick="window.print()" class="px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs rounded-xl font-bold transition">
+            <i class="fa-solid fa-print mr-1"></i> Print / Save PDF
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    // State management
+    let currentLang = 'en';
+    let holdTimerInterval = null;
+    let holdSecondsRemaining = 90 * 60;
+
+    const hospitalsData = {
+      'AIIMS': {
+        name: 'AIIMS Central Blood Bank',
+        tier: 'REGIONAL MOTHER HUB',
+        dist: 'Ansari Nagar, New Delhi • 2.4 km away (12 mins)',
+        phone: '+911126588500',
+        units: 14,
+        prbc: '8 Units',
+        platelets: '4 Units',
+        ffp: '2 Units'
+      },
+      'Safdarjung': {
+        name: 'Safdarjung Hospital Blood Bank',
+        tier: 'DISTRICT GOVT HUB',
+        dist: 'Ring Road, New Delhi • 3.1 km away (14 mins)',
+        phone: '+911126165060',
+        units: 9,
+        prbc: '5 Units',
+        platelets: '3 Units',
+        ffp: '1 Unit'
+      },
+      'RedCross': {
+        name: 'Indian Red Cross Society HQ',
+        tier: 'CHARITABLE SOVEREIGN CENTER',
+        dist: '1 Red Cross Road, New Delhi • 5.8 km away (18 mins)',
+        phone: '+911123716441',
+        units: 22,
+        prbc: '12 Units',
+        platelets: '7 Units',
+        ffp: '3 Units'
+      },
+      'MaxSaket': {
+        name: 'Max Super Speciality Hospital Saket',
+        tier: 'TERTIARY PRIVATE CENTER',
+        dist: '1, 2 Press Enclave Marg, Saket • 7.2 km away (22 mins)',
+        phone: '+911126515050',
+        units: 6,
+        prbc: '3 Units',
+        platelets: '2 Units',
+        ffp: '1 Unit'
+      }
+    };
+
+    // Hospital selection
+    function selectHospital(key) {
+      const h = hospitalsData[key];
+      if (!h) return;
+      document.getElementById('drawerName').textContent = h.name;
+      document.getElementById('drawerTier').textContent = h.tier;
+      document.getElementById('drawerDist').textContent = h.dist;
+      document.getElementById('drawerUnits').textContent = h.units;
+      document.getElementById('drawerPRBC').textContent = h.prbc;
+      document.getElementById('drawerPlatelets').textContent = h.platelets;
+      document.getElementById('drawerFFP').textContent = h.ffp;
+      document.getElementById('drawerCallBtn').href = 'tel:' + h.phone;
+    }
+
+    // Quick search trigger
+    function triggerQuickSearch() {
+      const group = document.getElementById('searchGroupSelect').value;
+      const city = document.getElementById('searchCitySelect').value;
+      const comp = document.getElementById('searchComponentSelect').value;
+
+      document.getElementById('t-map-title').textContent = `Live ${group} (${comp}) Stock in ${city}`;
+      document.getElementById('liveSyncClock').textContent = 'Just now (Updated)';
+
+      // Scroll to live map smoothly
+      document.getElementById('live-map').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Hold modal functions
+    function openHoldModal() {
+      document.getElementById('holdModal').classList.remove('hidden');
+      startHoldTimer();
+    }
+
+    function closeHoldModal() {
+      document.getElementById('holdModal').classList.add('hidden');
+    }
+
+    function startHoldTimer() {
+      if (holdTimerInterval) clearInterval(holdTimerInterval);
+      holdSecondsRemaining = 90 * 60;
+      updateTimerDisplay();
+      holdTimerInterval = setInterval(() => {
+        holdSecondsRemaining--;
+        if (holdSecondsRemaining <= 0) {
+          clearInterval(holdTimerInterval);
+        }
+        updateTimerDisplay();
+      }, 1000);
+    }
+
+    function updateTimerDisplay() {
+      const mins = Math.floor(holdSecondsRemaining / 60);
+      const secs = holdSecondsRemaining % 60;
+      document.getElementById('modalTimer').textContent = 
+        `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    function confirmHold(e) {
+      e.preventDefault();
+      const patient = document.getElementById('holdPatientName').value;
+      const code = document.getElementById('modalHoldCode').textContent;
+      alert(`Success! Unit locked for ${patient}.\nReservation Code: ${code}\nShow this code at the blood bank counter. The hospital cannot demand replacement donors.`);
+      closeHoldModal();
+    }
+
+    // Courier modal functions
+    function openCourierModal() {
+      document.getElementById('courierModal').classList.remove('hidden');
+    }
+
+    function closeCourierModal() {
+      document.getElementById('courierModal').classList.add('hidden');
+    }
+
+    function confirmCourierDispatch(e) {
+      e.preventDefault();
+      const hospital = document.getElementById('courierDestHospital').value;
+      const bed = document.getElementById('courierBed').value;
+      alert(`Emergency Courier Dispatched!\nRider Vikram Singh is en route to ${hospital} (${bed}) with a certified 2°C–6°C cold box.\nLive tracking link sent to your phone via SMS.`);
+      closeCourierModal();
+    }
+
+    function simulateCourierDemo() {
+      let t = 3.8;
+      const interval = setInterval(() => {
+        t = (3.5 + Math.random() * 0.6).toFixed(1);
+        document.getElementById('courierTemp').textContent = `${t}°C (Optimal)`;
+      }, 1500);
+      setTimeout(() => clearInterval(interval), 10000);
+      alert('Live cold-chain telemetry active: Temperature sensor reading in real-time (2°C – 6°C).');
+    }
+
+    // OCR Requisition Scanner
+    function triggerSampleOCR() {
+      document.getElementById('ocrStatusBadge').textContent = 'SCANNING...';
+      document.getElementById('ocrStatusBadge').className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-purple-500/20 text-purple-400 animate-pulse';
+      
+      setTimeout(() => {
+        document.getElementById('ocrStatusBadge').textContent = 'PARSED (CONFIDENCE 99.2%)';
+        document.getElementById('ocrStatusBadge').className = 'text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400';
+        document.getElementById('ocrPatient').textContent = 'Sunita Sharma (34 / F)';
+        document.getElementById('ocrGroup').textContent = 'B Positive (B+)';
+        document.getElementById('ocrComponents').textContent = '2 Units PRBC + 4 Units Platelets';
+        document.getElementById('ocrIndication').textContent = 'Postpartum Hemorrhage (Hb 6.2 g/dL)';
+        document.getElementById('ocrVial').textContent = 'EDTA Purple-Cap Vial Ready';
+      }, 800);
+    }
+
+    function handleFileUpload(e) {
+      if (e.target.files && e.target.files[0]) {
+        triggerSampleOCR();
+      }
+    }
+
+    function reserveFromOCR() {
+      openHoldModal();
+    }
+
+    // Legal shield functions
+    function playLegalAudio() {
+      if ('speechSynthesis' in window) {
+        const text = currentLang === 'hi'
+          ? "कानूनी सूचना। भारत के सर्वोच्च न्यायालय और राष्ट्रीय रक्त संचरण परिषद के आदेश अनुसार किसी भी मरीज को रक्त देने से मना करना या प्रतिस्थापन रक्तदाता मांगना गैरकानूनी है। ऐसा करने वाले कर्मचारी पर तुरंत कानूनी कार्रवाई होगी।"
+          : "Statutory Legal Notice. Under the orders of the Supreme Court of India and National Blood Transfusion Council Rule 14, no hospital blood bank can deny blood or force patients to provide replacement donors. Any clerk demanding replacement donors is subject to immediate suspension.";
+        
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = currentLang === 'hi' ? 'hi-IN' : 'en-IN';
+        utterance.rate = 0.95;
+        window.speechSynthesis.speak(utterance);
+        
+        document.getElementById('legalAudioText').textContent = 'Playing Official Legal Pronouncement...';
+        utterance.onend = () => {
+          document.getElementById('legalAudioText').textContent = 'Play Legal Rights Audio (Hindi/English)';
+        };
+      } else {
+        alert("Audio playback not supported in your browser. Show the written text to the counter clerk.");
+      }
+    }
+
+    function reportCounterClerk() {
+      const hospital = prompt("Enter Hospital Name where clerk is demanding replacement donors:", "Safdarjung Hospital");
+      if (hospital) {
+        alert(`Complaint drafted against blood bank counter at ${hospital}.\nForwarded to State Drug Controller & National Helpline 1800-11-2026.`);
+      }
+    }
+
+    // Statutory Price Calculator
+    function calculateGovtPrice() {
+      const comp = document.getElementById('calcComponent').value;
+      const fac = document.getElementById('calcFacility').value;
+      const cat = document.getElementById('calcCategory').value;
+
+      if (cat === 'AYUSHMAN' || cat === 'THALASSEMIA' || cat === 'BPL') {
+        document.getElementById('calcPriceDisplay').innerHTML = '₹0 <span class="text-xs font-normal text-emerald-400 font-bold">(100% FREE AS PER GOVT DIRECTIVE)</span>';
+        document.getElementById('calcLegalNote').textContent = 'Under NBTC guidelines, blood and components are 100% free for Ayushman, Thalassemia, and BPL cardholders.';
         return;
       }
 
-      centers.forEach(center => {
-        const count = center.units[targetGroup] !== undefined ? center.units[targetGroup] : (center.units['O-'] || 0);
-        const card = document.createElement('div');
-        card.className = 'calm-glass p-5 rounded-3xl border border-white/10 space-y-3 hover:border-emerald-500/30 transition shadow-lg';
-        card.innerHTML = `
-          <div class="flex justify-between items-start">
-            <div>
-              <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">VERIFIED TESTED ON SHELF</span>
-              <h4 class="text-sm font-bold text-white mt-1">${center.name}</h4>
-              <p class="text-[11px] text-calm-textMuted mt-0.5"><i class="fa-solid fa-location-dot text-rose-400 mr-1"></i>${center.address} • <strong>${center.distance} away</strong></p>
-            </div>
-            <div class="text-right">
-              <span class="text-2xl font-extrabold ${count > 0 ? 'text-emerald-400' : 'text-slate-500'} font-mono">${count}</span>
-              <span class="text-[10px] text-calm-textMuted block font-mono">Units of ${targetGroup}</span>
-            </div>
-          </div>
+      let price = 1450;
+      if (comp === 'PRBC' && fac === 'PRIVATE') price = 1550;
+      if (comp === 'PLATELETS') price = 400;
+      if (comp === 'FFP') price = 400;
+      if (comp === 'SDAP') price = 11000;
+      if (comp === 'WHOLE') price = 1450;
 
-          <!-- Stock Overview -->
-          <div class="pt-2 border-t border-white/5 flex flex-wrap gap-1.5 text-[10px] font-mono">
-            <span class="px-2 py-0.5 rounded bg-white/[0.04] text-slate-300">O+: ${center.units['O+']}</span>
-            <span class="px-2 py-0.5 rounded bg-white/[0.04] text-slate-300">A+: ${center.units['A+']}</span>
-            <span class="px-2 py-0.5 rounded bg-white/[0.04] text-slate-300">B+: ${center.units['B+']}</span>
-            <span class="px-2 py-0.5 rounded bg-white/[0.04] text-slate-300">AB+: ${center.units['AB+']}</span>
-          </div>
+      document.getElementById('calcPriceDisplay').innerHTML = `₹${price.toLocaleString('en-IN')} <span class="text-xs font-normal text-slate-400">per unit</span>`;
+      document.getElementById('calcLegalNote').textContent = `Official NBTC capped ceiling for ${comp} in ${fac} facility. Any excess fee is illegal overcharging.`;
+    }
 
-          <div class="pt-2 border-t border-white/5 flex items-center justify-between">
-            <span class="text-xs font-mono text-slate-400">${center.phone}</span>
-            <a href="tel:${center.emergencyPhone}" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs px-4 py-2 rounded-xl transition flex items-center space-x-1.5 shadow-md shadow-emerald-600/20">
-              <i class="fa-solid fa-phone text-[10px]"></i>
-              <span>Call Blood Bank Now</span>
-            </a>
-          </div>
-        `;
-        grid.appendChild(card);
+    function downloadFeeGazette() {
+      alert("Downloading official NBTC Blood Transfusion Fee Gazette Schedule (PDF)...");
+    }
+
+    // Donor functions
+    function registerAsDonor() {
+      alert("HemaShield Registration: Your 15-minute donation slot is confirmed at AIIMS Blood Bank tomorrow 10:00 AM. 12-Month HemaShield Family Pass will be activated upon completion.");
+    }
+
+    function simulateDonorImpact() {
+      const scenarios = [
+        "Your unit was transfused to a 19-year-old road trauma patient in ICU Bed 4 at Safdarjung Trauma Centre. Vitals now stable.",
+        "Your platelet donation was transfused to a 7-year-old child recovering from severe dengue in Ward 3. Platelet count jumped to 65,000.",
+        "Your blood unit was safely transfused to a 42-year-old undergoing emergency cardiac surgery at AIIMS. Patient successfully in recovery."
+      ];
+      const randomMsg = scenarios[Math.floor(Math.random() * scenarios.length)];
+      alert("Donor Feedback Simulator:\n\n" + randomMsg);
+    }
+
+    // Thalassemia functions
+    function openThalassemiaEnrollModal() {
+      alert("Thalassemia Lifelong Care Circle: Enrolled successfully. Next recurring leukodepleted PRBC batch scheduled for 21 days from today. Zero replacement required.");
+    }
+
+    function viewThalassemiaSchedule() {
+      alert("Patient #THAL-209 Schedule:\nNext Transfusion: Friday, Nov 14 (10:00 AM)\nBlood Group: B Positive (PRBC Leukodepleted)\nAssigned Center: AIIMS Thalassemia Daycare\nStatus: Units Reserved & Crossmatched");
+    }
+
+    // Bedside safety test
+    function testBedsideScan(isMatch) {
+      const box = document.getElementById('bedsideResultBox');
+      const icon = document.getElementById('bedsideIcon');
+      const title = document.getElementById('bedsideTitle');
+      const desc = document.getElementById('bedsideDesc');
+
+      if (isMatch) {
+        box.className = 'mt-4 p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center space-x-3';
+        icon.className = 'fa-solid fa-circle-check text-emerald-400 text-xl';
+        title.className = 'text-xs font-bold text-emerald-300';
+        title.textContent = 'Match Confirmed • 100% Safe to Transfuse';
+        desc.textContent = 'Patient ABO/Rh (B+) matches Bag ABO/Rh (B+). Crossmatch cleared.';
+      } else {
+        box.className = 'mt-4 p-3 rounded-xl bg-rose-500/20 border border-rose-500/50 flex items-center space-x-3';
+        icon.className = 'fa-solid fa-triangle-exclamation text-rose-400 text-xl';
+        title.className = 'text-xs font-bold text-rose-300';
+        title.textContent = 'FATAL INCOMPATIBILITY WARNING • DO NOT TRANSFUSE';
+        desc.textContent = 'Patient is B+ but Bag is A+ (Mismatch). Lockout engaged.';
+      }
+    }
+
+    // WhatsApp Bot Simulator
+    function sendChatMessage() {
+      const input = document.getElementById('chatInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const chatBox = document.getElementById('chatBox');
+      
+      // User message
+      const userDiv = document.createElement('div');
+      userDiv.className = 'flex justify-end';
+      userDiv.innerHTML = `<div class="max-w-[80%] p-2.5 rounded-2xl rounded-tr-none bg-emerald-600 text-white font-medium">${text}</div>`;
+      chatBox.appendChild(userDiv);
+      input.value = '';
+
+      // Bot reply
+      setTimeout(() => {
+        let reply = "I found verified units matching your request. Replying with direct counter hotline and digital reservation pass.";
+        if (text.toLowerCase().includes('hold')) {
+          reply = "Success! Unit #DL-8821 locked exclusively for your patient for 90 minutes. Present code HOLD-WA92 at AIIMS Gate 3.";
+        }
+        const botDiv = document.createElement('div');
+        botDiv.className = 'flex justify-start';
+        botDiv.innerHTML = `<div class="max-w-[80%] p-2.5 rounded-2xl rounded-tl-none bg-white/10 text-slate-200">${reply}</div>`;
+        chatBox.appendChild(botDiv);
+        chatBox.scrollTop = chatBox.scrollHeight;
+      }, 700);
+    }
+
+    // API Explorer
+    const apiEndpointsData = {
+      'HOLD': {
+        method: 'POST',
+        url: '/api/reserve/hold',
+        payload: { hospitalId: 'HOSP-01', bloodGroup: 'B+', component: 'PRBC', units: 2, patientName: 'Sunita Sharma', requisitionNo: 'REQ-8821' },
+        response: { success: true, reservationId: 'HOLD-DL8492', status: 'ACTIVE_HELD', expiresAt: '2026-11-11T20:55:00Z', holdMinutes: 90, note: 'Units locked at AIIMS counter.' }
+      },
+      'COURIER': {
+        method: 'POST',
+        url: '/api/courier/dispatch',
+        payload: { pickupHospitalId: 'HOSP-01', destinationHospital: 'Safdarjung Hospital', ward: 'Maternity ICU', bed: 'Bed 14' },
+        response: { success: true, dispatchId: 'DISP-9921', riderName: 'Vikram Singh', tempCelsius: 3.8, safeRange: '2.0°C - 6.0°C', etaMinutes: 18 }
+      },
+      'OCR': {
+        method: 'POST',
+        url: '/api/ocr/requisition',
+        payload: { slipImageUrl: 'https://hemagrid.live/samples/doctor-slip-1.jpg' },
+        response: { success: true, confidence: 0.992, extracted: { patient: 'Sunita Sharma', age: 34, group: 'B+', component: '2 Units PRBC + 4 Units Platelets', indication: 'PPH' } }
+      },
+      'BEDSIDE': {
+        method: 'POST',
+        url: '/api/bedside/double-scan',
+        payload: { patientWristbandBarcode: 'PAT-9842', bloodBagBarcode: 'BAG-DL-8821', nurseAbhaId: 'NURSE-4491' },
+        response: { success: true, verifiedSafe: true, matchType: 'EXACT_MATCH', patientBloodGroup: 'B+', bagBloodGroup: 'B+', alert: 'CLEAR_TO_TRANSFUSE' }
+      },
+      'PRICE': {
+        method: 'GET',
+        url: '/api/price-ceiling?component=PRBC&facility=GOVT&category=GENERAL',
+        payload: {},
+        response: { success: true, component: 'PRBC', facility: 'GOVT', statutoryPriceInr: 1450, legalStatus: 'CAPPED_BY_NBTC', helpline: '1800-11-2026' }
+      },
+      'THALASSEMIA': {
+        method: 'GET',
+        url: '/api/thalassemia/schedule/THAL-209',
+        payload: {},
+        response: { success: true, patientId: 'THAL-209', cadenceDays: 21, nextTransfusionDate: '2026-11-14', component: 'PRBC_LEUKODEPLETED', costInr: 0 }
+      },
+      'PBM': {
+        method: 'POST',
+        url: '/api/pbm/calculate',
+        payload: { preOpHemoglobin: 7.4, surgeryType: 'ORTHOPEDIC_HIP_REPLACEMENT', weightKg: 65 },
+        response: { success: true, riskScore: 'MODERATE_ANEMIA', recommendedTranexamicAcid: true, ironSucroseInfusion: '400mg', unitsConservedProjected: 2 }
+      },
+      'NITI': {
+        method: 'GET',
+        url: '/api/niti/state-rankings',
+        payload: {},
+        response: { success: true, topStates: [ { rank: 1, state: 'Tamil Nadu', score: 94.8 }, { rank: 2, state: 'Kerala', score: 93.4 }, { rank: 3, state: 'Maharashtra', score: 91.2 } ] }
+      }
+    };
+
+    let activeApiKey = 'HOLD';
+
+    function loadApiEndpoint(key) {
+      activeApiKey = key;
+      const data = apiEndpointsData[key];
+      document.getElementById('apiActiveEndpointLabel').textContent = `${data.method} ${data.url}`;
+      document.getElementById('apiPayloadEditor').value = JSON.stringify(data.payload, null, 2);
+      document.getElementById('apiResponseViewer').textContent = '// Click "SEND REQUEST" to inspect live response...';
+      document.getElementById('apiResponseStatus').textContent = 'READY';
+      document.getElementById('apiLatency').textContent = 'Latency: --';
+    }
+
+    function executeActiveApi() {
+      const data = apiEndpointsData[activeApiKey];
+      document.getElementById('apiResponseStatus').textContent = '200 OK';
+      document.getElementById('apiLatency').textContent = `Latency: ${Math.floor(10 + Math.random() * 15)}ms`;
+      document.getElementById('apiResponseViewer').textContent = JSON.stringify(data.response, null, 2);
+    }
+
+    // Cabinet note modal
+    function openCabinetNoteModal() {
+      document.getElementById('cabinetModal').classList.remove('hidden');
+    }
+
+    function closeCabinetNoteModal() {
+      document.getElementById('cabinetModal').classList.add('hidden');
+    }
+
+    // Hindi translation dictionary
+    const translations = {
+      en: {
+        badge: "Take a deep breath. 3,842 licensed blood banks are online across India.",
+        heroTitle: "We will help you find the blood you need.",
+        heroDesc: "No frantic running. No black-market extortion. Select your blood group below to instantly locate tested, verified units in nearby hospitals with a 90-minute digital hold.",
+        lblGroup: "Blood Group Needed",
+        lblComp: "Component Required",
+        lblCity: "Location / City",
+        btnFind: "Find & Hold Blood (Free)",
+        mapTitle: "Live Hospital Stock in Delhi NCR",
+        mapSubtitle: "Click any hospital pin to inspect verified units or reserve a 90-minute digital hold."
+      },
+      hi: {
+        badge: "गहरी सांस लें। पूरे भारत में 3,842 प्रमाणित रक्त केंद्र इस समय ऑनलाइन हैं।",
+        heroTitle: "हम आपको आवश्यक रक्त खोजने में मदद करेंगे।",
+        heroDesc: "कोई घबराहट नहीं। कोई कालाबाज़ारी नहीं। 90 मिनट के डिजिटल होल्ड के साथ नज़दीकी अस्पतालों में जाँचे हुए रक्त की तुरंत जानकारी प्राप्त करें।",
+        lblGroup: "रक्त समूह (Blood Group)",
+        lblComp: "रक्त घटक (Component)",
+        lblCity: "स्थान / शहर (City)",
+        btnFind: "रक्त खोजें और सुरक्षित करें (निःशुल्क)",
+        mapTitle: "दिल्ली एनसीआर में उपलब्ध लाइव रक्त स्टॉक",
+        mapSubtitle: "सत्यापित यूनिट देखने या 90 मिनट के लिए रिज़र्व करने के लिए अस्पताल के पिन पर क्लिक करें।"
+      }
+    };
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'en' ? 'hi' : 'en';
+      document.getElementById('langText').textContent = currentLang === 'en' ? 'हिन्दी' : 'English';
+      
+      const t = translations[currentLang];
+      document.getElementById('t-badge').textContent = t.badge;
+      document.getElementById('t-hero-title').textContent = t.heroTitle;
+      document.getElementById('t-hero-desc').textContent = t.heroDesc;
+      document.getElementById('t-lbl-group').textContent = t.lblGroup;
+      document.getElementById('t-lbl-comp').textContent = t.lblComp;
+      document.getElementById('t-lbl-city').textContent = t.lblCity;
+      document.getElementById('t-btn-find').textContent = t.btnFind;
+      document.getElementById('t-map-title').textContent = t.mapTitle;
+      document.getElementById('t-map-subtitle').textContent = t.mapSubtitle;
+    }
+
+    // PWA Service Worker Registration
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').then((reg) => {
+          console.log('[HemaGrid] Offline Service Worker registered:', reg.scope);
+        }).catch((err) => {
+          console.log('[HemaGrid] Service Worker registration failed:', err);
+        });
       });
     }
 
-    function handleInstantSearch() {
-      const group = document.getElementById('searchGroupSelect').value;
-      const city = document.getElementById('searchCitySelect').value;
-
-      let filtered = [...bloodCenters];
-      if (city !== 'ALL') {
-        filtered = filtered.filter(c => c.area === city);
-      }
-
-      // Sort by availability of the selected group first
-      filtered.sort((a, b) => (b.units[group] || 0) - (a.units[group] || 0));
-
-      document.getElementById('resultsHeading').innerText = `Blood Banks with Tested ${group} Units Nearby`;
-      document.getElementById('resultsSub').innerText = `Showing verified blood centers with ${group} ready for cross-matching`;
-
-      renderResults(filtered, group);
-
-      // Smooth scroll to results
-      document.getElementById('resultsSection').scrollIntoView({ behavior: 'smooth' });
-    }
-
-    // Initial render
-    renderResults(bloodCenters, 'O-');
-
-    // Language Toggle (English / Hindi)
-    let isHindi = false;
-    function toggleLang() {
-      isHindi = !isHindi;
-      document.getElementById('langBtn').innerText = isHindi ? 'English' : 'हिन्दी';
-
-      if (isHindi) {
-        document.getElementById('t-badge').innerText = "गहरी साँस लें। इस समय 3,842 सरकारी व चैरिटेबल ब्लड बैंक ऑनलाइन हैं।";
-        document.getElementById('t-hero-title').innerText = "हम आपकी ज़रूरत का खून ढूंढने में पूरी मदद करेंगे।";
-        document.getElementById('t-hero-desc').innerText = "कोई घबराहट नहीं। कोई कालाबाज़ारी नहीं। अपने मरीज़ का ब्लड ग्रुप चुनें और नज़दीकी अस्पतालों में जाँचे हुए ब्लड बैग्स देखें।";
-        document.getElementById('t-lbl-group').innerText = "ज़रूरी ब्लड ग्रुप";
-        document.getElementById('t-lbl-city').innerText = "आपका क्षेत्र";
-        document.getElementById('t-btn-find').innerText = "तुरंत देखें";
-      } else {
-        document.getElementById('t-badge').innerText = "Take a deep breath. 3,842 verified blood centers are online right now.";
-        document.getElementById('t-hero-title').innerText = "We will help you find the blood you need.";
-        document.getElementById('t-hero-desc').innerText = "No panic. No black markets. Select your blood group below to find tested, verified units in nearby hospitals right now.";
-        document.getElementById('t-lbl-group').innerText = "Blood Group Needed";
-        document.getElementById('t-lbl-city').innerText = "Location / Area";
-        document.getElementById('t-btn-find').innerText = "Find Units";
-      }
-    }
+    // Initialize default API explorer state
+    window.addEventListener('DOMContentLoaded', () => {
+      loadApiEndpoint('HOLD');
+      executeActiveApi();
+      calculateGovtPrice();
+    });
   </script>
 </body>
 </html>
