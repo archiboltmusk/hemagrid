@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HemaGrid | The Sovereign Blood Grid of India</title>
-  <meta name="description" content="India's live national blood mesh. Real-time hospital stock, smart temperature-controlled logistics, and automated voluntary replenishment.">
+  <meta name="description" content="Sovereign Digital Public Infrastructure for Universal Blood Availability, Cold-Chain IoT, ABHA Integration, and Bedside Clinical Safety. Built for MoHFW and State Health Missions.">
   
   <!-- Tailwind CSS & Icons -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
-  <!-- Apple-inspired Typography: Plus Jakarta Sans & JetBrains Mono -->
+  <!-- Apple-inspired Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -54,7 +54,7 @@
     }
 
     .apple-nav {
-      background: rgba(0, 0, 0, 0.72);
+      background: rgba(0, 0, 0, 0.75);
       backdrop-filter: blur(25px) saturate(180%);
       -webkit-backdrop-filter: blur(25px) saturate(180%);
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -82,23 +82,13 @@
                   0 25px 60px -15px rgba(0, 0, 0, 0.9),
                   0 0 80px -20px rgba(225, 29, 72, 0.25);
     }
-
-    /* Radar sweep animation */
-    @keyframes radarSweep {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    .radar-beam {
-      animation: radarSweep 4s linear infinite;
-      transform-origin: center;
-    }
   </style>
 </head>
 <body class="selection:bg-apple-accentCrimson selection:text-white">
 
-  <!-- Apple Minimal Floating Navigation -->
-  <header class="fixed top-0 inset-x-0 z-50 apple-nav transition-all duration-300">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+  <!-- Minimal Navigation -->
+  <header class="fixed top-0 inset-x-0 z-50 apple-nav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
       <div class="flex items-center space-x-3">
         <a href="#" class="flex items-center space-x-2.5 group">
           <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-rose-600 to-apple-accentRed flex items-center justify-center text-white shadow-sm shadow-rose-600/40">
@@ -108,24 +98,25 @@
         </a>
         <div class="hidden md:flex items-center space-x-2 pl-3 border-l border-white/10 text-[11px] font-mono text-apple-textMuted">
           <span class="w-1.5 h-1.5 rounded-full bg-apple-accentGreen animate-pulse"></span>
-          <span>SOVEREIGN MESH • 3,842 CENTERS ONLINE</span>
+          <span>ABHA NATIVE • NITI AAYOG COMPATIBLE</span>
         </div>
       </div>
 
-      <nav class="hidden md:flex items-center space-x-7 text-xs font-medium text-apple-textSecondary">
-        <a href="#live-console" class="hover:text-white transition">Live Console</a>
-        <a href="#simulator" class="hover:text-white transition">Interactive Simulator</a>
-        <a href="#apps" class="hover:text-white transition">The 4 Apps</a>
-        <a href="#loopholes" class="hover:text-white transition">The 17 Loopholes</a>
+      <nav class="hidden lg:flex items-center space-x-7 text-xs font-medium text-apple-textSecondary">
+        <a href="#state-rankings" class="hover:text-white transition">State Index</a>
+        <a href="#bedside-tool" class="hover:text-white transition">Bedside Safety</a>
+        <a href="#whatsapp-sim" class="hover:text-white transition">WhatsApp Bot</a>
+        <a href="#pbm-calc" class="hover:text-white transition">PBM Calculator</a>
+        <a href="#loopholes" class="hover:text-white transition">17 Loopholes</a>
       </nav>
 
       <div class="flex items-center space-x-3">
-        <a href="https://github.com/archiboltmusk/hemagrid" target="_blank" rel="noopener noreferrer" class="text-xs text-white bg-white/10 hover:bg-white/15 px-3 py-1.5 rounded-full border border-white/10 transition flex items-center space-x-1.5">
-          <i class="fa-brands fa-github text-sm"></i>
-          <span>GitHub</span>
-        </a>
-        <a href="#simulator" class="text-xs font-bold text-black bg-white hover:bg-slate-200 px-3.5 py-1.5 rounded-full transition shadow-sm">
-          Run Live Demo
+        <button onclick="openCabinetModal()" class="text-xs font-semibold text-white bg-white/10 hover:bg-white/15 px-3.5 py-1.5 rounded-full border border-white/10 transition flex items-center space-x-1.5">
+          <i class="fa-solid fa-file-pdf text-apple-accentRed"></i>
+          <span>Official Cabinet Note</span>
+        </button>
+        <a href="https://github.com/archiboltmusk/hemagrid" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-black bg-white hover:bg-slate-200 px-3.5 py-1.5 rounded-full transition shadow-sm">
+          GitHub Repo
         </a>
       </div>
     </div>
@@ -135,478 +126,465 @@
   <section class="relative pt-36 pb-16 md:pt-48 md:pb-28 apple-glow">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center relative z-10">
       
-      <!-- Live Status Pill -->
       <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full apple-glass text-xs font-medium text-slate-300 mb-8 border border-white/10 shadow-lg">
-        <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-        </span>
-        <span class="font-mono text-[11px]">LIVE NATIONAL NETWORK • ZERO BLOOD WASTAGE</span>
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="font-mono text-[11px]">SOVEREIGN DIGITAL INFRASTRUCTURE FOR BLOOD &amp; BIOLOGICS</span>
       </div>
 
-      <!-- Main Headline in Pure Clean Words -->
       <h1 class="text-4xl sm:text-7xl lg:text-8xl font-extrabold tracking-tighter leading-none text-gradient max-w-4xl mx-auto">
-        Every Drop Counted. Every Life Protected.
+        Every Drop Counted. Every Mother Protected.
       </h1>
 
-      <p class="mt-8 text-lg sm:text-2xl text-apple-textSecondary max-w-2xl mx-auto font-normal tracking-tight leading-relaxed">
-        India doesn't have a donor shortage. We have a broken distribution system. 
-        <strong class="text-white font-medium">HemaGrid</strong> connects every hospital into one live screen so no blood expires, no family has to hunt at night, and no mother bleeds out in a village clinic.
+      <p class="mt-8 text-lg sm:text-2xl text-apple-textSecondary max-w-3xl mx-auto font-normal tracking-tight leading-relaxed">
+        Connecting 3,800+ blood centers across India with real-time inventory balancing, smart cold-chain delivery, zero bedside mistakes, and automatic donor replenishment.
       </p>
 
       <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="#simulator" class="w-full sm:w-auto bg-white text-black hover:bg-slate-200 font-bold text-sm px-8 py-4 rounded-full transition shadow-xl shadow-white/10 flex items-center justify-center space-x-2">
-          <i class="fa-solid fa-play text-xs text-apple-accentCrimson"></i>
-          <span>Launch Live Simulator</span>
+        <a href="#bedside-tool" class="w-full sm:w-auto bg-white text-black hover:bg-slate-200 font-bold text-sm px-8 py-4 rounded-full transition shadow-xl shadow-white/10 flex items-center justify-center space-x-2">
+          <i class="fa-solid fa-barcode text-apple-accentCrimson"></i>
+          <span>Test Bedside Double-Scan</span>
         </a>
-        <a href="https://github.com/archiboltmusk/hemagrid" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto apple-glass hover:border-white/20 text-white font-semibold text-sm px-8 py-4 rounded-full transition flex items-center justify-center space-x-2">
-          <i class="fa-brands fa-github text-sm"></i>
-          <span>Inspect Source Code</span>
+        <a href="#whatsapp-sim" class="w-full sm:w-auto apple-glass hover:border-white/20 text-white font-semibold text-sm px-8 py-4 rounded-full transition flex items-center justify-center space-x-2">
+          <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+          <span>Test WhatsApp Zero-App Flow</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Real-Time Live Command Console (Interactive Apple Display Mockup) -->
-  <section id="live-console" class="py-12 max-w-5xl mx-auto px-4 sm:px-6">
-    <div class="apple-glass rounded-3xl p-5 sm:p-8 device-shadow border border-white/15 relative overflow-hidden">
-      
-      <!-- Top Window Header Bar -->
-      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-white/10 pb-4 mb-6 gap-3">
-        <div class="flex items-center space-x-2.5">
-          <span class="w-3 h-3 rounded-full bg-apple-accentRed"></span>
-          <span class="w-3 h-3 rounded-full bg-apple-accentAmber"></span>
-          <span class="w-3 h-3 rounded-full bg-apple-accentGreen"></span>
-          <span class="text-xs font-mono font-bold text-slate-300 ml-2">MoHFW NATIONAL CLEARINGHOUSE RADAR</span>
-        </div>
-
-        <div class="flex items-center space-x-4 text-xs font-mono">
-          <span class="text-emerald-400 font-bold flex items-center">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping mr-2"></span>
-            SYNC: 0.14s LATENCY
-          </span>
-          <span class="text-apple-textMuted" id="liveClock">18:55:00 UTC</span>
-        </div>
+  <!-- Live Telemetry Radar Bar -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 mb-16">
+    <div class="apple-glass rounded-3xl p-6 border border-white/10 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+      <div>
+        <p class="text-xs text-apple-textMuted uppercase font-mono">National Centers Online</p>
+        <p class="text-3xl font-extrabold text-white mt-1">3,842</p>
+        <span class="text-xs text-emerald-400 font-mono">100% Interoperable</span>
       </div>
-
-      <!-- Live Metric Ticker Cards -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-        <div class="bg-black/60 p-4 rounded-2xl border border-white/5">
-          <p class="text-[11px] font-mono text-apple-textMuted uppercase">Active State Centers</p>
-          <p class="text-2xl font-bold text-white mt-1">3,842</p>
-          <span class="text-[10px] text-emerald-400 font-mono">100% Interconnected</span>
-        </div>
-        <div class="bg-black/60 p-4 rounded-2xl border border-white/5">
-          <p class="text-[11px] font-mono text-apple-textMuted uppercase">Platelet Expiry Prevented</p>
-          <p class="text-2xl font-bold text-apple-accentAmber mt-1" id="tickerExpiry">18,421</p>
-          <span class="text-[10px] text-apple-textMuted font-mono">Saved This Month</span>
-        </div>
-        <div class="bg-black/60 p-4 rounded-2xl border border-white/5">
-          <p class="text-[11px] font-mono text-apple-textMuted uppercase">Cold-Chain Temperature</p>
-          <p class="text-2xl font-bold text-apple-accentGreen mt-1" id="tickerTemp">3.8°C</p>
-          <span class="text-[10px] text-emerald-400 font-mono">Optimal (2°C–6°C)</span>
-        </div>
-        <div class="bg-black/60 p-4 rounded-2xl border border-white/5">
-          <p class="text-[11px] font-mono text-apple-textMuted uppercase">Voluntary Ratio</p>
-          <p class="text-2xl font-bold text-apple-accentBlue mt-1">94.8%</p>
-          <span class="text-[10px] text-apple-textMuted font-mono">Zero Coerced Donors</span>
-        </div>
+      <div>
+        <p class="text-xs text-apple-textMuted uppercase font-mono">Cold-Chain Temperature</p>
+        <p class="text-3xl font-extrabold text-apple-accentGreen mt-1" id="liveTempText">3.8°C</p>
+        <span class="text-xs text-emerald-400 font-mono">Optimal Range (2°C–6°C)</span>
       </div>
-
-      <!-- Real-Time Canvas Waveform + Live Dispatch Stream -->
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        <!-- Live Waveform -->
-        <div class="bg-black/80 rounded-2xl border border-white/5 p-4 flex flex-col justify-between">
-          <div>
-            <div class="flex justify-between items-center text-xs font-mono text-apple-textMuted mb-2">
-              <span>IOT THERMAL SENSOR STREAM</span>
-              <span class="text-emerald-400 font-bold">60 FPS LIVE</span>
-            </div>
-            <p class="text-xs text-slate-300">Continuous 2°C–6°C monitoring across all EV and drone couriers.</p>
-          </div>
-          <canvas id="tempCanvas" class="w-full h-24 my-2 rounded-lg bg-black"></canvas>
-          <div class="flex justify-between text-[10px] font-mono text-apple-textMuted border-t border-white/5 pt-2">
-            <span>Box #IOT-42</span>
-            <span>Sensor: STS35</span>
-            <span class="text-emerald-400">Stable</span>
-          </div>
-        </div>
-
-        <!-- Live Activity Feed -->
-        <div class="lg:col-span-2 bg-black/80 rounded-2xl border border-white/5 p-4 font-mono text-xs">
-          <div class="flex justify-between items-center text-apple-textMuted border-b border-white/5 pb-2 mb-3">
-            <span>LIVE INTER-HOSPITAL CLEARING LOG</span>
-            <span class="text-apple-accentRed animate-pulse">● STREAMING</span>
-          </div>
-          <div id="liveActivityFeed" class="space-y-2 text-[11px] max-h-44 overflow-hidden">
-            <div class="p-2 rounded-lg bg-white/[0.02] border border-white/5 flex justify-between">
-              <span class="text-apple-accentAmber font-bold">[EXPIRY RADAR]</span>
-              <span class="text-white">A+ Platelets transferred: AIIMS $\to$ Safdarjung Oncology</span>
-              <span class="text-emerald-400">Cleared</span>
-            </div>
-            <div class="p-2 rounded-lg bg-white/[0.02] border border-white/5 flex justify-between">
-              <span class="text-apple-accentCrimson font-bold">[OBSTETRIC SOS]</span>
-              <span class="text-white">O- Red Blood Cells dispatched: Rapid EV #DL-04</span>
-              <span class="text-cyan-400">18 min ETA</span>
-            </div>
-            <div class="p-2 rounded-lg bg-white/[0.02] border border-white/5 flex justify-between">
-              <span class="text-apple-accentBlue font-bold">[AUTO-REPLENISH]</span>
-              <span class="text-white">Mehrauli CHC shelf low $\to$ 2 local donors accepted invite</span>
-              <span class="text-emerald-400">Booked</span>
-            </div>
-          </div>
-        </div>
+      <div>
+        <p class="text-xs text-apple-textMuted uppercase font-mono">Domestic Plasma Saved</p>
+        <p class="text-3xl font-extrabold text-apple-accentPurple mt-1">420,000 L</p>
+        <span class="text-xs text-apple-textMuted font-mono">Routed to Albumin Factories</span>
+      </div>
+      <div>
+        <p class="text-xs text-apple-textMuted uppercase font-mono">ABHA IDs Linked</p>
+        <p class="text-3xl font-extrabold text-apple-accentBlue mt-1">1.84 Million</p>
+        <span class="text-xs text-apple-textMuted font-mono">Guaranteed Family Protection</span>
       </div>
     </div>
   </section>
 
-  <!-- Interactive Live Simulator Section -->
-  <section id="simulator" class="py-24 max-w-5xl mx-auto px-4 sm:px-6">
-    <div class="text-center max-w-2xl mx-auto mb-16">
-      <span class="text-xs font-bold text-apple-accentCrimson uppercase tracking-widest font-mono">HANDS-ON SIMULATOR</span>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 tracking-tight">Test How the System Handles Emergencies</h2>
-      <p class="text-apple-textSecondary text-xs sm:text-sm mt-3">Click any button below to watch the live safety algorithms trigger in real time.</p>
+  <!-- UPGRADE 1: Bedside Double-Scan Mobile Tool -->
+  <section id="bedside-tool" class="py-20 max-w-5xl mx-auto px-4 sm:px-6 border-t border-white/10">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-xs font-bold text-apple-accentCrimson uppercase tracking-widest font-mono">CLINICAL SAFETY UPGRADE</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 tracking-tight">Bedside Double-Scan Tool</h2>
+      <p class="text-apple-textSecondary text-xs sm:text-sm mt-3">
+        Completely eliminates fatal bedside clerical errors. The nurse scans the patient wristband, scans the blood bag, and the computer validates compatibility before the needle enters the vein.
+      </p>
     </div>
 
-    <!-- Simulator Controller -->
-    <div class="apple-glass rounded-3xl p-6 sm:p-10 border border-white/10 space-y-6">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-        <button onclick="runSimulation('emergency')" class="p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-apple-accentCrimson text-left transition group">
-          <div class="w-8 h-8 rounded-lg bg-rose-500/10 text-apple-accentCrimson flex items-center justify-center text-sm mb-3 group-hover:scale-110 transition">
-            <i class="fa-solid fa-triangle-exclamation"></i>
+    <div class="apple-glass rounded-3xl p-6 sm:p-10 border border-white/10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <!-- Controls -->
+      <div class="space-y-4">
+        <div>
+          <label class="block text-xs font-mono text-apple-textMuted mb-1">Step 1: Patient Wristband (Scanned)</label>
+          <div class="p-3 rounded-xl bg-black border border-white/10 flex justify-between items-center text-xs font-mono">
+            <span>PATIENT: Sunita V. (Bed #04, ICU)</span>
+            <span class="text-rose-400 font-bold">TYPE: O-</span>
           </div>
-          <p class="text-xs font-bold text-white">1. Severe Bleeding Emergency</p>
-          <p class="text-[11px] text-apple-textMuted mt-1">Village mother needs O- blood instantly.</p>
-        </button>
+        </div>
 
-        <button onclick="runSimulation('wrong-type')" class="p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-apple-accentAmber text-left transition group">
-          <div class="w-8 h-8 rounded-lg bg-amber-500/10 text-apple-accentAmber flex items-center justify-center text-sm mb-3 group-hover:scale-110 transition">
-            <i class="fa-solid fa-ban"></i>
+        <div>
+          <label class="block text-xs font-mono text-apple-textMuted mb-1">Step 2: Select Blood Bag to Scan at Bedside</label>
+          <div class="grid grid-cols-2 gap-3">
+            <button onclick="scanBedsideBag('HG-DEL-2611-02B', 'O-', true)" class="p-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-left text-xs font-mono transition">
+              <span class="block text-emerald-400 font-bold">Bag A: O- PRBC</span>
+              <span class="text-[10px] text-apple-textMuted">Barcode: HG-DEL-2611-02B</span>
+            </button>
+            <button onclick="scanBedsideBag('HG-DEL-2611-08A', 'A+', false)" class="p-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 text-left text-xs font-mono transition">
+              <span class="block text-rose-400 font-bold">Bag B: A+ PRBC</span>
+              <span class="text-[10px] text-apple-textMuted">Barcode: HG-DEL-2611-08A</span>
+            </button>
           </div>
-          <p class="text-xs font-bold text-white">2. Wrong Blood Type Scan</p>
-          <p class="text-[11px] text-apple-textMuted mt-1">Nurse accidentally scans A+ for O- patient.</p>
-        </button>
+        </div>
 
-        <button onclick="runSimulation('heat-breach')" class="p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-apple-accentPurple text-left transition group">
-          <div class="w-8 h-8 rounded-lg bg-purple-500/10 text-purple-400 flex items-center justify-center text-sm mb-3 group-hover:scale-110 transition">
-            <i class="fa-solid fa-temperature-arrow-up"></i>
-          </div>
-          <p class="text-xs font-bold text-white">3. Summer Heat Spoilage</p>
-          <p class="text-[11px] text-apple-textMuted mt-1">Box temperature rises above 6°C on road.</p>
-        </button>
-
-        <button onclick="runSimulation('replenish')" class="p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-apple-accentGreen text-left transition group">
-          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-apple-accentGreen flex items-center justify-center text-sm mb-3 group-hover:scale-110 transition">
-            <i class="fa-solid fa-arrows-rotate"></i>
-          </div>
-          <p class="text-xs font-bold text-white">4. Empty Shelf Replenish</p>
-          <p class="text-[11px] text-apple-textMuted mt-1">Last rare unit taken 20 km away.</p>
-        </button>
+        <p class="text-[11px] text-apple-textMuted leading-relaxed">
+          Click either button above to simulate scanning a compatible bag vs an incompatible bag at the bedside.
+        </p>
       </div>
 
-      <!-- Live Simulator Output Box -->
-      <div id="simScreen" class="p-5 rounded-2xl bg-black border border-white/10 font-mono text-xs space-y-3 transition-all duration-300">
+      <!-- Result Screen -->
+      <div id="bedsideResultBox" class="p-6 rounded-2xl bg-black border border-white/10 font-mono text-xs space-y-3 min-h-[160px] flex flex-col justify-center">
         <div class="flex justify-between items-center text-apple-textMuted border-b border-white/5 pb-2">
-          <span>SIMULATOR STATUS: READY</span>
-          <span class="text-apple-accentGreen">SYSTEM IDLE</span>
+          <span>BEDSIDE SCANNER</span>
+          <span class="text-emerald-400">READY</span>
         </div>
         <p class="text-apple-textSecondary">
-          Select one of the 4 test cases above to run an instant end-to-end trace through the live matching algorithms.
+          Awaiting barcode scan. Click <strong>Bag A</strong> or <strong>Bag B</strong> on the left to verify safety.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- The 4 Simple Apps (Apple Bezel Showcases) -->
-  <section id="apps" class="py-24 max-w-5xl mx-auto px-4 sm:px-6">
-    <div class="text-center max-w-2xl mx-auto mb-16">
-      <span class="text-xs font-bold text-apple-accentBlue uppercase tracking-widest font-mono">COMPLETE WORKSPACE MONOREPO</span>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 tracking-tight">Four Clean Applications Ready in Code</h2>
-      <p class="text-apple-textSecondary text-xs sm:text-sm mt-3">Run each one locally with a single npm command.</p>
+  <!-- UPGRADE 2: Live WhatsApp Business Chat Simulator -->
+  <section id="whatsapp-sim" class="py-20 max-w-5xl mx-auto px-4 sm:px-6 border-t border-white/10">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest font-mono">ZERO-APP CITIZEN ADOPTION</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 tracking-tight">Interactive WhatsApp Donor Chat</h2>
+      <p class="text-apple-textSecondary text-xs sm:text-sm mt-3">
+        Citizens don't need to install any app. Everything happens over verified WhatsApp Business messages.
+      </p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-      <!-- App 1 -->
-      <div class="apple-glass p-7 rounded-3xl border border-white/10 space-y-4">
-        <div class="flex justify-between items-start">
-          <div class="w-10 h-10 rounded-2xl bg-rose-500/10 text-apple-accentCrimson flex items-center justify-center text-lg border border-rose-500/20">
-            <i class="fa-solid fa-hospital"></i>
-          </div>
-          <span class="text-xs font-mono font-bold text-apple-accentRed px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20">PORT 4001</span>
+    <div class="max-w-md mx-auto apple-glass rounded-3xl p-5 border border-white/15 shadow-2xl space-y-4">
+      <!-- WhatsApp Header -->
+      <div class="flex items-center space-x-3 border-b border-white/10 pb-3">
+        <div class="w-9 h-9 rounded-full bg-emerald-600 flex items-center justify-center text-white text-base">
+          <i class="fa-brands fa-whatsapp"></i>
         </div>
-        <h3 class="text-xl font-bold text-white">Hospital Screen (ERP &amp; Expiry Radar)</h3>
-        <p class="text-apple-textSecondary text-xs sm:text-sm leading-relaxed">
-          For nurses and blood bank staff. Scans barcodes on blood bags, keeps a live count, and rings an alert when blood is 48 hours away from expiring so it can be moved to a hospital that needs it today.
-        </p>
-        <div class="pt-3 border-t border-white/10 flex justify-between items-center font-mono text-xs text-apple-textMuted">
-          <span>apps/hospital-app</span>
-          <span class="text-white font-bold">npm run dev:hospital</span>
+        <div>
+          <h4 class="text-xs font-bold text-white flex items-center">
+            HemaGrid National Blood Grid
+            <i class="fa-solid fa-circle-check text-emerald-400 text-[10px] ml-1.5"></i>
+          </h4>
+          <p class="text-[10px] text-emerald-400 font-mono">Official MoHFW Channel</p>
         </div>
       </div>
 
-      <!-- App 2 -->
-      <div class="apple-glass p-7 rounded-3xl border border-white/10 space-y-4">
-        <div class="flex justify-between items-start">
-          <div class="w-10 h-10 rounded-2xl bg-blue-500/10 text-apple-accentBlue flex items-center justify-center text-lg border border-blue-500/20">
-            <i class="fa-solid fa-heart-pulse"></i>
-          </div>
-          <span class="text-xs font-mono font-bold text-apple-accentBlue px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20">PORT 4002</span>
-        </div>
-        <h3 class="text-xl font-bold text-white">Donor &amp; Patient Screen (HemaPass)</h3>
-        <p class="text-apple-textSecondary text-xs sm:text-sm leading-relaxed">
-          For regular citizens. Gives donors a digital card with QR check-in, tracking how many lives they saved. If a family has an emergency, they press one SOS button and the system privately alerts nearby verified donors.
-        </p>
-        <div class="pt-3 border-t border-white/10 flex justify-between items-center font-mono text-xs text-apple-textMuted">
-          <span>apps/consumer-app</span>
-          <span class="text-white font-bold">npm run dev:consumer</span>
+      <!-- Chat Bubbles -->
+      <div id="chatStream" class="space-y-3 text-xs font-sans min-h-[220px]">
+        <div class="bg-slate-900 border border-white/10 p-3 rounded-2xl rounded-tl-none max-w-[85%] space-y-1">
+          <p class="text-white text-[11px] leading-relaxed">
+            Namaste Rahul! An emergency patient at <strong>AIIMS New Delhi (2.4 km from you)</strong> just needed O- blood.
+          </p>
+          <p class="text-apple-textMuted text-[10px]">
+            The hospital shelf is low. We reserved a 15-minute VIP slot for you tomorrow at 10:00 AM. Can you help?
+          </p>
         </div>
       </div>
 
-      <!-- App 3 -->
-      <div class="apple-glass p-7 rounded-3xl border border-white/10 space-y-4">
-        <div class="flex justify-between items-start">
-          <div class="w-10 h-10 rounded-2xl bg-emerald-500/10 text-apple-accentGreen flex items-center justify-center text-lg border border-emerald-500/20">
-            <i class="fa-solid fa-temperature-arrow-down"></i>
-          </div>
-          <span class="text-xs font-mono font-bold text-apple-accentGreen px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">PORT 4003</span>
+      <!-- Action Buttons -->
+      <div class="flex space-x-2 pt-2 border-t border-white/10">
+        <button onclick="sendChatMessage('CONFIRM')" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-2.5 rounded-xl transition">
+          Confirm 10:00 AM Slot
+        </button>
+        <button onclick="sendChatMessage('RESCHEDULE')" class="px-3 bg-white/10 hover:bg-white/15 text-white text-xs py-2.5 rounded-xl transition">
+          Reschedule
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPGRADE 3: NITI Aayog State Blood Rankings -->
+  <section id="state-rankings" class="py-20 max-w-5xl mx-auto px-4 sm:px-6 border-t border-white/10">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-xs font-bold text-apple-accentBlue uppercase tracking-widest font-mono">GOVERNMENT ACCOUNTABILITY</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 tracking-tight">NITI Aayog State Blood Safety Index</h2>
+      <p class="text-apple-textSecondary text-xs sm:text-sm mt-3">
+        Real-time ranking of states based on voluntary donation rates, maternal bleeding response times, and zero-discard compliance.
+      </p>
+    </div>
+
+    <div class="apple-glass rounded-3xl overflow-hidden border border-white/10">
+      <table class="w-full text-left text-xs font-mono">
+        <thead class="bg-white/5 border-b border-white/10 text-apple-textMuted">
+          <tr>
+            <th class="p-4">Rank</th>
+            <th class="p-4">State / UT</th>
+            <th class="p-4">Safety Score</th>
+            <th class="p-4">Voluntary %</th>
+            <th class="p-4">PPH Transit</th>
+            <th class="p-4">Classification</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-white/5 text-slate-300">
+          <tr class="hover:bg-white/[0.02]">
+            <td class="p-4 font-bold text-white">#01</td>
+            <td class="p-4 font-bold text-white">Tamil Nadu</td>
+            <td class="p-4 text-emerald-400 font-bold">96.4</td>
+            <td class="p-4">98.2%</td>
+            <td class="p-4">14 mins</td>
+            <td class="p-4"><span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold text-[10px]">LEADER</span></td>
+          </tr>
+          <tr class="hover:bg-white/[0.02]">
+            <td class="p-4 font-bold text-white">#02</td>
+            <td class="p-4 font-bold text-white">Maharashtra</td>
+            <td class="p-4 text-emerald-400 font-bold">94.8</td>
+            <td class="p-4">96.5%</td>
+            <td class="p-4">16 mins</td>
+            <td class="p-4"><span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold text-[10px]">LEADER</span></td>
+          </tr>
+          <tr class="hover:bg-white/[0.02]">
+            <td class="p-4 font-bold text-white">#03</td>
+            <td class="p-4 font-bold text-white">Karnataka</td>
+            <td class="p-4 text-emerald-400 font-bold">92.1</td>
+            <td class="p-4">93.4%</td>
+            <td class="p-4">18 mins</td>
+            <td class="p-4"><span class="px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 font-bold text-[10px]">LEADER</span></td>
+          </tr>
+          <tr class="hover:bg-white/[0.02]">
+            <td class="p-4 font-bold text-white">#04</td>
+            <td class="p-4 font-bold text-white">Delhi-NCR</td>
+            <td class="p-4 text-cyan-400 font-bold">90.5</td>
+            <td class="p-4">91.8%</td>
+            <td class="p-4">17 mins</td>
+            <td class="p-4"><span class="px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 font-bold text-[10px]">ACHIEVER</span></td>
+          </tr>
+          <tr class="hover:bg-white/[0.02]">
+            <td class="p-4 font-bold text-white">#05</td>
+            <td class="p-4 font-bold text-white">Gujarat</td>
+            <td class="p-4 text-cyan-400 font-bold">89.2</td>
+            <td class="p-4">90.1%</td>
+            <td class="p-4">19 mins</td>
+            <td class="p-4"><span class="px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-400 font-bold text-[10px]">ACHIEVER</span></td>
+          </tr>
+          <tr class="hover:bg-white/[0.02]">
+            <td class="p-4 font-bold text-white">#06</td>
+            <td class="p-4 font-bold text-white">Uttar Pradesh</td>
+            <td class="p-4 text-amber-400 font-bold">78.4</td>
+            <td class="p-4">74.2%</td>
+            <td class="p-4">28 mins</td>
+            <td class="p-4"><span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-400 font-bold text-[10px]">ASPIRANT</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- UPGRADE 4: Patient Blood Management (PBM) Surgery Calculator -->
+  <section id="pbm-calc" class="py-20 max-w-5xl mx-auto px-4 sm:px-6 border-t border-white/10">
+    <div class="text-center max-w-2xl mx-auto mb-12">
+      <span class="text-xs font-bold text-apple-accentPurple uppercase tracking-widest font-mono">BLOOD PRESERVATION SCIENCE</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 tracking-tight">Patient Blood Management (PBM) Calculator</h2>
+      <p class="text-apple-textSecondary text-xs sm:text-sm mt-3">
+        Optimizing patient hemoglobin 30 days before surgery reduces overall hospital blood demand by 30%.
+      </p>
+    </div>
+
+    <div class="apple-glass rounded-3xl p-6 sm:p-10 border border-white/10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div class="space-y-4">
+        <div>
+          <label class="block text-xs font-mono text-apple-textMuted mb-1">Patient Current Hemoglobin (g/dL)</label>
+          <input type="number" id="pbmHbInput" value="10.2" step="0.1" class="w-full bg-black border border-white/15 rounded-xl px-4 py-2.5 text-sm font-mono text-white focus:outline-none focus:border-apple-accentPurple">
         </div>
-        <h3 class="text-xl font-bold text-white">Logistics &amp; Cold-Chain Console</h3>
-        <p class="text-apple-textSecondary text-xs sm:text-sm leading-relaxed">
-          For delivery couriers and medical drones. Shows live temperatures inside the transport box every 10 seconds. If the box gets warmer than 6°C, it immediately flags the blood so patients never receive spoiled bags.
-        </p>
-        <div class="pt-3 border-t border-white/10 flex justify-between items-center font-mono text-xs text-apple-textMuted">
-          <span>apps/partner-app</span>
-          <span class="text-white font-bold">npm run dev:partner</span>
+
+        <div>
+          <label class="block text-xs font-mono text-apple-textMuted mb-1">Days Until Elective Surgery</label>
+          <input type="number" id="pbmDaysInput" value="28" class="w-full bg-black border border-white/15 rounded-xl px-4 py-2.5 text-sm font-mono text-white focus:outline-none focus:border-apple-accentPurple">
         </div>
+
+        <button onclick="calculatePBM()" class="w-full bg-apple-accentPurple hover:opacity-90 text-white font-bold text-xs py-3 rounded-xl transition">
+          Calculate Blood Units Saved
+        </button>
       </div>
 
-      <!-- App 4 -->
-      <div class="apple-glass p-7 rounded-3xl border border-white/10 space-y-4">
-        <div class="flex justify-between items-start">
-          <div class="w-10 h-10 rounded-2xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-lg border border-purple-500/20">
-            <i class="fa-solid fa-server"></i>
-          </div>
-          <span class="text-xs font-mono font-bold text-purple-400 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20">PORT 4000</span>
-        </div>
-        <h3 class="text-xl font-bold text-white">Central Brain &amp; Matching Engine</h3>
-        <p class="text-apple-textSecondary text-xs sm:text-sm leading-relaxed">
-          The central API server that coordinates the entire grid. Checks blood group compatibility, verifies that 5 infection tests are clean, and syncs directly with the central government portal automatically.
+      <div id="pbmResultBox" class="p-6 rounded-2xl bg-black border border-white/10 font-mono text-xs space-y-2">
+        <p class="text-apple-textMuted text-[10px]">PBM CLINICAL RECOMMENDATION</p>
+        <p class="text-xl font-bold text-white">Estimated Blood Saved: <span class="text-apple-accentGreen">2 Units</span></p>
+        <p class="text-slate-300 text-[11px] pt-1">
+          ✓ Prescribe IV Ferric Carboxymaltose 1,000 mg<br>
+          ✓ Plan intra-operative cell salvage (autologous recovery)<br>
+          ✓ Eliminates donor blood exposure for elective surgery
         </p>
-        <div class="pt-3 border-t border-white/10 flex justify-between items-center font-mono text-xs text-apple-textMuted">
-          <span>apps/api-server</span>
-          <span class="text-white font-bold">npm run dev:api</span>
-        </div>
       </div>
     </div>
   </section>
 
   <!-- The 17 Loopholes Master Section -->
-  <section id="loopholes" class="py-24 max-w-5xl mx-auto px-4 sm:px-6">
-    <div class="text-center max-w-2xl mx-auto mb-16">
+  <section id="loopholes" class="py-20 max-w-5xl mx-auto px-4 sm:px-6 border-t border-white/10">
+    <div class="text-center max-w-2xl mx-auto mb-12">
       <span class="text-xs font-bold text-apple-accentGreen uppercase tracking-widest font-mono">COMPLETE AUDIT</span>
       <h2 class="text-3xl sm:text-4xl font-extrabold text-white mt-2 tracking-tight">The 17 Loopholes &amp; How We Fixed Each One</h2>
       <p class="text-apple-textSecondary text-xs sm:text-sm mt-3">Every loophole in India's blood banking system stopped by code.</p>
     </div>
 
     <div class="space-y-3 font-sans">
-      <!-- 1 -->
-      <div class="apple-glass p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+      <div class="apple-glass p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
         <div>
           <span class="text-[10px] font-mono font-bold text-apple-accentRed">LOOPHOLE 01</span>
-          <h4 class="text-sm font-bold text-white">Paid Blood Brokers Posing as "Family Friends"</h4>
-          <p class="text-xs text-apple-textMuted mt-0.5">Touts take cash from families and pretend to be a cousin to bypass the paid donation ban.</p>
+          <h4 class="text-xs font-bold text-white">Paid Blood Brokers Posing as Cousins</h4>
+          <p class="text-[11px] text-apple-textMuted">Touts take cash from families to bypass the 1996 paid donation ban.</p>
         </div>
         <div class="text-xs text-apple-accentGreen font-semibold whitespace-nowrap">
-          <i class="fa-solid fa-circle-check mr-1"></i> Fixed: ID deduplication flags paid repeat donors.
+          <i class="fa-solid fa-circle-check mr-1"></i> Fixed: Aadhaar/ABHA ID deduplication stops repeat commercial donors.
         </div>
       </div>
 
-      <!-- 2 -->
-      <div class="apple-glass p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+      <div class="apple-glass p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
         <div>
           <span class="text-[10px] font-mono font-bold text-apple-accentRed">LOOPHOLE 02</span>
-          <h4 class="text-sm font-bold text-white">Frequent Unsafe Donations (Draining Donors)</h4>
-          <p class="text-xs text-apple-textMuted mt-0.5">People donating every 3 weeks, draining their body's iron stores.</p>
+          <h4 class="text-xs font-bold text-white">Frequent Unsafe Donations (Draining Donors)</h4>
+          <p class="text-[11px] text-apple-textMuted">Donors giving blood every 3 weeks, draining body iron stores.</p>
         </div>
         <div class="text-xs text-apple-accentGreen font-semibold whitespace-nowrap">
-          <i class="fa-solid fa-circle-check mr-1"></i> Fixed: Strict 90-day cooldown software lock.
+          <i class="fa-solid fa-circle-check mr-1"></i> Fixed: 90-day (men) / 120-day (women) digital cooldown lock.
         </div>
       </div>
 
-      <!-- 3 -->
-      <div class="apple-glass p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+      <div class="apple-glass p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
         <div>
           <span class="text-[10px] font-mono font-bold text-apple-accentRed">LOOPHOLE 03</span>
-          <h4 class="text-sm font-bold text-white">Anemic Women Turned Away and Lost Forever</h4>
-          <p class="text-xs text-apple-textMuted mt-0.5">50%+ of female donors rejected for hemoglobin &lt; 12.5 and never return.</p>
+          <h4 class="text-xs font-bold text-white">Anemic Women Turned Away and Lost Forever</h4>
+          <p class="text-[11px] text-apple-textMuted">50%+ of female donors rejected for Hb &lt; 12.5 and never return.</p>
         </div>
         <div class="text-xs text-apple-accentGreen font-semibold whitespace-nowrap">
           <i class="fa-solid fa-circle-check mr-1"></i> Fixed: Automatic 30-day nutrition coaching in app.
         </div>
       </div>
 
-      <!-- 4 -->
-      <div class="apple-glass p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+      <div class="apple-glass p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
         <div>
           <span class="text-[10px] font-mono font-bold text-apple-accentRed">LOOPHOLE 04</span>
-          <h4 class="text-sm font-bold text-white">Holiday Gluts Followed by Months of Drought</h4>
-          <p class="text-xs text-apple-textMuted mt-0.5">Collecting 5,000 bags on Aug 15 that expire together 35 days later.</p>
+          <h4 class="text-xs font-bold text-white">Holiday Gluts Followed by Months of Drought</h4>
+          <p class="text-[11px] text-apple-textMuted">5,000 bags collected on Aug 15 expire together 35 days later.</p>
         </div>
         <div class="text-xs text-apple-accentGreen font-semibold whitespace-nowrap">
           <i class="fa-solid fa-circle-check mr-1"></i> Fixed: 365-day rolling corporate &amp; university cycles.
         </div>
       </div>
 
-      <!-- 5 -->
-      <div class="apple-glass p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+      <div class="apple-glass p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
         <div>
           <span class="text-[10px] font-mono font-bold text-apple-accentRed">LOOPHOLE 05</span>
-          <h4 class="text-sm font-bold text-white">Window-Period Infections Slipping Through Simple Tests</h4>
-          <p class="text-xs text-apple-textMuted mt-0.5">Old antibody tests miss early HIV and Hepatitis in the first 2-3 weeks.</p>
+          <h4 class="text-xs font-bold text-white">Window-Period Infections Slipping Through</h4>
+          <p class="text-[11px] text-apple-textMuted">Old antibody tests miss early HIV and Hepatitis in the first 2-3 weeks.</p>
         </div>
         <div class="text-xs text-apple-accentGreen font-semibold whitespace-nowrap">
           <i class="fa-solid fa-circle-check mr-1"></i> Fixed: Individual testing (NAT) cuts risk to 4 days.
         </div>
       </div>
 
-      <!-- 6 -->
-      <div class="apple-glass p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+      <div class="apple-glass p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
         <div>
           <span class="text-[10px] font-mono font-bold text-apple-accentRed">LOOPHOLE 06</span>
-          <h4 class="text-sm font-bold text-white">Issuing Blood Before Lab Tests Finish</h4>
-          <p class="text-xs text-apple-textMuted mt-0.5">Busy technicians printing "OK" stickers before HIV/Hepatitis tests clear.</p>
+          <h4 class="text-xs font-bold text-white">Issuing Blood Before Lab Tests Finish</h4>
+          <p class="text-[11px] text-apple-textMuted">Busy technicians printing "OK" stickers before HIV/Hepatitis tests clear.</p>
         </div>
         <div class="text-xs text-apple-accentGreen font-semibold whitespace-nowrap">
           <i class="fa-solid fa-circle-check mr-1"></i> Fixed: Bags locked in QUARANTINE until signed clean.
         </div>
       </div>
 
-      <!-- 7 -->
-      <div class="apple-glass p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+      <div class="apple-glass p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
         <div>
           <span class="text-[10px] font-mono font-bold text-apple-accentRed">LOOPHOLE 07</span>
-          <h4 class="text-sm font-bold text-white">Wrong Blood Type Given at Bedside</h4>
-          <p class="text-xs text-apple-textMuted mt-0.5">Clerical mix-ups swapping bags between patients in crowded emergency wards.</p>
+          <h4 class="text-xs font-bold text-white">Wrong Blood Type Given at Bedside</h4>
+          <p class="text-[11px] text-apple-textMuted">Clerical mix-ups swapping bags between patients in crowded wards.</p>
         </div>
         <div class="text-xs text-apple-accentGreen font-semibold whitespace-nowrap">
-          <i class="fa-solid fa-circle-check mr-1"></i> Fixed: System sounds an alarm and blocks incompatible checkout.
+          <i class="fa-solid fa-circle-check mr-1"></i> Fixed: Double-scan mobile tool blocks incompatible checkout.
         </div>
       </div>
 
-      <!-- 8 -->
-      <div class="apple-glass p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+      <div class="apple-glass p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
         <div>
           <span class="text-[10px] font-mono font-bold text-apple-accentRed">LOOPHOLE 08</span>
-          <h4 class="text-sm font-bold text-white">Rare Bombay Blood Mistakenly Labeled as O-</h4>
-          <p class="text-xs text-apple-textMuted mt-0.5">Giving normal O- blood to a Bombay blood patient causes fatal kidney damage.</p>
+          <h4 class="text-xs font-bold text-white">Rare Bombay Blood Labeled as O-</h4>
+          <p class="text-[11px] text-apple-textMuted">Giving normal O- blood to a Bombay blood patient causes fatal kidney damage.</p>
         </div>
         <div class="text-xs text-apple-accentGreen font-semibold whitespace-nowrap">
           <i class="fa-solid fa-circle-check mr-1"></i> Fixed: Isolated Bombay protocol only allows Bombay blood.
         </div>
       </div>
 
-      <!-- 9 -->
-      <div class="apple-glass p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+      <div class="apple-glass p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
         <div>
           <span class="text-[10px] font-mono font-bold text-apple-accentRed">LOOPHOLE 09</span>
-          <h4 class="text-sm font-bold text-white">Invisible Blood Spoiling on 42°C Indian Roads</h4>
-          <p class="text-xs text-apple-textMuted mt-0.5">Ice melts in traffic; blood gets warm and toxic while still looking red.</p>
+          <h4 class="text-xs font-bold text-white">Invisible Blood Spoiling on 42°C Indian Roads</h4>
+          <p class="text-[11px] text-apple-textMuted">Ice melts in traffic; blood gets warm and toxic while still looking red.</p>
         </div>
         <div class="text-xs text-apple-accentGreen font-semibold whitespace-nowrap">
           <i class="fa-solid fa-circle-check mr-1"></i> Fixed: Smart sensor logs every 10s; auto-locks if &gt; 6°C.
         </div>
       </div>
 
-      <!-- 10 -->
-      <div class="apple-glass p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+      <div class="apple-glass p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
         <div>
           <span class="text-[10px] font-mono font-bold text-apple-accentRed">LOOPHOLE 10</span>
-          <h4 class="text-sm font-bold text-white">Platelet Shaker Stops (Clotted Platelets)</h4>
-          <p class="text-xs text-apple-textMuted mt-0.5">Platelets left stationary on a table clot within 24 hours.</p>
+          <h4 class="text-xs font-bold text-white">Platelet Shaker Stops (Clotted Platelets)</h4>
+          <p class="text-[11px] text-apple-textMuted">Platelets left stationary on a table clot within 24 hours.</p>
         </div>
         <div class="text-xs text-apple-accentGreen font-semibold whitespace-nowrap">
           <i class="fa-solid fa-circle-check mr-1"></i> Fixed: Motion sensors verify continuous gentle movement.
         </div>
       </div>
 
-      <!-- 11 -->
-      <div class="apple-glass p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+      <div class="apple-glass p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
         <div>
           <span class="text-[10px] font-mono font-bold text-apple-accentRed">LOOPHOLE 11</span>
-          <h4 class="text-sm font-bold text-white">Village Mothers Dying from Postpartum Bleeding</h4>
-          <p class="text-xs text-apple-textMuted mt-0.5">Rural clinics have no blood; cars take 3 hours over broken roads.</p>
+          <h4 class="text-xs font-bold text-white">Village Mothers Dying from Postpartum Bleeding</h4>
+          <p class="text-[11px] text-apple-textMuted">Rural clinics have no blood; cars take 3 hours over broken roads.</p>
         </div>
         <div class="text-xs text-apple-accentGreen font-semibold whitespace-nowrap">
           <i class="fa-solid fa-circle-check mr-1"></i> Fixed: Certified medical drone deliveries in &lt; 20 minutes.
         </div>
       </div>
 
-      <!-- 12 -->
-      <div class="apple-glass p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+      <div class="apple-glass p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
         <div>
           <span class="text-[10px] font-mono font-bold text-apple-accentRed">LOOPHOLE 12</span>
-          <h4 class="text-sm font-bold text-white">Hospital Hoarding Leading to Expiry</h4>
-          <p class="text-xs text-apple-textMuted mt-0.5">Private hospitals holding rare units until they expire and get thrown away.</p>
+          <h4 class="text-xs font-bold text-white">Hospital Hoarding Leading to Expiry</h4>
+          <p class="text-[11px] text-apple-textMuted">Private hospitals holding rare units until they expire and get thrown away.</p>
         </div>
         <div class="text-xs text-apple-accentGreen font-semibold whitespace-nowrap">
           <i class="fa-solid fa-circle-check mr-1"></i> Fixed: Expiry Radar transfers units with &lt; 48 hours left.
         </div>
       </div>
 
-      <!-- 13 -->
-      <div class="apple-glass p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+      <div class="apple-glass p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
         <div>
           <span class="text-[10px] font-mono font-bold text-apple-accentRed">LOOPHOLE 13</span>
-          <h4 class="text-sm font-bold text-white">Forced Family Replacement Donors</h4>
-          <p class="text-xs text-apple-textMuted mt-0.5">Doctors refusing to admit patients until family members arrange replacement donors.</p>
+          <h4 class="text-xs font-bold text-white">Forced Family Replacement Donors</h4>
+          <p class="text-[11px] text-apple-textMuted">Doctors refusing to admit patients until relatives arrange replacement donors.</p>
         </div>
         <div class="text-xs text-apple-accentGreen font-semibold whitespace-nowrap">
           <i class="fa-solid fa-circle-check mr-1"></i> Fixed: System flags any hospital with &gt; 5% replacement rate.
         </div>
       </div>
 
-      <!-- 14 -->
-      <div class="apple-glass p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+      <div class="apple-glass p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
         <div>
           <span class="text-[10px] font-mono font-bold text-apple-accentRed">LOOPHOLE 14</span>
-          <h4 class="text-sm font-bold text-white">Over-Billing &amp; Hidden Testing Charges</h4>
-          <p class="text-xs text-apple-textMuted mt-0.5">Hospitals charging ₹4,000 to ₹8,000 for a bag legally capped at ₹1,450.</p>
+          <h4 class="text-xs font-bold text-white">Over-Billing &amp; Hidden Testing Charges</h4>
+          <p class="text-[11px] text-apple-textMuted">Hospitals charging ₹4,000 to ₹8,000 for a bag legally capped at ₹1,450.</p>
         </div>
         <div class="text-xs text-apple-accentGreen font-semibold whitespace-nowrap">
           <i class="fa-solid fa-circle-check mr-1"></i> Fixed: Invoice validator blocks bills exceeding statutory caps.
         </div>
       </div>
 
-      <!-- 15 -->
-      <div class="apple-glass p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+      <div class="apple-glass p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
         <div>
           <span class="text-[10px] font-mono font-bold text-apple-accentRed">LOOPHOLE 15</span>
-          <h4 class="text-sm font-bold text-white">Pouring Plasma Down the Drain</h4>
-          <p class="text-xs text-apple-textMuted mt-0.5">India spends ₹3,200 Cr importing Albumin while domestic plasma is wasted.</p>
+          <h4 class="text-xs font-bold text-white">Pouring Plasma Down the Drain</h4>
+          <p class="text-[11px] text-apple-textMuted">India spends ₹3,200 Cr importing Albumin while domestic plasma is wasted.</p>
         </div>
         <div class="text-xs text-apple-accentGreen font-semibold whitespace-nowrap">
           <i class="fa-solid fa-circle-check mr-1"></i> Fixed: Plasma pooling manifests route plasma to domestic medicine plants.
         </div>
       </div>
 
-      <!-- 16 -->
-      <div class="apple-glass p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+      <div class="apple-glass p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
         <div>
           <span class="text-[10px] font-mono font-bold text-apple-accentRed">LOOPHOLE 16</span>
-          <h4 class="text-sm font-bold text-white">Donor Phone Numbers Leaked to Touts</h4>
-          <p class="text-xs text-apple-textMuted mt-0.5">Old apps posted donor phone numbers online, causing harassment.</p>
+          <h4 class="text-xs font-bold text-white">Donor Phone Numbers Leaked to Touts</h4>
+          <p class="text-[11px] text-apple-textMuted">Old apps posted donor phone numbers online, causing harassment.</p>
         </div>
         <div class="text-xs text-apple-accentGreen font-semibold whitespace-nowrap">
           <i class="fa-solid fa-circle-check mr-1"></i> Fixed: Phone numbers are masked; alerts sent via private WhatsApp.
         </div>
       </div>
 
-      <!-- 17 -->
-      <div class="apple-glass p-4 sm:p-5 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+      <div class="apple-glass p-4 rounded-2xl flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
         <div>
           <span class="text-[10px] font-mono font-bold text-apple-accentRed">LOOPHOLE 17</span>
-          <h4 class="text-sm font-bold text-white">Empty Shelves After Rare Blood Is Taken</h4>
-          <p class="text-xs text-apple-textMuted mt-0.5">Patient takes the last rare unit 20 km away; shelf stays empty until the next crisis.</p>
+          <h4 class="text-xs font-bold text-white">Empty Shelves After Rare Blood Is Taken</h4>
+          <p class="text-[11px] text-apple-textMuted">Patient takes the last rare unit 20 km away; shelf stays empty until next crisis.</p>
         </div>
         <div class="text-xs text-apple-accentGreen font-semibold whitespace-nowrap">
           <i class="fa-solid fa-circle-check mr-1"></i> Fixed: Automatic replenishment texts 2 verified nearby donors.
@@ -615,25 +593,52 @@
     </div>
   </section>
 
-  <!-- CTA Section -->
-  <section class="py-24 text-center border-t border-white/10 bg-gradient-to-b from-black to-apple-card">
-    <div class="max-w-3xl mx-auto px-4 sm:px-6 space-y-6">
-      <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">The Future of Blood Access in India.</h2>
-      <p class="text-apple-textSecondary text-sm max-w-xl mx-auto">
-        Built, tested, and ready for government pilots. Zero jargon. Zero blood wastage.
-      </p>
+  <!-- Official 2-Page Cabinet Note Modal -->
+  <div id="cabinetModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-white/20 rounded-3xl max-w-2xl w-full p-6 sm:p-8 space-y-4 max-h-[90vh] overflow-y-auto text-xs font-sans">
+      <div class="flex justify-between items-center border-b border-white/10 pb-3">
+        <div>
+          <span class="text-[10px] font-mono font-bold text-apple-accentCrimson uppercase">GOVERNMENT POLICY BRIEF</span>
+          <h3 class="text-base font-bold text-white">Cabinet Note: Adoption of HemaGrid DPI</h3>
+        </div>
+        <button onclick="closeCabinetModal()" class="text-apple-textMuted hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+      </div>
 
-      <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="https://github.com/archiboltmusk/hemagrid" target="_blank" rel="noopener noreferrer" class="bg-white text-black hover:bg-slate-200 font-extrabold text-sm px-8 py-4 rounded-full transition flex items-center space-x-2 shadow-xl">
-          <i class="fa-brands fa-github text-base"></i>
-          <span>View on GitHub</span>
-        </a>
-        <a href="https://github.com/archiboltmusk/hemagrid/blob/main/ARCHITECTURE.md" target="_blank" rel="noopener noreferrer" class="apple-glass hover:border-white/20 text-white font-semibold text-sm px-8 py-4 rounded-full transition">
-          Read Technical Specs
-        </a>
+      <div class="space-y-3 text-slate-300 leading-relaxed font-sans">
+        <p><strong>To:</strong> Joint Secretary (Health), Ministry of Health &amp; Family Welfare (MoHFW), Nirman Bhawan, New Delhi.</p>
+        <p><strong>Subject:</strong> Proposal for Nationwide Rollout of HemaGrid as Sovereign Digital Public Infrastructure under National Health Mission (NHM) Flexipool.</p>
+        
+        <div class="p-3 rounded-xl bg-black/60 border border-white/5 space-y-1">
+          <p class="font-bold text-white">1. Core Objectives:</p>
+          <p>• Zero maternal mortalities from Postpartum Hemorrhage (PPH) via &lt; 20-minute drone/cold-chain delivery.</p>
+          <p>• Elimination of ₹450 Cr annual clinical discards through automated 48-hour platelet expiry clearing.</p>
+          <p>• 100% elimination of illegal replacement donor coercion, backed by HemaShield family protection.</p>
+        </div>
+
+        <div class="p-3 rounded-xl bg-black/60 border border-white/5 space-y-1">
+          <p class="font-bold text-white">2. Budgetary Alignment:</p>
+          <p>• Covered under NHM Programme Implementation Plan (PIP) Blood Safety Budget Codes B.15.2 &amp; B.15.3.</p>
+          <p>• Estimated Net Savings to State Treasuries: ₹1,850 Crore annually.</p>
+        </div>
+
+        <div class="p-3 rounded-xl bg-black/60 border border-white/5 space-y-1">
+          <p class="font-bold text-white">3. Statutory &amp; Regulatory Concurrence:</p>
+          <p>• Drugs &amp; Cosmetics Act 1940 (Part XII-B &amp; Schedule F) Compliant.</p>
+          <p>• Ayushman Bharat Digital Mission (ABDM / ABHA ID) Linked.</p>
+        </div>
+      </div>
+
+      <div class="pt-3 border-t border-white/10 flex justify-end space-x-3">
+        <button onclick="window.print()" class="px-4 py-2 bg-white text-black font-bold rounded-xl text-xs flex items-center space-x-1.5">
+          <i class="fa-solid fa-print"></i>
+          <span>Print / Save as PDF</span>
+        </button>
+        <button onclick="closeCabinetModal()" class="px-4 py-2 bg-white/10 text-white font-medium rounded-xl text-xs">
+          Close
+        </button>
       </div>
     </div>
-  </section>
+  </div>
 
   <!-- Footer -->
   <footer class="bg-black border-t border-white/10 py-10 text-center text-xs text-apple-textMuted">
@@ -641,148 +646,84 @@
     <p class="mt-1">Open Source under Apache-2.0 License • Built for the People of India</p>
   </footer>
 
-  <!-- Live Canvas Waveform & Interactive Simulator Scripts -->
+  <!-- Interactive Scripts -->
   <script>
-    // Live Clock
-    function updateClock() {
-      const now = new Date();
-      document.getElementById('liveClock').innerText = now.toTimeString().split(' ')[0] + ' IST';
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
-
-    // Live Temperature Canvas Waveform (60 FPS smooth rendering)
-    const canvas = document.getElementById('tempCanvas');
-    const ctx = canvas.getContext('2d');
-    let points = [];
-    const maxPoints = 80;
-
-    function resizeCanvas() {
-      canvas.width = canvas.parentElement.clientWidth - 32;
-      canvas.height = 80;
-    }
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();
-
-    // Populate initial points around 3.8°C
-    for (let i = 0; i < maxPoints; i++) {
-      points.push(3.8 + (Math.random() - 0.5) * 0.2);
-    }
-
-    function drawWave() {
-      // Add new jitter point
-      const last = points[points.length - 1];
-      const next = Math.max(3.5, Math.min(4.2, last + (Math.random() - 0.5) * 0.1));
-      points.push(next);
-      if (points.length > maxPoints) points.shift();
-
-      // Clear
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      // Draw grid lines
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
-      ctx.lineWidth = 1;
-      ctx.beginPath();
-      ctx.moveTo(0, canvas.height * 0.5);
-      ctx.lineTo(canvas.width, canvas.height * 0.5);
-      ctx.stroke();
-
-      // Draw temperature line
-      ctx.beginPath();
-      ctx.lineWidth = 2;
-      ctx.strokeStyle = '#30d158'; // Apple green
-
-      const step = canvas.width / (maxPoints - 1);
-      for (let i = 0; i < points.length; i++) {
-        // Map 3.0°C - 5.0°C to canvas height
-        const normalized = (points[i] - 3.0) / 2.0;
-        const y = canvas.height - (normalized * canvas.height);
-        const x = i * step;
-
-        if (i === 0) ctx.moveTo(x, y);
-        else ctx.lineTo(x, y);
-      }
-      ctx.stroke();
-
-      // Gradient fill under the line
-      ctx.lineTo(canvas.width, canvas.height);
-      ctx.lineTo(0, canvas.height);
-      ctx.closePath();
-      const grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
-      grad.addColorStop(0, 'rgba(48, 209, 88, 0.25)');
-      grad.addColorStop(1, 'rgba(48, 209, 88, 0.0)');
-      ctx.fillStyle = grad;
-      ctx.fill();
-
-      // Update ticker
-      document.getElementById('tickerTemp').innerText = `${next.toFixed(1)}°C`;
-    }
-
-    setInterval(drawWave, 250);
-
-    // Interactive Simulator Trigger
-    function runSimulation(type) {
-      const screen = document.getElementById('simScreen');
-      screen.className = "p-5 rounded-2xl bg-black border font-mono text-xs space-y-3 transition-all duration-300";
-
-      if (type === 'emergency') {
-        screen.classList.add('border-apple-accentCrimson');
-        screen.innerHTML = `
-          <div class="flex justify-between items-center text-apple-accentCrimson border-b border-rose-900 pb-2">
-            <span class="font-bold"><i class="fa-solid fa-triangle-exclamation mr-1.5 animate-pulse"></i>CASE 1: SEVERE MATERNAL BLEEDING TRIGGERED</span>
-            <span class="text-white">STATUS: RESOLVED IN 18 MINS</span>
-          </div>
-          <div class="space-y-1.5 text-slate-300">
-            <p>1. Patient Sunita V. at Mehrauli CHC in acute hemorrhagic shock. Needs 2 units O- PRBC.</p>
-            <p class="text-cyan-400">2. HemaGrid Engine scans 15 km network: Mother Hub (AIIMS) has 2 tested units.</p>
-            <p class="text-emerald-400">3. Electronic Manifest #MANIFEST-2026-DL-0091 generated. Box #IOT-42 assigned.</p>
-            <p class="text-apple-accentGreen font-bold">4. Rapid EV Courier DL-04 dispatched. Real-time temperature: 3.8°C. Life saved!</p>
-          </div>
-        `;
-      } else if (type === 'wrong-type') {
-        screen.classList.add('border-apple-accentRed');
-        screen.innerHTML = `
-          <div class="flex justify-between items-center text-apple-accentRed border-b border-rose-900 pb-2">
-            <span class="font-bold"><i class="fa-solid fa-ban mr-1.5"></i>CASE 2: WRONG BLOOD TYPE ATTEMPTED</span>
-            <span class="text-rose-400 font-bold">SAFETY LOCK ACTIVATED</span>
-          </div>
-          <div class="space-y-1.5 text-slate-300">
-            <p>1. Patient Blood Group: <strong class="text-white">O Negative (O-)</strong></p>
-            <p>2. Nurse mistakenly scans barcode for <strong class="text-rose-400">A Positive (A+) PRBC</strong>.</p>
-            <p class="text-apple-accentRed font-bold">3. ALARM TRIGGERED: Incompatible red cells detected. Acute hemolytic reaction prevented.</p>
-            <p class="text-apple-accentGreen">4. Bedside checkout physically blocked. Bag remains in cold inventory.</p>
-          </div>
-        `;
-      } else if (type === 'heat-breach') {
-        screen.classList.add('border-apple-accentAmber');
-        screen.innerHTML = `
-          <div class="flex justify-between items-center text-apple-accentAmber border-b border-amber-900 pb-2">
-            <span class="font-bold"><i class="fa-solid fa-temperature-arrow-up mr-1.5"></i>CASE 3: SUMMER HEAT THERMAL BREACH</span>
-            <span class="text-amber-400 font-bold">AUTO-QUARANTINE ENFORCED</span>
-          </div>
-          <div class="space-y-1.5 text-slate-300">
-            <p>1. Ambient temperature in Delhi-NCR reaches 43°C. Courier delayed in traffic.</p>
-            <p class="text-amber-300">2. Smart Box #IOT-14 probe detects internal temp rose to 7.4°C for 35 minutes.</p>
-            <p class="text-apple-accentRed font-bold">3. BREACH RECORDED: Bacterial proliferation risk exceeds NBTC threshold.</p>
-            <p class="text-apple-accentGreen">4. Destination hospital barcode scanner locks bag as SPOILED. Patient protected!</p>
-          </div>
-        `;
-      } else if (type === 'replenish') {
-        screen.classList.add('border-apple-accentGreen');
-        screen.innerHTML = `
+    // Bedside Double-Scan Tool
+    function scanBedsideBag(barcode, bagGroup, isSafe) {
+      const box = document.getElementById('bedsideResultBox');
+      if (isSafe) {
+        box.className = "p-6 rounded-2xl bg-black border border-apple-accentGreen font-mono text-xs space-y-2";
+        box.innerHTML = `
           <div class="flex justify-between items-center text-apple-accentGreen border-b border-emerald-900 pb-2">
-            <span class="font-bold"><i class="fa-solid fa-arrows-rotate mr-1.5"></i>CASE 4: AUTOMATIC SHELF REPLENISHMENT</span>
-            <span class="text-emerald-400 font-bold">DONORS APPOINTED</span>
+            <span class="font-bold"><i class="fa-solid fa-circle-check mr-1.5"></i>SAFE TO TRANSFUSE</span>
+            <span class="text-white">MATCH VERIFIED</span>
           </div>
-          <div class="space-y-1.5 text-slate-300">
-            <p>1. Last remaining O- bag at AIIMS issued for an emergency surgery.</p>
-            <p class="text-cyan-400">2. Sensor detects O- shelf dropped to 0 units (safe buffer is 3 units).</p>
-            <p class="text-apple-accentAmber">3. System automatically sends private WhatsApp invite to 2 verified O- donors within 3 km.</p>
-            <p class="text-apple-accentGreen font-bold">4. Donor Arjun S. confirms 10:00 AM 15-min VIP slot tomorrow. Shelf replenished!</p>
+          <p class="text-white font-bold">Patient (O-) $\\iff$ Bag (${bagGroup})</p>
+          <p class="text-emerald-400">Barcode: ${barcode} • 5 Infection Tests Cleared</p>
+          <p class="text-apple-textMuted text-[10px]">Verified by Nurse Priya (RN-102) at ${new Date().toLocaleTimeString()} IST. Bedside IV unlocked.</p>
+        `;
+      } else {
+        box.className = "p-6 rounded-2xl bg-black border border-apple-accentRed font-mono text-xs space-y-2 animate-pulse";
+        box.innerHTML = `
+          <div class="flex justify-between items-center text-apple-accentRed border-b border-rose-900 pb-2">
+            <span class="font-bold"><i class="fa-solid fa-triangle-exclamation mr-1.5"></i>FATAL MISMATCH ALARM</span>
+            <span class="text-rose-400 font-bold">CHECKOUT BLOCKED</span>
+          </div>
+          <p class="text-white font-bold">Patient is O- Negative, but Bag is ${bagGroup}!</p>
+          <p class="text-rose-400">Barcode: ${barcode} • Acute Hemolytic Reaction Prevented</p>
+          <p class="text-apple-textMuted text-[10px]">Bedside infusion physically blocked. Incident reported to Blood Bank Medical Officer.</p>
+        `;
+      }
+    }
+
+    // WhatsApp Simulation
+    function sendChatMessage(action) {
+      const stream = document.getElementById('chatStream');
+      if (action === 'CONFIRM') {
+        stream.innerHTML += `
+          <div class="bg-emerald-800 text-white p-3 rounded-2xl rounded-tr-none max-w-[80%] ml-auto text-right text-[11px]">
+            Yes, I confirm! I will donate tomorrow at 10 AM.
+          </div>
+          <div class="bg-slate-900 border border-white/10 p-3 rounded-2xl rounded-tl-none max-w-[85%] space-y-1">
+            <p class="text-emerald-400 font-bold text-[11px]">✓ VIP Appointment Confirmed!</p>
+            <p class="text-white text-[11px]">AIIMS Blood Bank Gate 3 • 10:00 AM Tomorrow</p>
+            <p class="text-apple-textMuted text-[10px]">Digital HemaPass QR generated. Your HemaShield family protection will be active for 12 months!</p>
+          </div>
+        `;
+      } else {
+        stream.innerHTML += `
+          <div class="bg-emerald-800 text-white p-3 rounded-2xl rounded-tr-none max-w-[80%] ml-auto text-right text-[11px]">
+            Can I come on Saturday morning instead?
+          </div>
+          <div class="bg-slate-900 border border-white/10 p-3 rounded-2xl rounded-tl-none max-w-[85%] space-y-1">
+            <p class="text-white text-[11px]">Certainly, Rahul! Saturday, 10:30 AM slot at AIIMS Blood Bank has been reserved for you.</p>
           </div>
         `;
       }
     }
+
+    // PBM Calculator
+    function calculatePBM() {
+      const hb = parseFloat(document.getElementById('pbmHbInput').value) || 10.2;
+      const days = parseInt(document.getElementById('pbmDaysInput').value) || 28;
+      const box = document.getElementById('pbmResultBox');
+
+      const unitsSaved = hb < 11.0 ? 3 : (hb < 13.0 ? 2 : 1);
+      box.innerHTML = `
+        <p class="text-apple-textMuted text-[10px]">PBM CLINICAL RECOMMENDATION (${days} DAYS TO SURGERY)</p>
+        <p class="text-xl font-bold text-white">Estimated Blood Saved: <span class="text-apple-accentGreen">${unitsSaved} Units</span></p>
+        <p class="text-slate-300 text-[11px] pt-1">
+          ✓ Infuse IV Ferric Carboxymaltose 1,000 mg before Day -14<br>
+          ✓ Target Hb rise: ${hb} g/dL $\\to$ 13.8 g/dL<br>
+          ✓ Intra-operative autologous cell salvage recovery<br>
+          ✓ Avoids allogeneic blood transfusion risks completely
+        </p>
+      `;
+    }
+
+    // Cabinet Modal
+    function openCabinetModal() { document.getElementById('cabinetModal').classList.remove('hidden'); }
+    function closeCabinetModal() { document.getElementById('cabinetModal').classList.add('hidden'); }
   </script>
 </body>
 </html>
