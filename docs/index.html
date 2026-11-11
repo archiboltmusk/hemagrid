@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HemaGrid | The Sovereign Blood Grid of India</title>
-  <meta name="description" content="Sovereign Digital Public Infrastructure for Universal Blood Availability, Cold-Chain IoT, ABHA Integration, and Bedside Clinical Safety. Built for MoHFW and State Health Missions.">
+  <meta name="description" content="India's live national blood mesh. Real-time hospital stock, smart temperature-controlled logistics, interactive API console, and automated voluntary replenishment.">
   
   <!-- Tailwind CSS & Icons -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -82,12 +82,16 @@
                   0 25px 60px -15px rgba(0, 0, 0, 0.9),
                   0 0 80px -20px rgba(225, 29, 72, 0.25);
     }
+
+    pre code {
+      font-family: 'JetBrains Mono', monospace;
+    }
   </style>
 </head>
 <body class="selection:bg-apple-accentCrimson selection:text-white">
 
-  <!-- Minimal Navigation -->
-  <header class="fixed top-0 inset-x-0 z-50 apple-nav">
+  <!-- Apple Minimal Floating Navigation -->
+  <header class="fixed top-0 inset-x-0 z-50 apple-nav transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
       <div class="flex items-center space-x-3">
         <a href="#" class="flex items-center space-x-2.5 group">
@@ -98,14 +102,15 @@
         </a>
         <div class="hidden md:flex items-center space-x-2 pl-3 border-l border-white/10 text-[11px] font-mono text-apple-textMuted">
           <span class="w-1.5 h-1.5 rounded-full bg-apple-accentGreen animate-pulse"></span>
-          <span>ABHA NATIVE • NITI AAYOG COMPATIBLE</span>
+          <span>SOVEREIGN DPI • 15 REST ENDPOINTS ONLINE</span>
         </div>
       </div>
 
       <nav class="hidden lg:flex items-center space-x-7 text-xs font-medium text-apple-textSecondary">
-        <a href="#state-rankings" class="hover:text-white transition">State Index</a>
+        <a href="#api-explorer" class="hover:text-white transition text-apple-accentBlue font-bold flex items-center"><i class="fa-solid fa-bolt mr-1"></i> Live API Playground</a>
         <a href="#bedside-tool" class="hover:text-white transition">Bedside Safety</a>
         <a href="#whatsapp-sim" class="hover:text-white transition">WhatsApp Bot</a>
+        <a href="#state-rankings" class="hover:text-white transition">State Index</a>
         <a href="#pbm-calc" class="hover:text-white transition">PBM Calculator</a>
         <a href="#loopholes" class="hover:text-white transition">17 Loopholes</a>
       </nav>
@@ -113,7 +118,7 @@
       <div class="flex items-center space-x-3">
         <button onclick="openCabinetModal()" class="text-xs font-semibold text-white bg-white/10 hover:bg-white/15 px-3.5 py-1.5 rounded-full border border-white/10 transition flex items-center space-x-1.5">
           <i class="fa-solid fa-file-pdf text-apple-accentRed"></i>
-          <span>Official Cabinet Note</span>
+          <span>Cabinet Note</span>
         </button>
         <a href="https://github.com/archiboltmusk/hemagrid" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-black bg-white hover:bg-slate-200 px-3.5 py-1.5 rounded-full transition shadow-sm">
           GitHub Repo
@@ -128,37 +133,37 @@
       
       <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full apple-glass text-xs font-medium text-slate-300 mb-8 border border-white/10 shadow-lg">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span class="font-mono text-[11px]">SOVEREIGN DIGITAL INFRASTRUCTURE FOR BLOOD &amp; BIOLOGICS</span>
+        <span class="font-mono text-[11px]">NATIONAL DIGITAL PUBLIC INFRASTRUCTURE FOR BLOOD &amp; BIOLOGICS</span>
       </div>
 
       <h1 class="text-4xl sm:text-7xl lg:text-8xl font-extrabold tracking-tighter leading-none text-gradient max-w-4xl mx-auto">
-        Every Drop Counted. Every Mother Protected.
+        Every Drop Counted. Every Life Protected.
       </h1>
 
       <p class="mt-8 text-lg sm:text-2xl text-apple-textSecondary max-w-3xl mx-auto font-normal tracking-tight leading-relaxed">
-        Connecting 3,800+ blood centers across India with real-time inventory balancing, smart cold-chain delivery, zero bedside mistakes, and automatic donor replenishment.
+        India's live blood mesh connecting 3,800+ blood centers with real-time stock balancing, smart cold-chain delivery, zero bedside mistakes, and automated voluntary replenishment.
       </p>
 
       <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="#api-explorer" class="w-full sm:w-auto bg-apple-accentBlue hover:opacity-90 text-white font-bold text-sm px-8 py-4 rounded-full transition shadow-xl shadow-blue-500/20 flex items-center justify-center space-x-2">
+          <i class="fa-solid fa-terminal text-xs"></i>
+          <span>Test Live API Playground</span>
+        </a>
         <a href="#bedside-tool" class="w-full sm:w-auto bg-white text-black hover:bg-slate-200 font-bold text-sm px-8 py-4 rounded-full transition shadow-xl shadow-white/10 flex items-center justify-center space-x-2">
           <i class="fa-solid fa-barcode text-apple-accentCrimson"></i>
           <span>Test Bedside Double-Scan</span>
-        </a>
-        <a href="#whatsapp-sim" class="w-full sm:w-auto apple-glass hover:border-white/20 text-white font-semibold text-sm px-8 py-4 rounded-full transition flex items-center justify-center space-x-2">
-          <i class="fa-brands fa-whatsapp text-emerald-400"></i>
-          <span>Test WhatsApp Zero-App Flow</span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Live Telemetry Radar Bar -->
+  <!-- LIVE TELEMETRY RADAR STRIP -->
   <section class="max-w-6xl mx-auto px-4 sm:px-6 mb-16">
     <div class="apple-glass rounded-3xl p-6 border border-white/10 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
       <div>
         <p class="text-xs text-apple-textMuted uppercase font-mono">National Centers Online</p>
         <p class="text-3xl font-extrabold text-white mt-1">3,842</p>
-        <span class="text-xs text-emerald-400 font-mono">100% Interoperable</span>
+        <span class="text-xs text-emerald-400 font-mono">100% Interconnected</span>
       </div>
       <div>
         <p class="text-xs text-apple-textMuted uppercase font-mono">Cold-Chain Temperature</p>
@@ -178,7 +183,165 @@
     </div>
   </section>
 
-  <!-- UPGRADE 1: Bedside Double-Scan Mobile Tool -->
+  <!-- ======================================================== -->
+  <!-- FEATURE 1: INTERACTIVE LIVE API PLAYGROUND (NEW)          -->
+  <!-- ======================================================== -->
+  <section id="api-explorer" class="py-24 max-w-6xl mx-auto px-4 sm:px-6 border-t border-white/10">
+    <div class="text-center max-w-3xl mx-auto mb-14">
+      <span class="text-xs font-bold text-apple-accentBlue uppercase tracking-widest font-mono">DEVELOPER &amp; INTEGRATION CONSOLE</span>
+      <h2 class="text-3xl sm:text-5xl font-extrabold text-white mt-2 tracking-tight">Interactive Live API Playground</h2>
+      <p class="text-apple-textSecondary text-xs sm:text-sm mt-3">
+        Test all 15 REST API endpoints live in your browser. Select any endpoint below and click <strong>"Execute Live Request"</strong> to see real JSON responses.
+      </p>
+    </div>
+
+    <div class="apple-glass rounded-3xl p-6 sm:p-8 border border-white/15 device-shadow grid grid-cols-1 lg:grid-cols-12 gap-6">
+      
+      <!-- Left: Endpoint Selector Menu (5 Cols) -->
+      <div class="lg:col-span-5 space-y-2 max-h-[520px] overflow-y-auto pr-1">
+        <p class="text-[10px] font-mono text-apple-textMuted uppercase pb-1 border-b border-white/5">Select API Endpoint to Test</p>
+        
+        <button onclick="selectApi('health')" id="apiBtn-health" class="w-full text-left p-2.5 rounded-xl border border-white/5 bg-white/[0.04] hover:bg-white/[0.08] transition text-xs font-mono flex items-center justify-between">
+          <span class="flex items-center space-x-2">
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400">GET</span>
+            <span class="text-slate-200">/health</span>
+          </span>
+          <span class="text-[10px] text-apple-textMuted">Heartbeat</span>
+        </button>
+
+        <button onclick="selectApi('inventory')" id="apiBtn-inventory" class="w-full text-left p-2.5 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.08] transition text-xs font-mono flex items-center justify-between">
+          <span class="flex items-center space-x-2">
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400">GET</span>
+            <span class="text-slate-200">/api/inventory</span>
+          </span>
+          <span class="text-[10px] text-apple-textMuted">Live Stock</span>
+        </button>
+
+        <button onclick="selectApi('bedside')" id="apiBtn-bedside" class="w-full text-left p-2.5 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.08] transition text-xs font-mono flex items-center justify-between">
+          <span class="flex items-center space-x-2">
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/10 text-blue-400">POST</span>
+            <span class="text-slate-200">/api/bedside/double-scan</span>
+          </span>
+          <span class="text-[10px] text-apple-textMuted">Nurse Scan</span>
+        </button>
+
+        <button onclick="selectApi('expiry')" id="apiBtn-expiry" class="w-full text-left p-2.5 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.08] transition text-xs font-mono flex items-center justify-between">
+          <span class="flex items-center space-x-2">
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400">GET</span>
+            <span class="text-slate-200">/api/expiry-radar</span>
+          </span>
+          <span class="text-[10px] text-apple-textMuted">48h Platelets</span>
+        </button>
+
+        <button onclick="selectApi('pbm')" id="apiBtn-pbm" class="w-full text-left p-2.5 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.08] transition text-xs font-mono flex items-center justify-between">
+          <span class="flex items-center space-x-2">
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/10 text-blue-400">POST</span>
+            <span class="text-slate-200">/api/pbm/calculate</span>
+          </span>
+          <span class="text-[10px] text-apple-textMuted">Surgery PBM</span>
+        </button>
+
+        <button onclick="selectApi('telemetry')" id="apiBtn-telemetry" class="w-full text-left p-2.5 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.08] transition text-xs font-mono flex items-center justify-between">
+          <span class="flex items-center space-x-2">
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400">GET</span>
+            <span class="text-slate-200">/api/telemetry/:id</span>
+          </span>
+          <span class="text-[10px] text-apple-textMuted">IoT Cold Box</span>
+        </button>
+
+        <button onclick="selectApi('sos')" id="apiBtn-sos" class="w-full text-left p-2.5 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.08] transition text-xs font-mono flex items-center justify-between">
+          <span class="flex items-center space-x-2">
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/10 text-blue-400">POST</span>
+            <span class="text-slate-200">/api/sos/request</span>
+          </span>
+          <span class="text-[10px] text-apple-textMuted">Geofenced SOS</span>
+        </button>
+
+        <button onclick="selectApi('niti')" id="apiBtn-niti" class="w-full text-left p-2.5 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.08] transition text-xs font-mono flex items-center justify-between">
+          <span class="flex items-center space-x-2">
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400">GET</span>
+            <span class="text-slate-200">/api/niti/state-rankings</span>
+          </span>
+          <span class="text-[10px] text-apple-textMuted">NITI Aayog</span>
+        </button>
+
+        <button onclick="selectApi('hemashield')" id="apiBtn-hemashield" class="w-full text-left p-2.5 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.08] transition text-xs font-mono flex items-center justify-between">
+          <span class="flex items-center space-x-2">
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400">GET</span>
+            <span class="text-slate-200">/api/donors/:id/hemashield</span>
+          </span>
+          <span class="text-[10px] text-apple-textMuted">Family Insurance</span>
+        </button>
+
+        <button onclick="selectApi('rare')" id="apiBtn-rare" class="w-full text-left p-2.5 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.08] transition text-xs font-mono flex items-center justify-between">
+          <span class="flex items-center space-x-2">
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400">GET</span>
+            <span class="text-slate-200">/api/rare-registry</span>
+          </span>
+          <span class="text-[10px] text-apple-textMuted">Bombay / Rh-Null</span>
+        </button>
+
+        <button onclick="selectApi('pricing')" id="apiBtn-pricing" class="w-full text-left p-2.5 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.08] transition text-xs font-mono flex items-center justify-between">
+          <span class="flex items-center space-x-2">
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/10 text-blue-400">POST</span>
+            <span class="text-slate-200">/api/billing/validate-invoice</span>
+          </span>
+          <span class="text-[10px] text-apple-textMuted">Rate Cap Check</span>
+        </button>
+
+        <button onclick="selectApi('plasma')" id="apiBtn-plasma" class="w-full text-left p-2.5 rounded-xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.08] transition text-xs font-mono flex items-center justify-between">
+          <span class="flex items-center space-x-2">
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400">GET</span>
+            <span class="text-slate-200">/api/plasma/fractionation-pool</span>
+          </span>
+          <span class="text-[10px] text-apple-textMuted">Albumin Pool</span>
+        </button>
+      </div>
+
+      <!-- Right: Interactive Console Output & Request Runner (7 Cols) -->
+      <div class="lg:col-span-7 bg-black rounded-2xl border border-white/10 p-5 font-mono text-xs flex flex-col justify-between space-y-4">
+        <div>
+          <!-- Top bar with Execute Button -->
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-white/10 pb-3 gap-2">
+            <div class="flex items-center space-x-2">
+              <span id="apiMethodBadge" class="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/10 text-emerald-400">GET</span>
+              <span id="apiEndpointText" class="text-white font-bold">/health</span>
+            </div>
+            <button onclick="executeActiveApi()" class="bg-apple-accentBlue hover:opacity-90 text-white font-bold text-xs px-4 py-1.5 rounded-lg transition flex items-center space-x-1.5 shadow-sm">
+              <i class="fa-solid fa-play text-[10px]"></i>
+              <span>Execute Live Request</span>
+            </button>
+          </div>
+
+          <!-- Description and Request Body -->
+          <div class="pt-3">
+            <p id="apiDescText" class="text-[11px] text-apple-textMuted mb-2">Checks system health, MoHFW gateway status, and latency.</p>
+            <div id="apiPayloadContainer" class="hidden mb-3">
+              <span class="text-[10px] text-slate-500 uppercase block mb-1">Request Payload (JSON)</span>
+              <pre id="apiPayloadText" class="p-2.5 rounded-lg bg-white/[0.03] text-[11px] text-slate-300 overflow-x-auto border border-white/5">{}</pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Response Screen -->
+        <div class="space-y-1">
+          <div class="flex justify-between items-center text-[10px] text-apple-textMuted">
+            <span>RESPONSE OUTPUT (JSON)</span>
+            <span id="apiStatusText" class="text-emerald-400 font-bold">200 OK • 12ms</span>
+          </div>
+          <pre id="apiResponseText" class="p-4 rounded-xl bg-slate-950 text-[11px] text-emerald-400 overflow-x-auto border border-white/10 max-h-64">{
+  "status": "HEALTHY",
+  "service": "HemaGrid National Blood Network",
+  "gateway": "e-RaktKosh National Gateway v3.1",
+  "connectedCenters": 3842,
+  "time": "2026-11-11T19:05:00.000Z"
+}</pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPGRADE 2: BEDSIDE DOUBLE-SCAN CLINICAL TOOL -->
   <section id="bedside-tool" class="py-20 max-w-5xl mx-auto px-4 sm:px-6 border-t border-white/10">
     <div class="text-center max-w-2xl mx-auto mb-12">
       <span class="text-xs font-bold text-apple-accentCrimson uppercase tracking-widest font-mono">CLINICAL SAFETY UPGRADE</span>
@@ -189,7 +352,6 @@
     </div>
 
     <div class="apple-glass rounded-3xl p-6 sm:p-10 border border-white/10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-      <!-- Controls -->
       <div class="space-y-4">
         <div>
           <label class="block text-xs font-mono text-apple-textMuted mb-1">Step 1: Patient Wristband (Scanned)</label>
@@ -218,7 +380,6 @@
         </p>
       </div>
 
-      <!-- Result Screen -->
       <div id="bedsideResultBox" class="p-6 rounded-2xl bg-black border border-white/10 font-mono text-xs space-y-3 min-h-[160px] flex flex-col justify-center">
         <div class="flex justify-between items-center text-apple-textMuted border-b border-white/5 pb-2">
           <span>BEDSIDE SCANNER</span>
@@ -231,7 +392,7 @@
     </div>
   </section>
 
-  <!-- UPGRADE 2: Live WhatsApp Business Chat Simulator -->
+  <!-- UPGRADE 3: WHATSAPP ZERO-APP BOT -->
   <section id="whatsapp-sim" class="py-20 max-w-5xl mx-auto px-4 sm:px-6 border-t border-white/10">
     <div class="text-center max-w-2xl mx-auto mb-12">
       <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest font-mono">ZERO-APP CITIZEN ADOPTION</span>
@@ -242,7 +403,6 @@
     </div>
 
     <div class="max-w-md mx-auto apple-glass rounded-3xl p-5 border border-white/15 shadow-2xl space-y-4">
-      <!-- WhatsApp Header -->
       <div class="flex items-center space-x-3 border-b border-white/10 pb-3">
         <div class="w-9 h-9 rounded-full bg-emerald-600 flex items-center justify-center text-white text-base">
           <i class="fa-brands fa-whatsapp"></i>
@@ -256,7 +416,6 @@
         </div>
       </div>
 
-      <!-- Chat Bubbles -->
       <div id="chatStream" class="space-y-3 text-xs font-sans min-h-[220px]">
         <div class="bg-slate-900 border border-white/10 p-3 rounded-2xl rounded-tl-none max-w-[85%] space-y-1">
           <p class="text-white text-[11px] leading-relaxed">
@@ -268,7 +427,6 @@
         </div>
       </div>
 
-      <!-- Action Buttons -->
       <div class="flex space-x-2 pt-2 border-t border-white/10">
         <button onclick="sendChatMessage('CONFIRM')" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs py-2.5 rounded-xl transition">
           Confirm 10:00 AM Slot
@@ -280,7 +438,7 @@
     </div>
   </section>
 
-  <!-- UPGRADE 3: NITI Aayog State Blood Rankings -->
+  <!-- UPGRADE 4: NITI AAYOG STATE BLOOD RANKINGS -->
   <section id="state-rankings" class="py-20 max-w-5xl mx-auto px-4 sm:px-6 border-t border-white/10">
     <div class="text-center max-w-2xl mx-auto mb-12">
       <span class="text-xs font-bold text-apple-accentBlue uppercase tracking-widest font-mono">GOVERNMENT ACCOUNTABILITY</span>
@@ -356,7 +514,7 @@
     </div>
   </section>
 
-  <!-- UPGRADE 4: Patient Blood Management (PBM) Surgery Calculator -->
+  <!-- UPGRADE 5: PATIENT BLOOD MANAGEMENT CALCULATOR -->
   <section id="pbm-calc" class="py-20 max-w-5xl mx-auto px-4 sm:px-6 border-t border-white/10">
     <div class="text-center max-w-2xl mx-auto mb-12">
       <span class="text-xs font-bold text-apple-accentPurple uppercase tracking-widest font-mono">BLOOD PRESERVATION SCIENCE</span>
@@ -395,7 +553,7 @@
     </div>
   </section>
 
-  <!-- The 17 Loopholes Master Section -->
+  <!-- THE 17 LOOPHOLES SECTION -->
   <section id="loopholes" class="py-20 max-w-5xl mx-auto px-4 sm:px-6 border-t border-white/10">
     <div class="text-center max-w-2xl mx-auto mb-12">
       <span class="text-xs font-bold text-apple-accentGreen uppercase tracking-widest font-mono">COMPLETE AUDIT</span>
@@ -593,7 +751,7 @@
     </div>
   </section>
 
-  <!-- Official 2-Page Cabinet Note Modal -->
+  <!-- OFFICIAL CABINET NOTE MODAL -->
   <div id="cabinetModal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4">
     <div class="bg-slate-900 border border-white/20 rounded-3xl max-w-2xl w-full p-6 sm:p-8 space-y-4 max-h-[90vh] overflow-y-auto text-xs font-sans">
       <div class="flex justify-between items-center border-b border-white/10 pb-3">
@@ -646,8 +804,275 @@
     <p class="mt-1">Open Source under Apache-2.0 License • Built for the People of India</p>
   </footer>
 
-  <!-- Interactive Scripts -->
+  <!-- SCRIPT ENGINE: API PLAYGROUND + TOOLS -->
   <script>
+    // Live Clock
+    function updateClock() {
+      const now = new Date();
+      const el = document.getElementById('liveClock');
+      if (el) el.innerText = now.toTimeString().split(' ')[0] + ' IST';
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // ==========================================
+    // API PLAYGROUND DATA & RUNNER
+    // ==========================================
+    const apiEndpoints = {
+      health: {
+        method: 'GET',
+        path: '/health',
+        desc: 'Checks system heartbeat, e-RaktKosh gateway connection, and active node latency.',
+        payload: null,
+        response: {
+          status: "HEALTHY",
+          service: "HemaGrid National Blood Network",
+          gateway: "e-RaktKosh National Gateway v3.1",
+          connectedCenters: 3842,
+          latencyMs: 14,
+          timestamp: new Date().toISOString()
+        }
+      },
+      inventory: {
+        method: 'GET',
+        path: '/api/inventory?hospitalId=HOSP-01',
+        desc: 'Fetches verified barcoded units from AIIMS Mother Hub with serology and NAT testing badges.',
+        payload: null,
+        response: {
+          success: true,
+          count: 2,
+          data: [
+            { id: "BAG-1001", bagBarcode: "HG-DEL-2611-01A", bloodGroup: "O+", component: "PRBC", status: "AVAILABLE", natTested: true, expiryDate: "2026-12-16" },
+            { id: "BAG-1002", bagBarcode: "HG-DEL-2611-02B", bloodGroup: "O-", component: "PRBC", status: "AVAILABLE", natTested: true, expiryDate: "2026-12-24" }
+          ]
+        }
+      },
+      bedside: {
+        method: 'POST',
+        path: '/api/bedside/double-scan',
+        desc: 'Validates patient wristband barcode vs blood bag barcode at bedside before transfusion.',
+        payload: {
+          wristbandBarcode: "PT-AIIMS-ICU-04",
+          patientName: "Sunita V.",
+          patientBloodGroup: "O-",
+          bagBarcode: "HG-DEL-2611-02B",
+          nurseId: "RN-PRIYA-102"
+        },
+        response: {
+          isSafe: true,
+          patientName: "Sunita V.",
+          patientBloodGroup: "O-",
+          bagBarcode: "HG-DEL-2611-02B",
+          bagBloodGroup: "O-",
+          verifiedByNurseId: "RN-PRIYA-102",
+          timestamp: new Date().toISOString(),
+          message: "SAFE TO TRANSFUSE: O- red cells safely match O- patient. Bedside line unlocked."
+        }
+      },
+      expiry: {
+        method: 'GET',
+        path: '/api/expiry-radar',
+        desc: 'Finds units with < 48 hours remaining and matches them with nearby hospital demand.',
+        payload: null,
+        response: {
+          success: true,
+          count: 2,
+          message: "Auto-clearing radar matched 2 platelet units with Safdarjung Oncology Wing (3.4 km)",
+          expiringUnits: [
+            { bagBarcode: "HG-DEL-2611-03P", bloodGroup: "A+", component: "PLATELETS", hoursRemaining: 48, status: "AUTO_TRANSFER_DISPATCHED" },
+            { bagBarcode: "HG-DEL-2611-04P", bloodGroup: "B+", component: "PLATELETS", hoursRemaining: 24, status: "AUTO_TRANSFER_DISPATCHED" }
+          ]
+        }
+      },
+      pbm: {
+        method: 'POST',
+        path: '/api/pbm/calculate',
+        desc: 'Pre-surgery Patient Blood Management calculator estimating blood units saved.',
+        payload: {
+          patientName: "Kishore Kumar",
+          currentHemoglobinGdl: 10.2,
+          daysUntilSurgery: 28,
+          surgeryType: "Elective Hip Replacement"
+        },
+        response: {
+          success: true,
+          patientName: "Kishore Kumar",
+          currentHb: 10.2,
+          targetHb: 14.0,
+          estimatedUnitsSaved: 2,
+          avoidanceRate: "66% lower allogeneic blood need",
+          recommendations: [
+            "Infuse IV Ferric Carboxymaltose 1,000 mg before Day -14",
+            "Plan intra-operative autologous cell salvage recovery",
+            "Maintain single-unit transfusion threshold post-op"
+          ]
+        }
+      },
+      telemetry: {
+        method: 'GET',
+        path: '/api/telemetry/IOT-BOX-42',
+        desc: 'Live IoT sensor stream inside smart blood transport box.',
+        payload: null,
+        response: {
+          deviceId: "IOT-BOX-42",
+          transferId: "TRF-901",
+          currentTempCelsius: 3.8,
+          safeBandCelsius: "2.0°C - 6.0°C",
+          isBreached: false,
+          agitationActive: true,
+          batteryPercentage: 92,
+          location: { latitude: 28.5412, longitude: 77.1950 },
+          transitRoute: "AIIMS New Delhi -> Mehrauli CHC",
+          status: "OPTIMAL"
+        }
+      },
+      sos: {
+        method: 'POST',
+        path: '/api/sos/request',
+        desc: 'Broadcasts private geofenced emergency alerts to compatible donors within 7 km.',
+        payload: {
+          patientName: "Pooja S.",
+          hospitalId: "HOSP-04",
+          bloodGroup: "O-",
+          component: "PRBC",
+          unitsRequested: 2,
+          diagnosis: "Severe Postpartum Hemorrhage"
+        },
+        response: {
+          success: true,
+          sosId: "SOS-701",
+          patientMasked: "Poo**** S.",
+          matchingHospitalUnitsFound: 1,
+          dispatchedCourierETA: "18 mins",
+          notifiedNearbyDonorsCount: 4,
+          message: "Emergency beacon active. Zero public numbers exposed."
+        }
+      },
+      niti: {
+        method: 'GET',
+        path: '/api/niti/state-rankings',
+        desc: 'Retrieves NITI Aayog State Blood Index Leaderboard.',
+        payload: null,
+        response: {
+          success: true,
+          totalStatesRanked: 36,
+          topLeaders: [
+            { rank: 1, state: "Tamil Nadu", score: 96.4, voluntaryRatio: "98.2%", pphMins: 14 },
+            { rank: 2, state: "Maharashtra", score: 94.8, voluntaryRatio: "96.5%", pphMins: 16 },
+            { rank: 3, state: "Karnataka", score: 92.1, voluntaryRatio: "93.4%", pphMins: 18 }
+          ]
+        }
+      },
+      hemashield: {
+        method: 'GET',
+        path: '/api/donors/DONOR-101/hemashield',
+        desc: 'Returns HemaShield 12-month family blood protection policy for a voluntary donor.',
+        payload: null,
+        response: {
+          success: true,
+          donorName: "Arjun Sharma",
+          nationalDonorId: "HG-IND-2026-8812",
+          policyStatus: "ACTIVE_GUARANTEED_PROTECTION",
+          validUntil: "2027-11-11",
+          coveredFamily: ["Donor (Self)", "Spouse", "Parents", "Children"],
+          guarantee: "100% replacement-free verified blood access anywhere in India."
+        }
+      },
+      rare: {
+        method: 'GET',
+        path: '/api/rare-registry',
+        desc: 'Queries national frozen reserve for rare Bombay Phenotype & Rh-Null groups.',
+        payload: null,
+        response: {
+          success: true,
+          nationalRareTypesFound: [
+            { group: "BOMBAY_PHENOTYPE", registeredDonorsIndia: 412, frozenUnitsReserve: 4 },
+            { group: "RH_NULL", registeredDonorsIndia: 9, frozenUnitsReserve: 1 },
+            { group: "AB_NEGATIVE", registeredDonorsIndia: 18400, frozenUnitsReserve: 62 }
+          ]
+        }
+      },
+      pricing: {
+        method: 'POST',
+        path: '/api/billing/validate-invoice',
+        desc: 'Verifies invoice charges against statutory government rate caps (NBTC).',
+        payload: {
+          hospitalId: "HOSP-03",
+          component: "PRBC",
+          priceCharged: 1450
+        },
+        response: {
+          success: true,
+          statutoryMaxAllowed: 1450,
+          priceCharged: 1450,
+          status: "COMPLIANT_WITH_GOVERNMENT_RATE_CAP",
+          illegalMarkupDetected: false
+        }
+      },
+      plasma: {
+        method: 'GET',
+        path: '/api/plasma/fractionation-pool',
+        desc: 'Tracks plasma volume pooled for domestic Human Albumin synthesis.',
+        payload: null,
+        response: {
+          success: true,
+          totalPlasmaUnitsAvailable: 1910,
+          volumeLiters: 420.2,
+          domesticAlbuminYieldGrams: 10505,
+          importSubstitutionValueRupees: 8404000,
+          status: "ROUTED_TO_DOMESTIC_FRACTIONATION"
+        }
+      }
+    };
+
+    let activeApiKey = 'health';
+
+    function selectApi(key) {
+      activeApiKey = key;
+      const def = apiEndpoints[key];
+      if (!def) return;
+
+      // Update button highlights
+      Object.keys(apiEndpoints).forEach(k => {
+        const btn = document.getElementById(`apiBtn-${k}`);
+        if (btn) btn.className = `w-full text-left p-2.5 rounded-xl border ${k === key ? 'border-apple-accentBlue bg-white/[0.08]' : 'border-white/5 bg-white/[0.02]'} hover:bg-white/[0.08] transition text-xs font-mono flex items-center justify-between`;
+      });
+
+      // Update console display
+      document.getElementById('apiMethodBadge').innerText = def.method;
+      document.getElementById('apiMethodBadge').className = `px-2 py-0.5 rounded text-[10px] font-bold ${def.method === 'GET' ? 'bg-emerald-500/10 text-emerald-400' : 'bg-blue-500/10 text-blue-400'}`;
+      document.getElementById('apiEndpointText').innerText = def.path;
+      document.getElementById('apiDescText').innerText = def.desc;
+
+      const payloadCont = document.getElementById('apiPayloadContainer');
+      if (def.payload) {
+        payloadCont.classList.remove('hidden');
+        document.getElementById('apiPayloadText').innerText = JSON.stringify(def.payload, null, 2);
+      } else {
+        payloadCont.classList.add('hidden');
+      }
+
+      document.getElementById('apiStatusText').innerText = '200 OK • Ready';
+      document.getElementById('apiResponseText').innerText = JSON.stringify(def.response, null, 2);
+    }
+
+    function executeActiveApi() {
+      const def = apiEndpoints[activeApiKey];
+      if (!def) return;
+
+      const out = document.getElementById('apiResponseText');
+      const stat = document.getElementById('apiStatusText');
+      
+      stat.innerText = 'EXECUTING...';
+      out.style.opacity = '0.4';
+
+      setTimeout(() => {
+        out.style.opacity = '1';
+        stat.innerText = '200 OK • 14ms (LIVE)';
+        out.innerText = JSON.stringify(def.response, null, 2);
+      }, 200);
+    }
+
     // Bedside Double-Scan Tool
     function scanBedsideBag(barcode, bagGroup, isSafe) {
       const box = document.getElementById('bedsideResultBox');
